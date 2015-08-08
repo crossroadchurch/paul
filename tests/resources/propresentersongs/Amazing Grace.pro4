@@ -1,0 +1,486 @@
+<?xml version="1.0"?>
+<RVPresentationDocument height="768" width="1024" versionNumber="401" creatorCode="1349676880" lastDateUsed="2014-06-09T07:47:29+0000" category="Hymn" backgroundColor="0 0 0 1" drawingBackgroundColor="0" notes="" artist="John Newton" author="" album="" CCLIDisplay="0" CCLIArtistCredits="" CCLISongTitle="Amazing Grace" CCLIPublisher="" CCLICopyrightInfo="" CCLILicenseNumber="" resourcesDirectory="">
+  <slides containerClass="NSMutableArray">
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="0" UUID="A67250CF-0DCC-4169-80EA-7E417CC233B3" drawingBackgroundColor="0" serialization-array-index="0">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBBbWF6aW5nIGdyYWNlISBIb3cgc3dlZXQgdGhlIHNvdW5kfVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="1" UUID="B09CAF20-B402-43C3-AA35-C09B1A2CEB25" drawingBackgroundColor="0" serialization-array-index="1">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBUaGF0IHNhdmVkIGEgd3JldGNoIGxpa2UgbWUhfVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="2" UUID="CCF908FC-0FE4-4C16-BE70-9543C2A76DC7" drawingBackgroundColor="0" serialization-array-index="2">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBJIG9uY2Ugd2FzIGxvc3QsIGJ1dCBub3cgYW0gZm91bmQ7fVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="3" UUID="B33AF602-61BB-47FE-95E3-98640D6BD76A" drawingBackgroundColor="0" serialization-array-index="3">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBXYXMgYmxpbmQsIGJ1dCBub3cgSSBzZWUufVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="4" UUID="02932C9A-C505-4856-A48E-339CA927B020" drawingBackgroundColor="0" serialization-array-index="4">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCAnVHdhcyBncmFjZSB0aGF0IHRhdWdodCBteSBoZWFydCB0byBmZWFyLH1cbGkwXHNhMFxzYjBcZmkwXHFjXHBhcn0NCn0NCn0=" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="5" UUID="F6FC7C3F-2A38-4D63-83B1-7EDA30371535" drawingBackgroundColor="0" serialization-array-index="5">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBBbmQgZ3JhY2UgbXkgZmVhcnMgcmVsaWV2ZWQ7fVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="6" UUID="EEBFE94B-D0F2-4E41-BBE7-B5A7D4F62243" drawingBackgroundColor="0" serialization-array-index="6">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBIb3cgcHJlY2lvdXMgZGlkIHRoYXQgZ3JhY2UgYXBwZWFyfVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="7" UUID="0CDDEA18-F48E-4B85-8054-01140192EDC7" drawingBackgroundColor="0" serialization-array-index="7">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBUaGUgaG91ciBJIGZpcnN0IGJlbGlldmVkLn1cbGkwXHNhMFxzYjBcZmkwXHFjXHBhcn0NCn0NCn0=" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="8" UUID="E1193588-A9B8-4371-8DC0-F16DC6D3B489" drawingBackgroundColor="0" serialization-array-index="8">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBUaHJvdWdoIG1hbnkgZGFuZ2VycywgdG9pbHMgYW5kIHNuYXJlcyx9XGxpMFxzYTBcc2IwXGZpMFxxY1xwYXJ9DQp9DQp9" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="9" UUID="EBD1940D-7360-4E04-9E8F-E752B1F9ECBF" drawingBackgroundColor="0" serialization-array-index="9">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBJIGhhdmUgYWxyZWFkeSBjb21lO31cbGkwXHNhMFxzYjBcZmkwXHFjXHBhcn0NCn0NCn0=" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="10" UUID="76F80153-DF39-4CE8-B186-79D548C596F5" drawingBackgroundColor="0" serialization-array-index="10">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCAnVGlzIGdyYWNlIGhhdGggYnJvdWdodCBtZSBzYWZlIHRodXMgZmFyLH1cbGkwXHNhMFxzYjBcZmkwXHFjXHBhcn0NCn0NCn0=" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="11" UUID="D4E43B14-8E57-44AA-BCD3-0B1F1401A829" drawingBackgroundColor="0" serialization-array-index="11">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBBbmQgZ3JhY2Ugd2lsbCBsZWFkIG1lIGhvbWUufVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="12" UUID="D5B3DFC2-6C99-447B-A1E9-815F1550397F" drawingBackgroundColor="0" serialization-array-index="12">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBUaGUgTG9yZCBoYXMgcHJvbWlzZWQgZ29vZCB0byBtZSx9XGxpMFxzYTBcc2IwXGZpMFxxY1xwYXJ9DQp9DQp9" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="13" UUID="E1573057-DB07-4442-BDCD-1C44B5B62A60" drawingBackgroundColor="0" serialization-array-index="13">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBIaXMgV29yZCBteSBob3BlIHNlY3VyZXM7fVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="14" UUID="D07DB5AA-710D-40F5-8FF0-C336B7C99B29" drawingBackgroundColor="0" serialization-array-index="14">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBIZSB3aWxsIG15IFNoaWVsZCBhbmQgUG9ydGlvbiBiZSx9XGxpMFxzYTBcc2IwXGZpMFxxY1xwYXJ9DQp9DQp9" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="15" UUID="0D91E879-8C6A-4C68-A098-80E95E89F4F7" drawingBackgroundColor="0" serialization-array-index="15">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBBcyBsb25nIGFzIGxpZmUgZW5kdXJlcy59XGxpMFxzYTBcc2IwXGZpMFxxY1xwYXJ9DQp9DQp9" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="16" UUID="5105264F-D786-453E-8D29-3ADC8D84C53F" drawingBackgroundColor="0" serialization-array-index="16">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBZZWEsIHdoZW4gdGhpcyBmbGVzaCBhbmQgaGVhcnQgc2hhbGwgZmFpbCx9XGxpMFxzYTBcc2IwXGZpMFxxY1xwYXJ9DQp9DQp9" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="17" UUID="46D46358-A465-425E-866D-1D5E215952E4" drawingBackgroundColor="0" serialization-array-index="17">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBBbmQgbW9ydGFsIGxpZmUgc2hhbGwgY2Vhc2UsfVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="18" UUID="8B92AC4F-1470-416E-80CA-E088EF6F3AC4" drawingBackgroundColor="0" serialization-array-index="18">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBJIHNoYWxsIHBvc3Nlc3MsIHdpdGhpbiB0aGUgdmVpbCx9XGxpMFxzYTBcc2IwXGZpMFxxY1xwYXJ9DQp9DQp9" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="19" UUID="D0865E31-B064-4817-B027-A35C231D4946" drawingBackgroundColor="0" serialization-array-index="19">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBBIGxpZmUgb2Ygam95IGFuZCBwZWFjZS59XGxpMFxzYTBcc2IwXGZpMFxxY1xwYXJ9DQp9DQp9" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="20" UUID="28AC1D6E-1F79-4E88-80A4-CA318A634046" drawingBackgroundColor="0" serialization-array-index="20">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBUaGUgZWFydGggc2hhbGwgc29vbiBkaXNzb2x2ZSBsaWtlIHNub3csfVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="21" UUID="3E97F36D-D9CE-4C2B-AE1A-D337A43FD7F5" drawingBackgroundColor="0" serialization-array-index="21">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBUaGUgc3VuIGZvcmJlYXIgdG8gc2hpbmU7fVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="22" UUID="81E336F4-7170-47B0-B829-4E4A945A755F" drawingBackgroundColor="0" serialization-array-index="22">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBCdXQgR29kLCBXaG8gY2FsbGVkIG1lIGhlcmUgYmVsb3csfVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="23" UUID="4D669087-EB91-4972-A1F7-D866F339C502" drawingBackgroundColor="0" serialization-array-index="23">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBTaGFsbCBiZSBmb3JldmVyIG1pbmUufVxsaTBcc2EwXHNiMFxmaTBccWNccGFyfQ0KfQ0KfQ==" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="24" UUID="ADE5EE3D-56A6-4439-96DD-51C53337D4B1" drawingBackgroundColor="0" serialization-array-index="24">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBXaGVuIHdlJ3ZlIGJlZW4gdGhlcmUgdGVuIHRob3VzYW5kIHllYXJzLH1cbGkwXHNhMFxzYjBcZmkwXHFjXHBhcn0NCn0NCn0=" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="25" UUID="BD68D875-5154-485A-AEF3-D48D9CE27C05" drawingBackgroundColor="0" serialization-array-index="25">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBCcmlnaHQgc2hpbmluZyBhcyB0aGUgc3VuLH1cbGkwXHNhMFxzYjBcZmkwXHFjXHBhcn0NCn0NCn0=" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="26" UUID="030026EE-A25C-4781-883D-0CAC394ADC93" drawingBackgroundColor="0" serialization-array-index="26">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBXZSd2ZSBubyBsZXNzIGRheXMgdG8gc2luZyBHb2QncyBwcmFpc2V9XGxpMFxzYTBcc2IwXGZpMFxxY1xwYXJ9DQp9DQp9" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+    <RVDisplaySlide backgroundColor="0 0 0 0" enabled="1" highlightColor="0 0 0 0" hotKey="" label="" notes="" slideType="1" sort_index="27" UUID="50648C63-C1FC-40E0-8928-FEDFFCDA9689" drawingBackgroundColor="0" serialization-array-index="27">
+      <cues containerClass="NSMutableArray" />
+      <displayElements containerClass="NSMutableArray">
+        <RVTextElement displayDelay="0" locked="0" persistent="0" typeID="0" fromTemplate="0" bezelRadius="0" drawingFill="0" drawingShadow="1" drawingStroke="0" fillColor="0 0 0 0" rotation="0" source="" displayName="" adjustsHeightToFit="0" verticalAlignment="0" RTFData="e1xydGYxXHByb3J0ZjFcYW5zaVxhbnNpY3BnMTI1Mlx1YzFcaHRtYXV0c3BcZGVmZjJ7XGZvbnR0Ymx7XGYwXGZjaGFyc2V0MCBUaW1lcyBOZXcgUm9tYW47fXtcZjJcZmNoYXJzZXQwIEdlb3JnaWE7fXtcZjNcZmNoYXJzZXQwIEhlbHZldGljYTt9fXtcY29sb3J0Ymw7XHJlZDBcZ3JlZW4wXGJsdWUwO1xyZWQyNTVcZ3JlZW4yNTVcYmx1ZTI1NTt9XGxvY2hcaGljaFxkYmNoXHBhcmRcc2xsZWFkaW5nMFxwbGFpblxsdHJwYXJcaXRhcDB7XGxhbmcxMDMzXGZzMTIwXGYzXGNmMSBcY2YxXHFse1xmMyB7XGNmMlxsdHJjaCBUaGFuIHdoZW4gd2UnZCBmaXJzdCBiZWd1bi59XGxpMFxzYTBcc2IwXGZpMFxxY1xwYXJ9DQp9DQp9" serialization-array-index="0">
+          <_-RVRect3D-_position x="10" y="10" z="0" width="1004" height="748" />
+          <_-D-_serializedShadow containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="shadowColor" />
+            <NSMutableString serialization-native-value="{0, 0}" serialization-dictionary-key="shadowOffset" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="shadowBlurRadius" />
+          </_-D-_serializedShadow>
+          <stroke containerClass="NSMutableDictionary">
+            <NSCalibratedRGBColor serialization-native-value="0 0 0 0" serialization-dictionary-key="RVShapeElementStrokeColorKey" />
+            <NSNumber serialization-native-value="0" serialization-dictionary-key="RVShapeElementStrokeWidthKey" />
+          </stroke>
+        </RVTextElement>
+      </displayElements>
+    </RVDisplaySlide>
+  </slides>
+  <timeline timeOffSet="0" selectedMediaTrackIndex="-1" unitOfMeasure="60" duration="0" loop="0">
+    <timeCues containerClass="NSMutableArray" />
+    <mediaTracks containerClass="NSMutableArray" />
+  </timeline>
+  <bibleReference containerClass="NSMutableDictionary" />
+</RVPresentationDocument>

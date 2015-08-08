@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=AudioVideo;
+Exec=openlp %F
+GenericName=Church lyrics projection
+Icon=openlp
+MimeType=application/x-openlp-service;
+Name=OpenLP
+StartupNotify=true
+Terminal=false
+Type=Application
+X-KDE-SubstituteUID=false

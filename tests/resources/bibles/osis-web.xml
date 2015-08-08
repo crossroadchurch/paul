@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<osis xmlns="http://www.bibletechnologies.net/2003/OSIS/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bibletechnologies.net/2003/OSIS/namespace osisCore.2.0.xsd">
+ <osisText osisIDWork="WEB" osisRefWork="Bible" xml:lang="en">
+  <header>
+   <revisionDesc resp="Rainbow Missions, Inc.">
+    <date>2007-08-26T08.23.41</date>
+    <p> This draft version of the World English Bible is
+substantially complete in the New Testament, Genesis, Exodus, Job, Psalms, Proverbs, Ecclesiastes, Song of Solomon, and the “minor” prophets. Editing continues on the other books of the Old Testament. All WEB companion Apocrypha books are still in
+rough draft form. </p>
+    <p>Converted web.gbf in GBF to web.osis.xml in
+an XML format that is mostly compliant with OSIS 2.0 using gbf2osis.exe.
+(Please see http://ebt.cx/translation/ for links to this software.)</p>
+    <p>GBF and OSIS metadata fields do not exactly correspond to each other, so
+the conversion is not perfect in the metadata. However, the Scripture portion
+should be correct.</p>
+    <p>No attempt was to convert quotation marks to structural markers using q or
+speech elements, because this would require language and style-dependent
+processing, and because the current OSIS specification is deficient in that
+quotation mark processing is not guaranteed to produce the correct results
+for all languages and translations. In English texts, the hard part of the
+conversion to markup is figuring out what ’ means.
+The other difficulty is that OSIS in no way guarantees that these punctuation
+marks would be reconstituted properly by software that reads OSIS files
+for anything other than modern English, and even then, it does not
+accommodate all styles of punctuation and all cases.
+We strongly recommend that anyone using OSIS NOT replace quotation mark
+punctuation in any existing text with q or speech elements. It is better
+for multiple language processing capabilities to leave the quotation
+punctuation as part of the text. If you need the q or speech markup, then you
+may supplement those punctuation marks with those markup elements, but specify
+the n='' parameter in those elements to indicate that no generation of any
+punctuation from those markup elements is required or desired. That way you
+can have BOTH correct punctuation already in the text AND markup so that you
+can automatically determine when you are in a quotation or not, independent
+of language. This may be useful for a search by speaker, for example.</p>
+    <p>The output of gbf2osis marks Jesus' words in a non-standard way using the q
+element AND quotation marks if they were marked with FR/Fr markers in the GBF
+file. The OSIS 2.0 specification requires that quotation marks be stripped out,
+and reinserted by software that reads the OSIS files when q elements are used.
+This is not acceptable for the reasons given above, and we choose not to do
+that, but we used the q element with who='Jesus' to indicate Jesus' words.
+Do not generate any additional punctuation due to these markers. The correct
+punctuation is already in the text.</p>
+    <p>OSIS does not currently support footnote start anchors. Therefore, these
+start anchors have been represented with milestone elements, in case someone
+might like to use them, for example, to start an href element in a conversion
+to HTML. (OSIS sort of supports the same idea by allowing a catchword to be
+defined within a footnote, but I did not implement the processing to convert
+to this different way of doing things, and it isn't exactly the same, anyway.)</p>
+    <p>Traditional psalm book titles are rendered as text rather than titles, because
+the title element does not support containing transChange elements, as would be
+required to encode the KJV text using OSIS title elements. This may actually be
+a superior solution, anyway, in that the Masoretic text makes no such distinction
+(even though many modern typeset Bibles do make a typographic distinction in this
+case).</p>
+    <p>The schema location headers were modified to use local copies rather than the
+standard locations so that these files could be validated and used without an
+Internet connection active at all times (very important for the developer's
+remote island location), but you may wish to change them back.</p>
+   </revisionDesc>
+   <work osisWork="WEB">
+    <title>World English Bible</title>
+    <creator>WEB committee</creator>
+    <date event="eversion" type="Gregorian">2007-08-26</date>
+    <publisher>Rainbow Missions, Inc.</publisher>
+    <type type="OSIS">Bible</type>
+    <identifier type="OSIS">Bible.en.WEB.draft.2007-08-26</identifier>
+    <source>http://eBible.org/web/</source>
+    <language type="SIL">ENG</language>
+    <coverage>Wherever English is spoken in the world.</coverage>
+    <rights>The World English Bible is dedicated to the Public Domain by the translators and editors. It is not copyrighted. “World English Bible” and the World English Bible logo are a trademarks of Rainbow
+Missions, Inc. They may only be used to identify this translation of the Holy Bible as published by Rainbow Missions, Inc., and faithful copies and quotations. “Faithful copies” include copies converted to other formats (i. e. HTML, PDF, etc.) or
+typeset differently, without altering the text of the Scriptures, except that changing the spellings between preferred American and British usage is allowed. Use of the markings of direct quotes of Jesus Christ for different rendition (i. e. red text)
+is optional. Comments and typo reports are welcome at http://eBible.org/cgi-bin/comment.cgi. Please see http://eBible.org/web/ for updates, revision status, free downloads, and printed edition purchase information.</rights>
+    <scope>Gen-Mal</scope>
+    <scope>Tob-AddEsth</scope>
+    <scope>Bar-EpJer</scope>
+    <scope>AddDan</scope>
+    <scope>Matt-Rev</scope>
+    <refSystem>Bible.WEB</refSystem>
+   </work>
+  </header>
+  <div type="bookGroup" canonical="true">
+   <div type="book" osisID="Gen" scope="Gen">
+    <title type="main" short="Genesis">Genesis </title>
+    <chapter sID="Gen.1" osisID="Gen.1" />
+    <p>
+
+<verse sID="Gen.1.1" osisID="Gen.1.1" />In the beginning <milestone type="x-noteStartAnchor" />God<note type="translation">The Hebrew word rendered “God” is “Elohim.” After “God,” the Hebrew has the two letters “Aleph Tav” (the first and last letters of the Hebrew alphabet) as a grammatical marker.</note> created the heavens and the earth.
+<verse eID="Gen.1.1" /><verse sID="Gen.1.2" osisID="Gen.1.2" />Now the earth was formless and empty. Darkness was on the surface of the deep. God’s Spirit was hovering over the surface of the waters.</p>
+<p>
+<verse eID="Gen.1.2" />
+<verse sID="Gen.1.3" osisID="Gen.1.3" />God said, “Let there be light,” and there was light.
+<verse eID="Gen.1.3" /><verse sID="Gen.1.4" osisID="Gen.1.4" />God saw the light, and saw that it was good. God divided the light from the darkness.
+<verse eID="Gen.1.4" /><verse sID="Gen.1.5" osisID="Gen.1.5" />God called the light “day,” and the darkness he called “night.” There was evening and there was morning, one day.</p>
+<p>
+<verse eID="Gen.1.5" />
+<verse sID="Gen.1.6" osisID="Gen.1.6" />God said, “Let there be an expanse in the middle of the waters, and let it divide the waters from the waters.”
+<verse eID="Gen.1.6" /><verse sID="Gen.1.7" osisID="Gen.1.7" />God made the expanse, and divided the waters which were under the expanse from the waters which were above the expanse; and it was so.
+<verse eID="Gen.1.7" /><verse sID="Gen.1.8" osisID="Gen.1.8" />God called the expanse “sky.” There was evening and there was morning, a second day.</p>
+<p>
+<verse eID="Gen.1.8" />
+<verse sID="Gen.1.9" osisID="Gen.1.9" />God said, “Let the waters under the sky be gathered together to one place, and let the dry land appear;” and it was so.
+<verse eID="Gen.1.9" /><verse sID="Gen.1.10" osisID="Gen.1.10" />God called the dry land “earth,” and the gathering together of the waters he called “seas.” God saw that it was good.
+<verse eID="Gen.1.10" /></p>
+</div>
+</div>
+</osisText>
+</osis>

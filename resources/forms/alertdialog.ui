@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AlertDialog</class>
+ <widget class="QDialog" name="AlertDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>567</width>
+    <height>440</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Alert Message</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/icon/openlp.org-icon-32.bmp</normaloff>:/icon/openlp.org-icon-32.bmp</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="AlertFormLayout">
+   <property name="spacing">
+    <number>8</number>
+   </property>
+   <property name="margin">
+    <number>8</number>
+   </property>
+   <item>
+    <layout class="QFormLayout" name="AlertTextLayout">
+     <property name="horizontalSpacing">
+      <number>8</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>8</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="AlertEntryLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Alert &amp;text:</string>
+       </property>
+       <property name="buddy">
+        <cstring>AlertTextEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="AlertParameter">
+       <property name="text">
+        <string>&amp;Parameter:</string>
+       </property>
+       <property name="buddy">
+        <cstring>ParameterEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="ParameterEdit"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="AlertTextEdit"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="ManagementLayout">
+     <property name="spacing">
+      <number>8</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QListWidget" name="AlertListWidget">
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="ManageButtonLayout">
+       <property name="spacing">
+        <number>8</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="NewButton">
+         <property name="text">
+          <string>&amp;New</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/general/general_new.png</normaloff>:/general/general_new.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="SaveButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>&amp;Save</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/general/general_save.png</normaloff>:/general/general_save.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="DeleteButton">
+         <property name="text">
+          <string>&amp;Delete</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/general/general_delete.png</normaloff>:/general/general_delete.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="ManagementSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="AlertButtonLayout">
+     <property name="spacing">
+      <number>8</number>
+     </property>
+     <item>
+      <spacer name="ButtonBoxWidgetSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>181</width>
+         <height>0</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="DisplayButton">
+       <property name="text">
+        <string>Displ&amp;ay</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>:/general/general_live.png</normaloff>:/general/general_live.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="DisplayCloseButton">
+       <property name="text">
+        <string>Display &amp;&amp; Cl&amp;ose</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>:/general/general_live.png</normaloff>:/general/general_live.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="CloseButton">
+       <property name="text">
+        <string>&amp;Close</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>:/system/system_close.png</normaloff>:/system/system_close.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>AlertTextEdit</tabstop>
+  <tabstop>ParameterEdit</tabstop>
+  <tabstop>AlertListWidget</tabstop>
+  <tabstop>NewButton</tabstop>
+  <tabstop>SaveButton</tabstop>
+  <tabstop>DeleteButton</tabstop>
+  <tabstop>DisplayButton</tabstop>
+  <tabstop>DisplayCloseButton</tabstop>
+  <tabstop>CloseButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>CloseButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AlertDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>294</x>
+     <y>66</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>257</x>
+     <y>3</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

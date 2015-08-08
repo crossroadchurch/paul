@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Visit the online documentation for Zefania XML Markup-->
+<!--http://bgfdb.de/zefaniaxml/bml/-->
+<!--Download another Zefania XML files from-->
+<!--http://sourceforge.net/projects/zefania-sharp-->
+<XMLBIBLE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="zef2005.xsd" version="2.0.1.18" status="v" biblename="Russian Synodal Translation" type="x-bible" revision="0">
+  <INFORMATION>
+    <title>Russian Synodal Translation</title>
+    <format>Zefania XML Bible Markup Language</format>
+    <date>2009-01-20</date>
+    <creator>Jens Grabner</creator>
+    <source>http://www.agape-biblia.org
+            http://www.crosswire.org/sword/modules/</source>
+    <language>RUS</language>
+    <publisher />
+    <identifier>RST</identifier>
+    <contributors>
+  1876 Russian Synodal Translation, 1956 Edition
+  The text was supplied by "Light in East Germany".</contributors>
+    <rights>
+    </rights>
+    <description>
+        "Light in East Germany"       Tel +49 711 83 30 57
+         Postfach 1340                Fax +49 711 83 13 51
+         7015 Korntal
+         Munchingen 1
+         Germany
+    </description>
+    <subject />
+    <type />
+    <coverage />
+  </INFORMATION>
+  <BIBLEBOOK bnumber="2">
+    <CHAPTER cnumber="1">
+      <CAPTION vref="1">Вторая книга Моисеева. Исход</CAPTION>
+      <VERS vnumber="1">Вот имена сынов Израилевых, которые вошли в Египет с Иаковом, вошли каждый с домом своим:</VERS>
+      <VERS vnumber="2">Рувим, Симеон, Левий и Иуда,</VERS>
+      <VERS vnumber="3">Иссахар, Завулон и Вениамин,</VERS>
+      <VERS vnumber="4">Дан и Неффалим, Гад и Асир.</VERS>
+      <VERS vnumber="5">Всех же душ, происшедших от чресл Иакова, было семьдесят, а Иосиф был [уже] в Египте.</VERS>
+      <VERS vnumber="6">И умер Иосиф и все братья его и весь род их;</VERS>
+      <VERS vnumber="7">а сыны Израилевы расплодились и размножились, и возросли и усилились чрезвычайно, и наполнилась ими земля та.</VERS>
+      <VERS vnumber="8">И восстал в Египте новый царь, который не знал Иосифа,</VERS>
+      <VERS vnumber="9">и сказал народу своему: вот, народ сынов Израилевых многочислен и сильнее нас;</VERS>
+      <VERS vnumber="10">перехитрим же его, чтобы он не размножался; иначе, когда случится война, соединится и он с нашими неприятелями, и вооружится против нас, и выйдет из земли [нашей].</VERS>
+    </CHAPTER>
+  </BIBLEBOOK>
+</XMLBIBLE>

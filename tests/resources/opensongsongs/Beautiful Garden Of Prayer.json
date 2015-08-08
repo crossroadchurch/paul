@@ -1,0 +1,35 @@
+{
+    "authors": [
+        "Eleanor Allen Schroll",
+        "James H. Fillmore"
+    ],
+    "ccli_number": 60252,
+    "comments": "",
+    "copyright": "Public Domain ",
+    "song_book_name": "DS",
+    "song_number": 0,
+    "title": "Beautiful Garden Of Prayer (Demonstration)",
+    "topics": [
+        "Devotion",
+        "Prayer"
+    ],
+    "verse_order_list": ["v1", "c1", "v2", "c1", "v3", "c1"],
+    "verses": [
+        [
+            "There's a garden where Jesus is waiting,\nThere's a place that is wondrously fair.\nFor it glows with the light of His presence,\n\n'Tis the beautiful garden of prayer.",
+            "v1"
+        ],
+        [
+            "There's a garden where Jesus is waiting,\nAnd I go with my burden and care.\nJust to learn from His lips, words of comfort,\n[---]\nIn the beautiful garden of prayer.",
+            "v2"
+        ],
+        [
+            "There's a garden where Jesus is waiting,\nAnd He bids you to come meet Him there,\nJust to bow and receive a new blessing,\n\nIn the beautiful garden of prayer.",
+            "v3"
+        ],
+        [
+            "O the beautiful garden, the garden of prayer,\nO the beautiful garden of prayer.\nThere my Savior awaits, and He opens the gates\n[---]\nTo the beautiful garden of prayer.",
+            "c1"
+        ]
+    ]
+}

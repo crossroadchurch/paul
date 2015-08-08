@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SongImportWizard</class>
+ <widget class="QWizard" name="SongImportWizard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>550</width>
+    <height>386</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>166</width>
+    <height>386</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Song Import Wizard</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <property name="wizardStyle">
+   <enum>QWizard::ModernStyle</enum>
+  </property>
+  <property name="options">
+   <set>QWizard::NoBackButtonOnLastPage|QWizard::NoBackButtonOnStartPage</set>
+  </property>
+  <widget class="QWizardPage" name="WelcomePage">
+   <layout class="QHBoxLayout" name="WelcomeLayout">
+    <property name="spacing">
+     <number>8</number>
+    </property>
+    <property name="margin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="ImportSongImage">
+      <property name="minimumSize">
+       <size>
+        <width>163</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>163</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="../images/openlp-2.qrc">:/wizards/wizard_importsong.bmp</pixmap>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="WelcomeTextLayout">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="TitleLabel">
+        <property name="text">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Lucida Grande'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Welcome to the Song Import Wizard&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="WelcomeTopSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="InformationLabel">
+        <property name="text">
+         <string>This wizard will help you to import songs from a variety of formats. Click the next button below to start the process by selecting a format to import from.</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <property name="margin">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="WelcomeBottomSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWizardPage" name="SourcePage">
+   <property name="title">
+    <string>Select Import Source</string>
+   </property>
+   <property name="subTitle">
+    <string>Select the import format, and where to import from.</string>
+   </property>
+   <layout class="QVBoxLayout" name="SourceLayout">
+    <property name="spacing">
+     <number>8</number>
+    </property>
+    <property name="margin">
+     <number>20</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="FormatLayout">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="FormatLabel">
+        <property name="text">
+         <string>Format:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="FormatComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <item>
+         <property name="text">
+          <string>OpenLyrics</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>OpenSong</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>CCLI</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>CSV</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <spacer name="FormatSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="FormatStackedWidget">
+      <property name="currentIndex">
+       <number>3</number>
+      </property>
+      <widget class="QWidget" name="OpenLyricsPage">
+       <layout class="QVBoxLayout" name="OpenLyricsLayout">
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QListWidget" name="OpenLyricsFileListWidget"/>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="OpenLyricsButtonLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="OpenLyricsAddButton">
+            <property name="text">
+             <string>Add Files...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/openlp-2.qrc">
+              <normaloff>:/general/general_open.png</normaloff>:/general/general_open.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="OpenLyricsButtonSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="OpenLyricsRemoveButton">
+            <property name="text">
+             <string>Remove File(s)</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/openlp-2.qrc">
+              <normaloff>:/general/general_delete.png</normaloff>:/general/general_delete.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="OpenSongPage">
+       <layout class="QVBoxLayout" name="OpenSongLayout">
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QListWidget" name="OpenSongFileListWidget"/>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="OpenSongButtonLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="OpenSongAddButton">
+            <property name="text">
+             <string>Add Files...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/openlp-2.qrc">
+              <normaloff>:/general/general_open.png</normaloff>:/general/general_open.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="OpenSongButtonSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="OpenSongRemoveButton">
+            <property name="text">
+             <string>Remove File(s)</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/openlp-2.qrc">
+              <normaloff>:/general/general_delete.png</normaloff>:/general/general_delete.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="CCLIPage">
+       <layout class="QVBoxLayout" name="CCLILayout">
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QListWidget" name="CCLIFileListWidget"/>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="CCLIButtonLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="CCLIAddButton">
+            <property name="text">
+             <string>Add Files...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/openlp-2.qrc">
+              <normaloff>:/general/general_open.png</normaloff>:/general/general_open.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="CCLIButtonSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="CCLIRemoveButton">
+            <property name="text">
+             <string>Remove File(s)</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/openlp-2.qrc">
+              <normaloff>:/general/general_delete.png</normaloff>:/general/general_delete.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="CSVPage">
+       <layout class="QFormLayout" name="CSVLayout">
+        <property name="horizontalSpacing">
+         <number>8</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>8</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="CSVFilenameLabel">
+          <property name="text">
+           <string>Filename:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <layout class="QHBoxLayout" name="CSVFileLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="CSVFilenameEdit"/>
+          </item>
+          <item>
+           <widget class="QToolButton" name="CSVBrowseButton">
+            <property name="text">
+             <string>Browse...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/openlp-2.qrc">
+              <normaloff>:/general/general_open.png</normaloff>:/general/general_open.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWizardPage" name="ImportPage">
+   <property name="title">
+    <string>Importing</string>
+   </property>
+   <property name="subTitle">
+    <string>Please wait while your songs are imported.</string>
+   </property>
+   <layout class="QVBoxLayout" name="ImportLayout">
+    <property name="spacing">
+     <number>8</number>
+    </property>
+    <property name="margin">
+     <number>50</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="ImportProgressLabel">
+      <property name="text">
+       <string>Ready.</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QProgressBar" name="ImportProgressBar">
+      <property name="value">
+       <number>0</number>
+      </property>
+      <property name="invertedAppearance">
+       <bool>false</bool>
+      </property>
+      <property name="format">
+       <string>%p</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../images/openlp-2.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>FormatComboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>FormatStackedWidget</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>122</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>274</x>
+     <y>222</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

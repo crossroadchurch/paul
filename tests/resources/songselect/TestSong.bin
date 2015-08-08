@@ -1,0 +1,12 @@
+[File]
+Type=SongSelect Import File
+Version=3.0
+[S A0000000]
+Title=Test Song
+Author=Author One | Author Two
+Copyright=2011 OpenLP Programmer One (Admin. by OpenLP One) | Openlp Programmer Two (Admin. by OpenLP Two)
+Admin=OpenLP One
+Themes=Adoration/tPraise
+Keys=G
+Fields=Verse 1/tVerse 2
+Words=Line One Verse One/nLine Two Verse One/nLine Three Verse One/nLine Four Verse One/n/tLine One Verse Two/nLine Two Verse Two/nLine Three Verse Two/nLine Four Verse Two/n/t

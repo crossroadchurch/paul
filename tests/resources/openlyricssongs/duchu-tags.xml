@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<song xmlns="http://openlyrics.info/namespace/2009/song" version="0.8" createdIn="OpenLP 2.0.4" modifiedIn="OpenLP 2.0.4" modifiedDate="2014-06-27T09:55:49">
+  <properties>
+    <titles>
+      <title>Duchu svätý volám príď &lt;akordy&gt;</title>
+    </titles>
+    <authors>
+      <author>Author Unknown</author>
+    </authors>
+  </properties>
+  <format>
+    <tags application="OpenLP">
+      <tag name="c">
+        <open>&lt;span class="chord" style="display:none"&gt;&lt;strong&gt;</open>
+        <close>&lt;/strong&gt;&lt;/span&gt;</close>
+      </tag>
+    </tags>
+  </format>
+  <lyrics>
+    <verse name="v1">
+      <lines><tag name="c">[D]</tag>Duchu svätý volám príď, <tag name="c">[Ami]</tag>oheň mojej duši daj,<br/><tag name="c">[G]</tag>Oheň môjmu telu daj, <tag name="c">[D]</tag>rozpáľ ma.</lines>
+    </verse>
+    <verse name="c1">
+      <lines>Všemoh<tag name="c">[Ami]</tag>úci <tag name="c">[G]</tag>Boh tu s nami <tag name="c">[D]</tag>je,<br/>neko<tag name="c">[Ami]</tag>nečne <tag name="c">[G]</tag>milostivý <tag name="c">[D]</tag>je,<br/>Uka<tag name="c">[Ami]</tag>zuje <tag name="c">[G]</tag>dobrotivú <tag name="c">[D]</tag>tvár voči <tag name="c">[Ami]</tag>t<tag name="c">[G]</tag>ým,<br/>ktorí milovať ho <tag name="c">[D]</tag>chcú.</lines>
+    </verse>
+  </lyrics>
+</song>

@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Wizard</class>
+ <widget class="QWizard" name="Wizard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>550</width>
+    <height>386</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Bible Import Wizard</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <property name="wizardStyle">
+   <enum>QWizard::ModernStyle</enum>
+  </property>
+  <property name="options">
+   <set>QWizard::NoBackButtonOnLastPage|QWizard::NoBackButtonOnStartPage</set>
+  </property>
+  <widget class="QWizardPage" name="WelcomePage">
+   <property name="title">
+    <string/>
+   </property>
+   <property name="subTitle">
+    <string/>
+   </property>
+   <layout class="QHBoxLayout" name="WelcomeLayout">
+    <property name="spacing">
+     <number>8</number>
+    </property>
+    <property name="margin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="ImportBibleImage">
+      <property name="minimumSize">
+       <size>
+        <width>163</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>163</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="../images/openlp-2.qrc">:/wizards/wizard_importbible.bmp</pixmap>
+      </property>
+      <property name="indent">
+       <number>0</number>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="WelcomePageLayout">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="TitleLabel">
+        <property name="text">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body &gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Welcome to the Bible Import Wizard&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="WelcomeTopSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="InformationLabel">
+        <property name="text">
+         <string>This wizard will help you to import Bibles from a variety of formats. Click the next button below to start the process by selecting a format to import from.</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <property name="margin">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="WelcomeBottomSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWizardPage" name="SelectPage">
+   <property name="title">
+    <string>Select Import Source</string>
+   </property>
+   <property name="subTitle">
+    <string>Select the import format, and where to import from.</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>8</number>
+    </property>
+    <property name="margin">
+     <number>20</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="FormatSelectLayout">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="FormatLabel">
+        <property name="text">
+         <string>Format:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="FormatComboBox">
+        <item>
+         <property name="text">
+          <string>OSIS</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>CSV</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>OpenSong</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Web Download</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <spacer name="SourceTypeSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="FormatWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="OsisPage">
+       <layout class="QFormLayout" name="formLayout_2">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::ExpandingFieldsGrow</enum>
+        </property>
+        <property name="horizontalSpacing">
+         <number>8</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>8</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="OsisBibleNameLabel">
+          <property name="text">
+           <string>Bible Name:</string>
+          </property>
+          <property name="indent">
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="OsisBibleNameEdit"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="OsisLocationLabel">
+          <property name="text">
+           <string>File Location:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <layout class="QHBoxLayout" name="OsisLocationLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="OSISLocationEdit"/>
+          </item>
+          <item>
+           <widget class="QToolButton" name="OsisFileButton">
+            <property name="maximumSize">
+             <size>
+              <width>32</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/openlp-2.qrc">
+              <normaloff>:/imports/import_load.png</normaloff>:/imports/import_load.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="CsvPage">
+       <layout class="QFormLayout" name="CsvSourceLayout">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::ExpandingFieldsGrow</enum>
+        </property>
+        <property name="labelAlignment">
+         <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+        </property>
+        <property name="formAlignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+        <property name="horizontalSpacing">
+         <number>8</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>8</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="BooksLocationLabel">
+          <property name="text">
+           <string>Books Location:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <layout class="QHBoxLayout" name="CsvBooksLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="BooksLocationEdit"/>
+          </item>
+          <item>
+           <widget class="QToolButton" name="BooksFileButton">
+            <property name="maximumSize">
+             <size>
+              <width>32</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/openlp-2.qrc">
+              <normaloff>:/imports/import_load.png</normaloff>:/imports/import_load.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="VerseLocationLabel">
+          <property name="text">
+           <string>Verse Location:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <layout class="QHBoxLayout" name="CsvVerseLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="CsvVerseLocationEdit"/>
+          </item>
+          <item>
+           <widget class="QToolButton" name="CsvVersesFileButton">
+            <property name="maximumSize">
+             <size>
+              <width>32</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/openlp-2.qrc">
+              <normaloff>:/imports/import_load.png</normaloff>:/imports/import_load.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="OpenSongPage">
+       <layout class="QFormLayout" name="formLayout_3">
+        <property name="horizontalSpacing">
+         <number>8</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>8</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="OpenSongFileLabel">
+          <property name="text">
+           <string>Bible Filename:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <layout class="QHBoxLayout" name="OpenSongFileLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="OpenSongFileEdit"/>
+          </item>
+          <item>
+           <widget class="QToolButton" name="OpenSongBrowseButton">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/openlp-2.qrc">
+              <normaloff>:/imports/import_load.png</normaloff>:/imports/import_load.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="WebDownloadPage">
+       <layout class="QVBoxLayout" name="WebDownloadLayout">
+        <property name="spacing">
+         <number>8</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QTabWidget" name="WebDownloadTabWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="DownloadOptionsTab">
+           <attribute name="title">
+            <string>Download Options</string>
+           </attribute>
+           <layout class="QFormLayout" name="DownloadOptionsLayout">
+            <property name="horizontalSpacing">
+             <number>8</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>8</number>
+            </property>
+            <property name="margin">
+             <number>8</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="LocationLabel">
+              <property name="text">
+               <string>Location:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="LocationComboBox">
+              <item>
+               <property name="text">
+                <string>Crosswalk</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="BibleLabel">
+              <property name="text">
+               <string>Bible:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QComboBox" name="BibleComboBox">
+              <property name="sizeAdjustPolicy">
+               <enum>QComboBox::AdjustToContents</enum>
+              </property>
+              <item>
+               <property name="text">
+                <string>English Standard Version</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>King James Version</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>New International Version</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="ProxyServerTab">
+           <attribute name="title">
+            <string>Proxy Server (Optional)</string>
+           </attribute>
+           <layout class="QFormLayout" name="formLayout">
+            <item row="0" column="0">
+             <widget class="QLabel" name="AddressLabel">
+              <property name="text">
+               <string>Server:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="AddressEdit"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="UsernameLabel">
+              <property name="text">
+               <string>Username:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="UsernameEdit"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="PasswordLabel">
+              <property name="text">
+               <string>Password:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="PasswordEdit"/>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWizardPage" name="LicenseDetailsPage">
+   <property name="title">
+    <string>License Details</string>
+   </property>
+   <property name="subTitle">
+    <string>Set up the Bible's license details.</string>
+   </property>
+   <layout class="QFormLayout" name="formLayout_5">
+    <property name="horizontalSpacing">
+     <number>8</number>
+    </property>
+    <property name="verticalSpacing">
+     <number>8</number>
+    </property>
+    <property name="margin">
+     <number>20</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="VersionNameLabel">
+      <property name="text">
+       <string>Version Name:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="VersionNameEdit"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="CopyrightLabel">
+      <property name="text">
+       <string>Copyright:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="CopyrightEdit"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="PermisionLabel">
+      <property name="text">
+       <string>Permission:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="PermisionEdit"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWizardPage" name="ImportPage">
+   <property name="title">
+    <string>Importing</string>
+   </property>
+   <property name="subTitle">
+    <string>Please wait while your Bible is imported.</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <property name="spacing">
+     <number>8</number>
+    </property>
+    <property name="margin">
+     <number>50</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="ImportProgressLabel">
+      <property name="text">
+       <string>Ready.</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QProgressBar" name="ImportProgressBar">
+      <property name="value">
+       <number>0</number>
+      </property>
+      <property name="invertedAppearance">
+       <bool>false</bool>
+      </property>
+      <property name="format">
+       <string>%p</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../images/openlp-2.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>FormatComboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>FormatWidget</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>106</x>
+     <y>76</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>296</x>
+     <y>147</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

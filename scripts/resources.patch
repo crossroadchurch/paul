@@ -1,0 +1,56 @@
+=== modified file 'openlp/core/resources.py'
+--- openlp/core/resources.py    2014-03-12 08:44:54 +0000
++++ openlp/core/resources.py    2014-03-12 08:45:42 +0000
+@@ -1,10 +1,28 @@
+ # -*- coding: utf-8 -*-
+-
+-# Resource object code
+-#
+-#
+-# WARNING! All changes made in this file will be lost!
+-
++# vim: autoindent shiftwidth=4 expandtab textwidth=120 tabstop=4 softtabstop=4
++
++###############################################################################
++# OpenLP - Open Source Lyrics Projection                                      #
++# --------------------------------------------------------------------------- #
++# Copyright (c) 2008-2015 OpenLP Developers                                   #
++# --------------------------------------------------------------------------- #
++# This program is free software; you can redistribute it and/or modify it     #
++# under the terms of the GNU General Public License as published by the Free  #
++# Software Foundation; version 2 of the License.                              #
++#                                                                             #
++# This program is distributed in the hope that it will be useful, but WITHOUT #
++# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or       #
++# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for    #
++# more details.                                                               #
++#                                                                             #
++# You should have received a copy of the GNU General Public License along     #
++# with this program; if not, write to the Free Software Foundation, Inc., 59  #
++# Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
++###############################################################################
++"""
++The :mod:`resources` module provides application images and icons in a central
++store for use by OpenLP.
++"""
+ from PyQt4 import QtCore
+
+ qt_resource_data = "\
+@@ -71953,9 +71971,14 @@
+ "
+
+ def qInitResources():
++    """
++    Initialise OpenLP resources at application startup.
++    """
+     QtCore.qRegisterResourceData(0x01, qt_resource_struct, qt_resource_name, qt_resource_data)
+
+ def qCleanupResources():
++    """
++    Cleanup OpenLP resources when the application shuts down.
++    """
+     QtCore.qUnregisterResourceData(0x01, qt_resource_struct, qt_resource_name, qt_resource_data)
+
+-qInitResources()
+
+

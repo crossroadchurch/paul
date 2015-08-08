@@ -1,0 +1,59 @@
+{
+    "background" : {
+        "border_color": "#000000",
+        "color": "#000000",
+        "direction": "vertical",
+        "end_color": "#000000",
+        "filename": "",
+        "start_color": "#000000",
+        "type": "solid"
+    },
+    "display" :{
+        "horizontal_align": 0,
+        "slide_transition": false,
+        "vertical_align": 0
+    },
+    "font": {
+        "footer": {
+            "bold": false,
+            "color": "#FFFFFF",
+            "height": 78,
+            "italics": false,
+            "line_adjustment": 0,
+            "location": "",
+            "name": "Arial",
+            "outline": false,
+            "outline_color": "#000000",
+            "outline_size": 2,
+            "override": false,
+            "shadow": true,
+            "shadow_color": "#000000",
+            "shadow_size": 5,
+            "size": 12,
+            "width": 1004,
+            "x": 10,
+            "y": 690
+            },
+        "main": {
+            "bold": false,
+            "color": "#FFFFFF",
+            "height": 690,
+            "italics": false,
+            "line_adjustment": 0,
+            "location": "",
+            "name": "Arial",
+            "outline": false,
+            "outline_color": "#000000",
+            "outline_size": 2,
+            "override": false,
+            "shadow": true,
+            "shadow_color": "#000000",
+            "shadow_size": 5,
+            "size": 40,
+            "width": 1004,
+            "x": 10,
+            "y": 10
+        }
+    },
+    "theme_name": ""
+}

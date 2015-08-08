@@ -1,0 +1,26 @@
+{
+    "title": "You are so faithful",
+    "verse_order_list": ["v1", "c1", "v2", "c1", "v3", "c1", "v4"],
+    "verses": [
+        [
+            "You are so faithful\nso faithful, so faithful.\nYou are so faithful\nso faithful, so faithful.",
+            "v1"
+        ],
+        [
+            "That's why I praise you\nin the morning\nThat's why I praise you\nin the noontime.\nThat's why I praise you\nin the evening\nThat's why I praise you\nall the time.",
+            "c1"
+        ],
+        [
+            "You are so loving\nso loving, so loving.\nYou are so loving\nso loving, so loving.",
+            "v2"
+        ],
+        [
+            "You are so caring\nso caring, so caring.\nYou are so caring\nso caring, so caring.",
+            "v3"
+        ],
+        [
+            "You are so mighty\nso mighty, so mighty.\nYou are so mighty\nso mighty, so mighty.",
+            "v4"
+        ]
+    ]
+}

@@ -1,0 +1,7 @@
+OpenLP Manual
+=============
+
+If you're reading this file, you're probably looking for the OpenLP manual. The
+manual is hosted online at http://manual.openlp.org/. If you want to help with
+the manual, contact the OpenLP team via IRC in the #openlp.org channel on the
+Freenode network.

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<song>
+  <title>Beautiful Garden Of Prayer (Demonstration)</title>
+  <author>Eleanor Allen Schroll &amp; James H. Fillmore</author>
+  <copyright>Public Domain </copyright>
+  <presentation>V1 C V2 C V3 C</presentation>
+  <capo print="false"></capo>
+  <tempo></tempo>
+  <ccli>60252</ccli>
+  <theme>God: Prayer/Devotion</theme>
+  <alttheme>Prayer: Prayer/Devotion</alttheme>
+  <user1></user1>
+  <user2></user2>
+  <user3></user3>
+  <lyrics>
+;Test breaks and newlines
+;A single | on the end of a line adds an extra \n
+;Blank lines are ignored, even with a space prefix
+;We also check that the chorus is added after the verses, despite the order in the file
+[V1]
+ There's a garden where Jesus is waiting,
+ 
+ There's a place that is wondrously fair.
+ For it glows with the light of His presence,|
+ 'Tis the beautiful garden of prayer.
+
+;A double || on a line adds a new slide
+[C]
+ O the beautiful garden, the garden of prayer,
+ O the beautiful garden of prayer.
+ There my Savior awaits, and He opens the gates
+ ||
+ To the beautiful garden of prayer.
+
+;A double || on the end of a line adds a new slide
+[V2]
+ There's a garden where Jesus is waiting,
+ And I go with my burden and care.
+ Just to learn from His lips, words of comfort,||
+ In the beautiful garden of prayer.
+
+;A single | on a line adds just one line break
+[V3]
+ There's a garden where Jesus is waiting,
+ And He bids you to come meet Him there,
+ Just to bow and receive a new blessing,
+ |
+ In the beautiful garden of prayer.
+</lyrics>
+  <hymn_number>DS0</hymn_number>
+  <key></key>
+  <aka></aka>
+  <key_line></key_line>
+  <time_sig></time_sig>
+  <style index="default_style"></style>
+</song>

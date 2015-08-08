@@ -1,0 +1,205 @@
+<RCC>
+  <qresource prefix="songs">
+    <file>song_search_all.png</file>
+    <file>song_search_author.png</file>
+    <file>song_search_lyrics.png</file>
+    <file>song_search_title.png</file>
+    <file>topic_edit.png</file>
+    <file>author_add.png</file>
+    <file>author_delete.png</file>
+    <file>book_add.png</file>
+    <file>song_maintenance.png</file>
+    <file>topic_add.png</file>
+    <file>book_delete.png</file>
+    <file>book_edit.png</file>
+    <file>author_edit.png</file>
+    <file>topic_delete.png</file>
+    <file>book_maintenance.png</file>
+    <file>author_maintenance.png</file>
+    <file>topic_maintenance.png</file>
+    <file>song_author_edit.png</file>
+    <file>song_book_edit.png</file>
+    <file>song_delete.png</file>
+  </qresource>
+  <qresource prefix="images">
+    <file>image_group.png</file>
+    <file>image_new_group.png</file>
+  </qresource>
+  <qresource prefix="bibles">
+    <file>bibles_search_text.png</file>
+    <file>bibles_search_reference.png</file>
+    <file>bibles_upgrade_alert.png</file>
+    <file>bibles_search_unlock.png</file>
+    <file>bibles_search_lock.png</file>
+  </qresource>
+  <qresource prefix="plugins">
+    <file>plugin_alerts.png</file>
+    <file>plugin_bibles.png</file>
+    <file>plugin_custom.png</file>
+    <file>plugin_images.png</file>
+    <file>plugin_media.png</file>
+    <file>plugin_presentations.png</file>
+    <file>plugin_songs.png</file>
+    <file>plugin_remote.png</file>
+    <file>plugin_songusage.png</file>
+  </qresource>
+  <qresource prefix="general">
+    <file>general_preview.png</file>
+    <file>general_live.png</file>
+    <file>general_add.png</file>
+    <file>general_delete.png</file>
+    <file>general_edit.png</file>
+    <file>general_export.png</file>
+    <file>general_import.png</file>
+    <file>general_new.png</file>
+    <file>general_zoom_out.png</file>
+    <file>general_zoom_in.png</file>
+    <file>general_zoom_original.png</file>
+    <file>general_print.png</file>
+    <file>general_open.png</file>
+    <file>general_save.png</file>
+    <file>general_email.png</file>
+    <file>general_revert.png</file>
+    <file>general_clone.png</file>
+    <file>general_find.png</file>
+    <file>general_back.png</file>
+  </qresource>
+  <qresource prefix="slides">
+    <file>slide_close.png</file>
+    <file>slide_next.png</file>
+    <file>slide_blank.png</file>
+    <file>slide_desktop.png</file>
+    <file>slide_theme.png</file>
+    <file>slide_previous.png</file>
+    <file>media_playback_start.png</file>
+    <file>media_playback_stop.png</file>
+    <file>media_playback_pause.png</file>
+    <file>media_playback_next.png</file>
+  </qresource>
+  <qresource prefix="icon">
+    <file>openlp-logo-16x16.png</file>
+    <file>openlp-logo-32x32.png</file>
+    <file>openlp-logo-48x48.png</file>
+    <file>openlp-logo-64x64.png</file>
+    <file>openlp-logo-128x128.png</file>
+    <file>openlp-logo-256x256.png</file>
+    <file>openlp-logo.svg</file>
+  </qresource>
+  <qresource prefix="graphics">
+    <file>exception.png</file>
+    <file>openlp-splash-screen.png</file>
+    <file>openlp-about-logo.png</file>
+  </qresource>
+  <qresource prefix="imports">
+    <file>import_selectall.png</file>
+    <file>import_move_to_list.png</file>
+    <file>import_remove.png</file>
+    <file>import_load.png</file>
+  </qresource>
+  <qresource prefix="exports">
+    <file>export_load.png</file>
+  </qresource>
+  <qresource prefix="wizards">
+    <file>openlp-osx-wizard.png</file>
+    <file>wizard_exportsong.bmp</file>
+    <file>wizard_importsong.bmp</file>
+    <file>wizard_importbible.bmp</file>
+    <file>wizard_firsttime.bmp</file>
+    <file>wizard_createtheme.bmp</file>
+    <file>wizard_duplicateremoval.bmp</file>
+    <file>wizard_createprojector.png</file>
+  </qresource>
+  <qresource prefix="services">
+    <file>service_collapse_all.png</file>
+    <file>service_expand_all.png</file>
+    <file>service_notes.png</file>
+    <file>service_item_notes.png</file>
+    <file>service_bottom.png</file>
+    <file>service_down.png</file>
+    <file>service_top.png</file>
+    <file>service_up.png</file>
+  </qresource>
+  <qresource prefix="system">
+    <file>system_close.png</file>
+    <file>clear_shortcut.png</file>
+    <file>system_about.png</file>
+    <file>system_help_contents.png</file>
+    <file>system_online_help.png</file>
+    <file>system_mediamanager.png</file>
+    <file>system_volunteer.png</file>
+    <file>system_servicemanager.png</file>
+    <file>system_thememanager.png</file>
+    <file>system_exit.png</file>
+    <file>settings_plugin_list.png</file>
+    <file>system_settings.png</file>
+    <file>tag_editor.png</file>
+    <file>system_configure.png</file>
+    <file>system_edit_copy.png</file>
+    <file>system_configure_shortcuts.png</file>
+  </qresource>
+  <qresource prefix="media">
+    <file>media_time.png</file>
+    <file>media_stop.png</file>
+    <file>media_audio.png</file>
+    <file>media_video.png</file>
+    <file>media_optical.png</file>
+    <file>slidecontroller_multimedia.png</file>
+    <file>auto-start_active.png</file>
+    <file>auto-start_inactive.png</file>
+    <file>multimedia-player.png</file>
+  </qresource>
+  <qresource prefix="messagebox">
+    <file>messagebox_critical.png</file>
+    <file>messagebox_info.png</file>
+    <file>messagebox_warning.png</file>
+  </qresource>
+  <qresource prefix="remote">
+    <file>network_server.png</file>
+    <file>network_ssl.png</file>
+    <file>network_auth.png</file>
+  </qresource>
+  <qresource prefix="songusage">
+    <file>song_usage_active.png</file>
+    <file>song_usage_inactive.png</file>
+  </qresource>
+  <qresource prefix="tools">
+    <file>tools_add.png</file>
+    <file>tools_alert.png</file>
+  </qresource>
+  <qresource prefix="themes">
+    <file>theme_delete.png</file>
+    <file>theme_new.png</file>
+    <file>theme_edit.png</file>
+  </qresource>
+  <qresource prefix="projector">
+    <file>projector_blank.png</file>
+    <file>projector_blank_tiled.png</file>
+    <file>projector_connect.png</file>
+    <file>projector_connect_tiled.png</file>
+    <file>projector_hdmi.png</file>
+    <file>projector_cooldown.png</file>
+    <file>projector_disconnect.png</file>
+    <file>projector_disconnect_tiled.png</file>
+    <file>projector_edit.png</file>
+    <file>projector_error.png</file>
+    <file>projector_item_connect.png</file>
+    <file>projector_item_disconnect.png</file>
+    <file>projector_manager.png</file>
+    <file>projector_new.png</file>
+    <file>projector_not_connected_error.png</file>
+    <file>projector_off.png</file>
+    <file>projector_on.png</file>
+    <file>projector_power_off.png</file>
+    <file>projector_power_off_tiled.png</file>
+    <file>projector_power_on.png</file>
+    <file>projector_power_on_tiled.png</file>
+    <file>projector_show.png</file>
+    <file>projector_show_tiled.png</file>
+    <file>projector_spacer.png</file>
+    <file>projector_warmup.png</file>
+    <file>projector_view.png</file>
+  </qresource>
+  <qresource prefix="remotes">
+    <file>android_app_qr.png</file>
+  </qresource>
+</RCC>

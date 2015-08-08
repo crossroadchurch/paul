@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<song>
+  <title>Amazing Grace (Demonstration)</title>
+  <author>John Newton, Edwin Excell &amp; John P. Rees</author>
+  <copyright>Public Domain </copyright>
+  <presentation>V1 V2 V3 V4 V5</presentation>
+  <capo print="false"></capo>
+  <tempo></tempo>
+  <ccli>22025</ccli>
+  <theme>God: Assurance/Grace/Salvation</theme>
+  <alttheme>Worship: Praise</alttheme>
+  <user1> </user1>
+  <user2> </user2>
+  <user3> </user3>
+  <lyrics>[V]
+;Test the chords format
+;Chords beging with .
+;Verses begin with their verse number
+;Link words with _
+;Comments begin with ;
+.       D              D7           G          D     
+1A______ma________zing grace! How   sweet the  sound!
+2'Twas  grace     that taught my    heart to   fear,
+3The    Lord      has  pro____mised good  to   me,
+4Thro'  ma________ny   dan____gers, toils and  snares
+5When   we've     been there  ten   thou__sand years,
+
+.       Bm         E           A       A7
+1That   saved a    wretch like me!
+2And    grace my   fears  re___lieved.
+3His    Word  my   hope   se___cures.
+4I      have  al___rea____dy   come.
+5Bright shi___ning as     the  sun,
+
+.      D           D7           G           D     
+1I     once  was   lost,   but  now   am    found;
+2How   pre___cious did     that grace ap____pear,
+3He    will  my    shield  and  por___tion  be
+4'Tis  grace that  brought me   safe  thus  far,
+5We've no    less  days    to   sing  God's praise,
+
+.     Bm          A        G      D 
+1Was  blind, but  now   I  see.
+2The  hour   I    first be_lieved.
+3As   long   as   life  en_dures.
+4And  grace  will lead  me home.
+5Than when   we   first be_gun.
+
+</lyrics>
+  <hymn_number>Demonstration Songs 0</hymn_number>
+  <key></key>
+  <aka></aka>
+  <key_line></key_line>
+  <time_sig></time_sig>
+  <style index="default_style"></style>
+</song>

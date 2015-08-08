@@ -1,0 +1,25 @@
+{
+    "title": "Great Is Thy Faithfulness",
+    "authors": [
+        "Thomas O. Chisholm (1866-1960)"
+    ],
+    "verse_order_list": ["v1", "c1", "v2", "c1", "v3", "c1"],
+    "verses": [
+        [
+            "\"Great is Thy faithfulness\", O God my Father.\nThere is no shadow of turning with Thee;\nThou changest not, Thy compassions they fail not,\nAs Thou hast been Thou forever shall be.",
+            "v1"
+        ],
+        [
+            "Great is Thy faithfulness!\nGreat is Thy faithfulness!\nMorning by morning new mercies I see!\nAll I have needed Thy hand hath provided -\n\"Great is Thy faithfulness\", Lord, unto me!",
+            "c1"
+        ],
+        [
+            "Summer and winter, and springtime and harvest,\nSun, moon, and stars in their courses above,\nJoin with all nature in manifold witness,\nTo Thy great faithfulness, mercy and love.",
+            "v2"
+        ],
+        [
+            "Pardon for sin and a peace that endureth,\nThine own dear presence to cheer and to guide,\nStrength for today and bright hope for tomorrow,\nBlessings all mine, with ten thousand beside!",
+            "v3"
+        ]
+    ]
+}

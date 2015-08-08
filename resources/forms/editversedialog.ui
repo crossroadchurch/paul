@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EditVerseDialog</class>
+ <widget class="QDialog" name="EditVerseDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>474</width>
+    <height>442</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Edit Verse</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="EditVerseLayout">
+   <property name="spacing">
+    <number>8</number>
+   </property>
+   <property name="margin">
+    <number>8</number>
+   </property>
+   <item>
+    <widget class="QTextEdit" name="VerseTextEdit">
+     <property name="acceptRichText">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="VerseTypeLayout">
+     <property name="spacing">
+      <number>8</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="VerseTypeLabel">
+       <property name="text">
+        <string>Verse Type:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="VerseTypeComboBox">
+       <item>
+        <property name="text">
+         <string>Verse</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Chorus</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Bridge</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Pre-Chorus</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Intro</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Ending</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Other</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="VerseNumberBox"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="InsertButton">
+       <property name="text">
+        <string>Insert</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../images/openlp-2.qrc">
+         <normaloff>:/general/general_add.png</normaloff>:/general/general_add.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="VerseTypeSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="EditButtonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../images/openlp-2.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>EditButtonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>EditVerseDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>EditButtonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>EditVerseDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

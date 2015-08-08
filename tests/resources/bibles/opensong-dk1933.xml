@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Visit the online documentation for Zefania XML Markup-->
+<!--http://bgfdb.de/zefaniaxml/bml/-->
+<!--Download another Zefania XML files from-->
+<!--http://sourceforge.net/projects/zefania-sharp-->
+<bible>
+  <!-- The INFORMATION-tag is a leftover from the original zefania bible, but is ignored by opensong format -->
+  <INFORMATION>
+    <title>Danish Version</title>
+    <creator>
+    </creator>
+    <subject>The Holy Bible</subject>
+    <description>The electronic edition of this Bible comes from the Danish 1933 edition. The Old Testament is an update from the 1931 edition, and the New Testament is an update from the 1907 edition.</description>
+    <publisher>Free Bible Software Group</publisher>
+    <contributors>
+        The Unbound Bible
+        Biola University: Administrative Computing
+        13800 Biola Ave.
+        La Mirada, CA 90639
+        United States of America
+        562-903-4722 
+    </contributors>
+    <date>2009-01-20</date>
+    <format>Zefania XML Bible Markup Language</format>
+    <identifier>DAN</identifier>
+    <source>ftp://unboundftp.biola.edu/pub/danish1933_utf8.zip</source>
+    <language>DAN</language>
+    <coverage>provide the bible to the world</coverage>
+    <rights></rights>
+    <type />
+  </INFORMATION>
+  <b n="Genesis">
+    <c n="1">
+      <v n="1">I Begyndelsen skabte Gud Himmelen og Jorden.</v>
+      <v n="2">Og Jorden var øde og tom, og der var Mørke over Verdensdybet. Men Guds Ånd svævede over Vandene.</v>
+      <v n="3">Og Gud sagde: "Der blive Lys!" Og der blev Lys.</v>
+      <v n="4">Og Gud så, at Lyset var godt, og Gud satte Skel mellem Lyset og Mørket,</v>
+      <v n="5">og Gud kaldte Lyset Dag, og Mørket kaldte han Nat. Og det blev Aften, og det blev Morgen, første Dag.</v>
+      <v n="6">Derpå sagde Gud: "Der blive en Hvælving midt i Vandene til at skille Vandene ad!"</v>
+      <v n="7">Og således skete det: Gud gjorde Hvælvingen og skilte Vandet under Hvælvingen fra Vandet over Hvælvingen;</v>
+      <v n="8">og Gud kaldte Hvælvingen Himmel. Og det blev Aften, og det blev Morgen, anden Dag.</v>
+      <v n="9">Derpå sagde Gud: "Vandet under Himmelen samle sig på eet Sted, så det faste Land kommer til Syne!" Og således skete det;</v>
+      <v n="10">og Gud kaldte det faste Land Jord, og Stedet, hvor Vandet samlede sig, kaldte han Hav. Og Gud så, at det var godt.</v>
+    </c>
+  </b>
+</bible>

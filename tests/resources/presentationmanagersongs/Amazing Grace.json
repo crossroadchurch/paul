@@ -1,0 +1,29 @@
+{
+    "title": "Amazing Grace",
+    "authors": [
+        "John Newton"
+    ],
+    "verse_order_list": ["v1", "v2", "v3", "v4", "v5"],
+    "verses": [
+        [
+            "Amazing grace! How sweet the sound!\nThat saved a wretch like me!\nI once was lost, but now am found;\nWas blind, but now I see.",
+            "v1"
+        ],
+        [
+            "'Twas grace that taught my heart to fear,\nAnd grace my fears relieved.\nHow precious did that grace appear,\nThe hour I first believed.",
+            "v2"
+        ],
+        [
+            "The Lord has promised good to me,\nHis Word my hope secures.\nHe will my shield and portion be\nAs long as life endures.",
+            "v3"
+        ],
+        [
+            "Thro' many dangers, toils and snares\nI have already come.\n'Tis grace that brought me safe thus far,\nAnd grace will lead me home.",
+            "v4"
+        ],
+        [
+            "When we've been there ten thousand years,\nBright shining as the sun,\nWe've no less days to sing God's praise,\nThan when we first begun.",
+            "v5"
+        ]
+    ]
+}

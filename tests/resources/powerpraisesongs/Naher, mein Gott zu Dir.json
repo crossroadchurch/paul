@@ -1,0 +1,18 @@
+{
+    "title": "Näher, mein Gott, zu Dir",
+    "verse_order_list": ["v1", "v2", "v3"],
+    "verses": [
+        [
+            "Näher, mein Gott, zu Dir,\nsei meine Bitt'!\nNäher, o Herr, zu Dir\nmit jedem Schritt.\nNur an dem Herzen Dein\nkann ich geborgen sein;\ndeshalb die Bitte mein:\nNäher zu Dir!",
+            "v1"
+        ],
+        [
+            "Näher, mein Gott, zu Dir!\nEin jeder Tag\nsoll es neu zeigen mir,\nwas er vermag:\nWie seiner Gnade Macht,\nErlösung hat gebracht,\nin uns're Sündennacht.\nNäher zu Dir!",
+            "v2"
+        ],
+        [
+            "Näher, mein Gott, zu Dir!\nDich bet' ich an.\nWie vieles hast an mir,\nDu doch getan!\nVon Banden frei und los,\nruh' ich in Deinem Schoss.\nJa, Deine Gnad' ist gross!\nNäher zu Dir!",
+            "v3"
+        ]
+    ]
+}

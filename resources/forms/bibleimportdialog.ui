@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BibleImportDialog</class>
+ <widget class="QWidget" name="BibleImportDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>686</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Bible Registration</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/icon/openlp.org-icon-32.bmp</normaloff>:/icon/openlp.org-icon-32.bmp</iconset>
+  </property>
+  <widget class="QGroupBox" name="LicenceDetailsGroupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>400</y>
+     <width>480</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>123</height>
+    </size>
+   </property>
+   <property name="title">
+    <string>Licence Details</string>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <property name="horizontalSpacing">
+     <number>8</number>
+    </property>
+    <property name="margin">
+     <number>8</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="VersionNameLabel">
+      <property name="text">
+       <string>Version Name:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="VersionNameEdit"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="CopyrightLabel">
+      <property name="text">
+       <string>Copyright:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="CopyrightEdit"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="PermisionLabel">
+      <property name="text">
+       <string>Permission:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="PermisionEdit"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="MessageLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>670</y>
+     <width>271</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="ProgressGroupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>550</y>
+     <width>480</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Import Progress</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <widget class="QProgressBar" name="ProgressBar">
+      <property name="value">
+       <number>0</number>
+      </property>
+      <property name="invertedAppearance">
+       <bool>false</bool>
+      </property>
+      <property name="format">
+       <string>%p</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>630</y>
+     <width>180</width>
+     <height>38</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="margin">
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QPushButton" name="ImportButton">
+      <property name="text">
+       <string>Import</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="CancelButton">
+      <property name="text">
+       <string>Cancel</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>480</width>
+     <height>361</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>2</number>
+   </property>
+   <widget class="QWidget" name="OsisTab">
+    <attribute name="title">
+     <string>Osis (Sword) Imports</string>
+    </attribute>
+    <widget class="QGroupBox" name="OSISGroupBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>460</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>OSIS Bible</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="BibleNameLabel">
+          <property name="text">
+           <string>Bible Name:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="BibleNameEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="LocatioLabel">
+          <property name="text">
+           <string>File Location:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="OSISLocationEdit"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="OsisFileButton">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../images/openlp-2.qrc">
+            <normaloff>:/imports/import_load.png</normaloff>:/imports/import_load.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="CsvTab">
+    <attribute name="title">
+     <string>CSV File Imports</string>
+    </attribute>
+    <widget class="QGroupBox" name="CVSGroupBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>460</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>CVS Bible</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="margin">
+       <number>8</number>
+      </property>
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="BooksLocationLabel">
+        <property name="text">
+         <string>Books Location:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="VerseLocationLabel">
+        <property name="text">
+         <string>Verse Location:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="VerseLocationEdit"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="BooksLocationEdit"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="BooksFileButton">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../images/openlp-2.qrc">
+          <normaloff>:/imports/import_load.png</normaloff>:/imports/import_load.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QPushButton" name="VersesFileButton">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../images/openlp-2.qrc">
+          <normaloff>:/imports/import_load.png</normaloff>:/imports/import_load.png</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="HttpTab">
+    <attribute name="title">
+     <string>Web Downloads</string>
+    </attribute>
+    <widget class="QGroupBox" name="OptionsGroupBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>460</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Download Options</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="LocationLabel">
+          <property name="text">
+           <string>Location:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="LocationComboBox">
+          <item>
+           <property name="text">
+            <string>Crosswalk</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QLabel" name="BibleLabel">
+          <property name="text">
+           <string>Bible:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="BibleComboBox">
+          <item>
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>NIV</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>KJV</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+     <zorder>BibleComboBox</zorder>
+     <zorder>LocationLabel</zorder>
+     <zorder>BibleLabel</zorder>
+     <zorder>LocationComboBox</zorder>
+    </widget>
+    <widget class="QGroupBox" name="ProxyGroupBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>160</y>
+       <width>460</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Proxy Settings (Optional)</string>
+     </property>
+     <layout class="QFormLayout" name="ProxySettingsLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+      </property>
+      <property name="horizontalSpacing">
+       <number>8</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>8</number>
+      </property>
+      <property name="margin">
+       <number>8</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="AddressLabel">
+        <property name="text">
+         <string>Proxy Address:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="AddressEdit"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="UsernameLabel">
+        <property name="text">
+         <string>Username:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="UsernameEdit"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="PasswordLabel">
+        <property name="text">
+         <string>Password:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="PasswordEdit"/>
+      </item>
+     </layout>
+    </widget>
+    <zorder>OptionsGroupBox</zorder>
+    <zorder>OptionsGroupBox</zorder>
+    <zorder>ProxyGroupBox</zorder>
+   </widget>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>BibleNameEdit</tabstop>
+  <tabstop>OSISLocationEdit</tabstop>
+  <tabstop>OsisFileButton</tabstop>
+  <tabstop>BooksLocationEdit</tabstop>
+  <tabstop>BooksFileButton</tabstop>
+  <tabstop>VerseLocationEdit</tabstop>
+  <tabstop>VersesFileButton</tabstop>
+  <tabstop>LocationComboBox</tabstop>
+  <tabstop>BibleComboBox</tabstop>
+  <tabstop>AddressEdit</tabstop>
+  <tabstop>UsernameEdit</tabstop>
+  <tabstop>PasswordEdit</tabstop>
+  <tabstop>VersionNameEdit</tabstop>
+  <tabstop>CopyrightEdit</tabstop>
+  <tabstop>PermisionEdit</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../images/openlp-2.qrc"/>
+ </resources>
+ <connections/>
+ <slots>
+  <slot>OnImportButtonClicked()</slot>
+  <slot>OnCancelButtonClicked()</slot>
+  <slot>onOsisFileButtonClicked()</slot>
+  <slot>onBooksFileButtonClicked()</slot>
+  <slot>onVersesFileButtonClicked()</slot>
+  <slot>onLocationComboBoxSelected()</slot>
+  <slot>onBibleComboBoxSelected()</slot>
+  <slot>onOSISLocationEditLostFocus()</slot>
+  <slot>onBooksLocationEditLostFocus()</slot>
+  <slot>onVerseLocationEditLostFocus()</slot>
+  <slot>onProxyAddressEditLostFocus()</slot>
+  <slot>onProxyUsernameEditLostFocus()</slot>
+  <slot>onProxyPasswordEditLostFocus()</slot>
+ </slots>
+</ui>

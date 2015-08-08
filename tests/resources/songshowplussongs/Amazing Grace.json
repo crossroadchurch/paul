@@ -1,0 +1,42 @@
+{
+    "authors": [
+        "John Newton",
+        "Edwin Excell",
+        "John P. Rees"
+    ],
+    "ccli_number": 22025,
+    "comments": "\n\n\n",
+    "copyright": "Public Domain ",
+    "song_book_name": "Demonstration Songs",
+    "song_number": 0,
+    "title": "Amazing Grace (Demonstration)",
+    "topics": [
+        "Assurance",
+        "Grace",
+        "Praise",
+        "Salvation"
+    ],
+    "verse_order_list": [],
+    "verses": [
+        [
+            "Amazing grace! How sweet the sound!\r\nThat saved a wretch like me!\r\nI once was lost, but now am found;\r\nWas blind, but now I see.",
+            "v1"
+        ],
+        [
+            "'Twas grace that taught my heart to fear,\r\nAnd grace my fears relieved.\r\nHow precious did that grace appear,\r\nThe hour I first believed.",
+            "v2"
+        ],
+        [
+            "The Lord has promised good to me,\r\nHis Word my hope secures.\r\nHe will my shield and portion be\r\nAs long as life endures.",
+            "v3"
+        ],
+        [
+            "Thro' many dangers, toils and snares\r\nI have already come.\r\n'Tis grace that brought me safe thus far,\r\nAnd grace will lead me home.",
+            "v4"
+        ],
+        [
+            "When we've been there ten thousand years,\r\nBright shining as the sun,\r\nWe've no less days to sing God's praise,\r\nThan when we first begun.",
+            "v5"
+        ]
+    ]
+}

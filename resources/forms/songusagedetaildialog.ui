@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AuditDetailDialog</class>
+ <widget class="QWidget" name="AuditDetailDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>609</width>
+    <height>413</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Audit Detail Extraction</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="DateRangeGroupBox">
+     <property name="title">
+      <string>Select Date Range</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QHBoxLayout" name="DateHorizontalLayout">
+        <item>
+         <widget class="QCalendarWidget" name="FromDate"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="ToLabel">
+          <property name="text">
+           <string>to</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCalendarWidget" name="ToDate"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="FileGroupBox">
+        <property name="title">
+         <string>Report Location</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLineEdit" name="FileLineEdit"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="SaveFilePushButton">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../images/openlp-2.qrc">
+               <normaloff>:/exports/export_load.png</normaloff>:/exports/export_load.png</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../images/openlp-2.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>AuditDetailDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>455</x>
+     <y>483</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>445</x>
+     <y>575</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>AuditDetailDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>528</x>
+     <y>484</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>526</x>
+     <y>531</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SaveFilePushButton</sender>
+   <signal>pressed()</signal>
+   <receiver>AuditDetailDialog</receiver>
+   <slot>defineOutputLocation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>538</x>
+     <y>419</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>385</x>
+     <y>480</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>accept()</slot>
+  <slot>changeFirstService(int)</slot>
+  <slot>changeSecondService(int)</slot>
+  <slot>changeThirdService(int)</slot>
+  <slot>defineOutputLocation()</slot>
+ </slots>
+</ui>

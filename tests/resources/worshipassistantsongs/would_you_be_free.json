@@ -1,0 +1,19 @@
+{
+    "authors": [
+        "Jones",
+        "Lewis E"
+    ],
+    "title": "Would You Be Free",
+    "verse_order_list": ["v1", "c1", "v1"],
+    "copyright": "Public Domain",
+    "verses": [
+        [
+            "Would you be free from your burden of sin? \nThere's power in the blood, power in the blood \nWould you o'er evil a victory win?  \nThere's wonderful power in the blood \n ",
+            "v1"
+        ],
+        [
+            "There is power, power, wonder working power \nIn the blood of the Lamb \nThere is power, power, wonder working power \nIn the precious blood of the Lamb \n",
+            "c1"
+        ]
+    ]
+}

@@ -1,0 +1,10 @@
+%!PS 
+() = 
+File dup (r) file runpdfbegin 
+1 pdfgetpage dup 
+/MediaBox pget { 
+aload pop exch 4 1 roll exch sub 3 1 roll sub 
+( Size: x: ) print =print (, y: ) print =print (\n) print 
+} if 
+flush 
+quit 

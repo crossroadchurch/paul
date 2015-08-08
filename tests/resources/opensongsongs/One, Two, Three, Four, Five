@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<song>
+  <title>12345</title>
+  <author>Traditional</author>
+  <copyright>Public Domain </copyright>
+  <presentation>T</presentation>
+  <capo print="false"></capo>
+  <ccli></ccli>
+  <tempo></tempo>
+  <theme></theme>
+  <alttheme></alttheme>
+  <user1></user1>
+  <user2></user2>
+  <user3></user3>
+  <lyrics>
+;Test [T]ag element - should be turned into [o]ther
+;And lines beginning with numbers
+;And a title that contains only numeric characters
+;That isdiffernt to the filename
+;And most elements are empty
+[T]
+ 1, 2, 3, 4, 5,
+ Once I caught a fish alive.
+ 6, 7, 8, 9, 10,
+ Then I let it go again.
+ 
+ Why did you let it go?
+ Because it bit my finger so.
+ Which finger did it bite?
+ This little finger on my right.
+</lyrics>
+  <hymn_number></hymn_number>
+  <key></key>
+  <aka></aka>
+  <key_line></key_line>
+  <time_sig></time_sig>
+  <style index="default_style"></style>
+</song>
