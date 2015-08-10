@@ -296,6 +296,47 @@ class Renderer(OpenLPMixin, RegistryMixin, RegistryProperties):
                         pages.extend(self._paginate_slide(lines, line_end))
                         break
                     count += 1
+            # Mandatory slide break [br] - each one must start a new slide
+            # Author: nikukatansa
+            elif '[br]' in text:
+                # Remove two or more mandatory slide breaks next to each other (causing infinite loop).
+                while '\n[br]\n[br]\n' in text:
+                    text = text.replace('\n[br]\n[br]\n', '\n[br]\n')
+                while ' [br]' in text:
+                    text = text.replace(' [br]', '[br]')
+                while '[br] ' in text:
+                    text = text.replace('[br] ', '[br]')
+                # Split text into slides around [br], no restriction on max number of slides
+                while text:
+                    text_contains_split = '[br]' in text
+                    if text_contains_split:
+                        try:
+                            text_to_render, text = text.split('\n[br]\n', 1)
+                        except ValueError:
+                            text_to_render = text.split('\n[br]\n')[0]
+                            text = ''
+                        text_to_render, raw_tags, html_tags = self._get_start_tags(text_to_render)
+                        if text:
+                            text = raw_tags + text
+                    else:
+                        text_to_render = text
+                        text = ''
+                    lines = text_to_render.strip('\n').split('\n')
+                    slides = self._paginate_slide(lines, line_end)
+                    if len(slides) > 1 and text:
+                        # Add all slides apart from the last one to the list.
+                        pages.extend(slides[:-1])
+                        if text_contains_split:
+                            text = slides[-1] + '\n[br]\n' + text
+                        else:
+                            text = slides[-1] + '\n' + text
+                        text = text.replace('<br>', '\n')
+                    else:
+                        pages.extend(slides)
+                    if '[br]' not in text:
+                        lines = text.strip('\n').split('\n')
+                        pages.extend(self._paginate_slide(lines, line_end))
+                        break
             else:
                 # Clean up line endings.
                 pages = self._paginate_slide(text.split('\n'), line_end)
