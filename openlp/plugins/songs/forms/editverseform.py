@@ -46,6 +46,7 @@ class EditVerseForm(QtGui.QDialog, Ui_EditVerseDialog):
         self.has_single_verse = False
         self.insert_button.clicked.connect(self.on_insert_button_clicked)
         self.split_button.clicked.connect(self.on_split_button_clicked)
+        self.force_split_button.clicked.connect(self.on_forced_split_button_clicked)
         self.verse_text_edit.cursorPositionChanged.connect(self.on_cursor_position_changed)
         self.verse_type_combo_box.currentIndexChanged.connect(self.on_verse_type_combo_box_changed)
 
@@ -73,6 +74,20 @@ class EditVerseForm(QtGui.QDialog, Ui_EditVerseDialog):
             insert_string = '\n' + insert_string
         if position == len(text) or text[position] != '\n':
             insert_string += '\n'
+        self.verse_text_edit.insertPlainText(insert_string)
+        self.verse_text_edit.setFocus()
+
+    def on_forced_split_button_clicked(self):
+        """
+        The forced split button has been pressed
+        """
+        text = self.verse_text_edit.toPlainText()
+        position = self.verse_text_edit.textCursor().position()
+        insert_string = '[br]'
+        if position and text[position - 1] != '\n':
+            insert_string = '\n' + insert_string
+            if position == len(text) or text[position] != '\n':
+                insert_string += '\n'
         self.verse_text_edit.insertPlainText(insert_string)
         self.verse_text_edit.setFocus()
 

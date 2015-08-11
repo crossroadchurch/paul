@@ -81,6 +81,9 @@ class UiStrings(object):
         self.FileNotFound = translate('OpenLP.Ui', 'File Not Found')
         self.FileNotFoundMessage = translate('OpenLP.Ui', 'File %s not found.\nPlease try selecting it individually.')
         self.FontSizePtUnit = translate('OpenLP.Ui', 'pt', 'Abbreviated font pointsize unit')
+        self.ForcedSplit = translate('OpenLP.Ui', '&Split Slide')
+        self.ForcedSplitToolTip = translate('OpenLP.Ui',
+                                            'Split a slide into two at the current cursor location.')
         self.Help = translate('OpenLP.Ui', 'Help')
         self.Hours = translate('OpenLP.Ui', 'h', 'The abbreviated unit for hours')
         self.IFdSs = translate('OpenLP.Ui', 'Invalid Folder Selected', 'Singular')
@@ -134,7 +137,7 @@ class UiStrings(object):
         self.Settings = translate('OpenLP.Ui', 'Settings')
         self.SaveService = translate('OpenLP.Ui', 'Save Service')
         self.Service = translate('OpenLP.Ui', 'Service')
-        self.Split = translate('OpenLP.Ui', 'Optional &Split')
+        self.Split = translate('OpenLP.Ui', 'O&ptional Split')
         self.SplitToolTip = translate('OpenLP.Ui',
                                       'Split a slide into two only if it does not fit on the screen as one slide.')
         self.StartTimeCode = translate('OpenLP.Ui', 'Start %s')

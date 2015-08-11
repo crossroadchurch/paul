@@ -40,6 +40,13 @@ class Ui_EditVerseDialog(object):
         self.dialog_layout.addWidget(self.verse_text_edit)
         self.verse_type_layout = QtGui.QHBoxLayout()
         self.verse_type_layout.setObjectName('verse_type_layout')
+        # Button to insert forced split [br]
+        # Author: nikukatansa
+        self.force_split_button = QtGui.QPushButton(edit_verse_dialog)
+        self.force_split_button.setIcon(build_icon(':/general/general_add.png'))
+        self.force_split_button.setObjectName('force_split_button')
+        self.verse_type_layout.addWidget(self.force_split_button)
+        # END
         self.split_button = QtGui.QPushButton(edit_verse_dialog)
         self.split_button.setIcon(build_icon(':/general/general_add.png'))
         self.split_button.setObjectName('split_button')
@@ -78,6 +85,8 @@ class Ui_EditVerseDialog(object):
         self.verse_type_combo_box.setItemText(VerseType.Other, VerseType.translated_names[VerseType.Other])
         self.split_button.setText(UiStrings().Split)
         self.split_button.setToolTip(UiStrings().SplitToolTip)
+        self.force_split_button.setText(UiStrings().ForcedSplit)
+        self.force_split_button.setToolTip(UiStrings().ForcedSplitToolTip)
         self.insert_button.setText(translate('SongsPlugin.EditVerseForm', '&Insert'))
         self.insert_button.setToolTip(translate('SongsPlugin.EditVerseForm',
                                       'Split a slide into two by inserting a verse splitter.'))
