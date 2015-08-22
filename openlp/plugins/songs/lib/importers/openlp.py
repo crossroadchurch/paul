@@ -164,6 +164,12 @@ class OpenLPSongImport(SongImport):
                 if len(old_titles) > 1:
                     new_song.alternate_title = old_titles[1]
             # Values will be set when cleaning the song.
+
+            if hasattr(song, 'song_key'):
+                new_song.song_key = song.song_key
+            if hasattr(song, 'transpose_by'):
+                new_song.transpose_by = song.transpose_by
+
             new_song.search_title = ''
             new_song.search_lyrics = ''
             new_song.song_number = song.song_number

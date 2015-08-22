@@ -224,6 +224,8 @@ def init_schema(url):
         * song_book_id
         * title
         * alternate_title
+        * song_key
+        * transpose_by
         * lyrics
         * verse_order
         * copyright
@@ -286,6 +288,9 @@ def init_schema(url):
         Column('song_book_id', types.Integer(), ForeignKey('song_books.id'), default=None),
         Column('title', types.Unicode(255), nullable=False),
         Column('alternate_title', types.Unicode(255)),
+        Column('song_key', types.Unicode(3)),
+        Column('transpose_by', types.Integer(), default=0),
+        Column('chords', types.UnicodeText),
         Column('lyrics', types.UnicodeText, nullable=False),
         Column('verse_order', types.Unicode(128)),
         Column('copyright', types.Unicode(255)),

@@ -62,6 +62,8 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         self.width = 400
         self.setupUi(self)
         # Connecting signals and slots
+        self.song_key_edit.currentIndexChanged.connect(self.on_key_or_transpose_change)
+        self.transpose_edit.valueChanged.connect(self.on_key_or_transpose_change)
         self.author_add_button.clicked.connect(self.on_author_add_button_clicked)
         self.author_edit_button.clicked.connect(self.on_author_edit_button_clicked)
         self.author_remove_button.clicked.connect(self.on_author_remove_button_clicked)
@@ -406,6 +408,8 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         self.alternative_edit.clear()
         self.copyright_edit.clear()
         self.verse_order_edit.clear()
+        self.song_key_edit.setCurrentIndex(-1)
+        self.transpose_edit.setValue(0)
         self.comments_edit.clear()
         self.ccli_number_edit.clear()
         self.verse_list_widget.clear()
@@ -442,6 +446,10 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         self.title_edit.setText(self.song.title)
         self.alternative_edit.setText(
             self.song.alternate_title if self.song.alternate_title else '')
+        self.song_key_edit.setCurrentIndex(
+            self.song_key_edit.findText(self.song.song_key) if self.song.song_key else -1)
+        self.transpose_edit.setValue(
+            self.song.transpose_by if self.song.transpose_by else 0)
         if self.song.song_book_id != 0:
             book_name = self.manager.get_object(Book, self.song.song_book_id)
             find_and_set_in_combo_box(self.song_book_combo_box, str(book_name.name))
@@ -917,6 +925,17 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         self.audio_list_widget.insertItem(row + 1, item)
         self.audio_list_widget.setCurrentRow(row + 1)
 
+    def on_key_or_transpose_change(self):
+        """
+        Updates the tranposed key display when the user updates the song key or transpose amount.
+        """
+        if (self.song_key_edit.currentIndex() > -1) and (self.transpose_edit.value() != 0):
+
+            self.transposed_key_label.setText('Transposed to: ' + Ui_EditSongDialog.key_list[
+                (self.song_key_edit.currentIndex() + self.transpose_edit.value()) % 12])
+        else:
+            self.transposed_key_label.setText('')
+
     def clear_caches(self):
         """
         Free up auto-completion memory on dialog exit
@@ -959,6 +978,8 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
             self.song = Song()
         self.song.title = self.title_edit.text()
         self.song.alternate_title = self.alternative_edit.text()
+        self.song.song_key = self.song_key_edit.currentText()
+        self.song.transpose_by = self.transpose_edit.value()
         self.song.copyright = self.copyright_edit.text()
         # Values will be set when cleaning the song.
         self.song.search_title = ''

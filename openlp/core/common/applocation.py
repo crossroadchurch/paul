@@ -140,28 +140,28 @@ def _get_os_dir_path(dir_type):
             return directory
     if is_win():
         if dir_type == AppLocation.DataDir:
-            return os.path.join(str(os.getenv('APPDATA')), 'openlp', 'data')
+            return os.path.join(str(os.getenv('APPDATA')), 'openlp-paul', 'data')
         elif dir_type == AppLocation.LanguageDir:
             return os.path.dirname(openlp.__file__)
-        return os.path.join(str(os.getenv('APPDATA')), 'openlp')
+        return os.path.join(str(os.getenv('APPDATA')), 'openlp-paul')
     elif is_macosx():
         if dir_type == AppLocation.DataDir:
-            return os.path.join(str(os.getenv('HOME')), 'Library', 'Application Support', 'openlp', 'Data')
+            return os.path.join(str(os.getenv('HOME')), 'Library', 'Application Support', 'openlp-paul', 'Data')
         elif dir_type == AppLocation.LanguageDir:
             return os.path.dirname(openlp.__file__)
-        return os.path.join(str(os.getenv('HOME')), 'Library', 'Application Support', 'openlp')
+        return os.path.join(str(os.getenv('HOME')), 'Library', 'Application Support', 'openlp-paul')
     else:
         if dir_type == AppLocation.LanguageDir:
             for prefix in ['/usr/local', '/usr']:
-                directory = os.path.join(prefix, 'share', 'openlp')
+                directory = os.path.join(prefix, 'share', 'openlp-paul')
                 if os.path.exists(directory):
                     return directory
-            return os.path.join('/usr', 'share', 'openlp')
+            return os.path.join('/usr', 'share', 'openlp-paul')
         if XDG_BASE_AVAILABLE:
             if dir_type == AppLocation.DataDir:
-                return os.path.join(str(BaseDirectory.xdg_data_home), 'openlp')
+                return os.path.join(str(BaseDirectory.xdg_data_home), 'openlp-paul')
             elif dir_type == AppLocation.CacheDir:
-                return os.path.join(str(BaseDirectory.xdg_cache_home), 'openlp')
+                return os.path.join(str(BaseDirectory.xdg_cache_home), 'openlp-paul')
         if dir_type == AppLocation.DataDir:
-            return os.path.join(str(os.getenv('HOME')), '.openlp', 'data')
-        return os.path.join(str(os.getenv('HOME')), '.openlp')
+            return os.path.join(str(os.getenv('HOME')), '.openlp-paul', 'data')
+        return os.path.join(str(os.getenv('HOME')), '.openlp-paul')

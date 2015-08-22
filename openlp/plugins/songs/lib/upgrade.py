@@ -32,7 +32,7 @@ from openlp.core.lib.db import get_upgrade_op
 from openlp.core.common import trace_error_handler
 
 log = logging.getLogger(__name__)
-__version__ = 4
+__version__ = 6
 
 
 # TODO: When removing an upgrade path the ftw-data needs updating to the minimum supported version
@@ -117,3 +117,31 @@ def upgrade_4(session, metadata):
         op.rename_table('authors_songs_tmp', 'authors_songs')
     else:
         log.warning('Skipping upgrade_4 step of upgrading the song db')
+
+
+def upgrade_5(session, metadata):
+    """
+    Version 5 upgrade.
+
+    This upgrade adds a song_key and transpose_by field to the songs table
+    """
+    op = get_upgrade_op(session)
+    songs_table = Table('songs', metadata, autoload=True)
+    if 'song_key' not in [col.name for col in songs_table.c.values()]:
+        op.add_column('songs', Column('song_key', types.Unicode(3)))
+        op.add_column('songs', Column('transpose_by', types.Integer(), default=0))
+    else:
+        log.warning('Skipping upgrade_5 step of upgrading the song db')
+
+def upgrade_6(session, metadata):
+    """
+    Version 6 upgrade.
+
+    This upgrade adds a chords field to the songs table
+    """
+    op = get_upgrade_op(session)
+    songs_table = Table('songs', metadata, autoload=True)
+    if 'chords' not in [col.name for col in songs_table.c.values()]:
+        op.add_column('songs', Column('chords', types.UnicodeText))
+    else:
+        log.warning('Skipping upgrade_6 step of upgrading the song db')

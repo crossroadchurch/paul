@@ -174,7 +174,7 @@ class OpenLyrics(object):
         This property is not supported.
 
     ``<key>``
-        This property is not supported.
+        This property is fully supported.
 
     ``<format>``
         The custom formatting tags are fully supported.
@@ -258,6 +258,10 @@ class OpenLyrics(object):
             self._add_text_to_element('comment', comments, song.comments)
         if song.copyright:
             self._add_text_to_element('copyright', properties, song.copyright)
+        if song.song_key:
+            self._add_text_to_element('key', properties, song.song_key)
+        if song.transpose_by:
+            self._add_text_to_element('transposition', properties, song.transpose_by)
         if song.verse_order:
             self._add_text_to_element(
                 'verseOrder', properties, song.verse_order.lower())
@@ -394,6 +398,8 @@ class OpenLyrics(object):
         song.temporary = parse_and_temporary_save
         self._process_copyright(properties, song)
         self._process_cclinumber(properties, song)
+        self._process_song_key(properties, song)
+        self._process_transpose(properties, song)
         self._process_titles(properties, song)
         # The verse order is processed with the lyrics!
         self._process_lyrics(properties, song_xml, song)
@@ -652,6 +658,26 @@ class OpenLyrics(object):
         if element.tail:
             text += element.tail
         return text
+
+    def _process_song_key(self, properties, song):
+        """
+        Adds the key to the song.
+
+        :param properties: The property object (lxml.objectify.ObjectifiedElement).
+        :param song: The song object.
+        """
+        if hasattr(properties, 'key'):
+            song.song_key = self._text(properties.key)
+
+    def _process_transpose(self, properties, song):
+        """
+        Adds the transposition amount to the song.
+
+        :param properties: The property object (lxml.objectify.ObjectifiedElement).
+        :param song: The song object.
+        """
+        if hasattr(properties, 'transposition'):
+            song.transpose_by = self._text(properties.transposition)
 
     def _process_verse_lines(self, lines, version):
         """
