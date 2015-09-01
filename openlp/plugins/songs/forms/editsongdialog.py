@@ -23,11 +23,11 @@
 from PyQt4 import QtCore, QtGui
 
 from openlp.core.common import UiStrings, translate
-from openlp.core.lib import build_icon
+from openlp.core.lib import build_icon, SpellTextEdit
 from openlp.core.lib.ui import create_button_box, create_button
 from openlp.core.ui import SingleColumnTableWidget
 from openlp.plugins.songs.lib.ui import SongStrings
-
+from openlp.plugins.songs.lib.chords import Chords
 
 
 class Ui_EditSongDialog(object):
@@ -35,7 +35,6 @@ class Ui_EditSongDialog(object):
     The :class:`~openlp.plugins.songs.forms.editsongdialog.Ui_EditSongDialog` class defines the user interface for the
     EditSongForm dialog.
     """
-    key_list = ('C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B')
 
     def setupUi(self, edit_song_dialog):
         edit_song_dialog.setObjectName('edit_song_dialog')
@@ -86,51 +85,54 @@ class Ui_EditSongDialog(object):
         self.verse_order_edit.setObjectName('verse_order_edit')
         self.verse_order_label.setBuddy(self.verse_order_edit)
         self.lyrics_tab_layout.addWidget(self.verse_order_edit, 3, 1, 1, 2)
+
         self.verse_buttons_layout = QtGui.QVBoxLayout()
         self.verse_buttons_layout.setObjectName('verse_buttons_layout')
         self.verse_add_button = QtGui.QPushButton(self.lyrics_tab)
         self.verse_add_button.setObjectName('verse_add_button')
         self.verse_buttons_layout.addWidget(self.verse_add_button)
-        self.verse_edit_button = QtGui.QPushButton(self.lyrics_tab)
-        self.verse_edit_button.setObjectName('verse_edit_button')
-        self.verse_buttons_layout.addWidget(self.verse_edit_button)
-        self.verse_edit_all_button = QtGui.QPushButton(self.lyrics_tab)
-        self.verse_edit_all_button.setObjectName('verse_edit_all_button')
-        self.verse_buttons_layout.addWidget(self.verse_edit_all_button)
+        #self.verse_edit_button = QtGui.QPushButton(self.lyrics_tab)
+        #self.verse_edit_button.setObjectName('verse_edit_button')
+        #self.verse_buttons_layout.addWidget(self.verse_edit_button)
+        #self.verse_edit_all_button = QtGui.QPushButton(self.lyrics_tab)
+        #self.verse_edit_all_button.setObjectName('verse_edit_all_button')
+        #self.verse_buttons_layout.addWidget(self.verse_edit_all_button)
+        self.verse_edit_all_chords_button = QtGui.QPushButton(self.lyrics_tab)
+        self.verse_edit_all_chords_button.setObjectName('verse_edit_all_chords_button')
+        self.verse_buttons_layout.addWidget(self.verse_edit_all_chords_button)
         self.verse_delete_button = QtGui.QPushButton(self.lyrics_tab)
         self.verse_delete_button.setObjectName('verse_delete_button')
         self.verse_buttons_layout.addWidget(self.verse_delete_button)
         self.verse_buttons_layout.addStretch()
         self.lyrics_tab_layout.addLayout(self.verse_buttons_layout, 2, 2)
-        self.song_tab_widget.addTab(self.lyrics_tab, '')
 
-        # key and chords tab
-        self.chords_tab = QtGui.QWidget()
-        self.chords_tab.setObjectName('chords_tab')
-        self.chords_tab_layout = QtGui.QGridLayout(self.chords_tab)
-        self.chords_tab_layout.setObjectName('chords_tab_layout')
-        self.song_key_label = QtGui.QLabel(self.chords_tab)
+        # key and chords area
+        self.song_key_label = QtGui.QLabel(self.lyrics_tab)
         self.song_key_label.setObjectName('song_key_label')
-        self.chords_tab_layout.addWidget(self.song_key_label, 0, 0)
-        self.song_key_edit = QtGui.QComboBox(self.chords_tab)
+        self.lyrics_tab_layout.addWidget(self.song_key_label, 4, 0)
+        self.key_area_layout = QtGui.QGridLayout()
+        self.key_area_layout.setObjectName('key_area_layout')
+        self.song_key_edit = QtGui.QComboBox(self.lyrics_tab)
         self.song_key_edit.setEditable(False)
-
-        self.song_key_edit.addItems(self.key_list)
+        self.song_key_edit.addItems(Chords.key_list)
         self.song_key_edit.setObjectName('song_key_edit')
         self.song_key_label.setBuddy(self.song_key_edit)
-        self.chords_tab_layout.addWidget(self.song_key_edit, 0, 1, 1, 1)
-        self.transpose_label = QtGui.QLabel(self.chords_tab)
+        self.key_area_layout.addWidget(self.song_key_edit, 0, 1, 1, 1)
+        self.transpose_label = QtGui.QLabel(self.lyrics_tab)
         self.transpose_label.setObjectName('transpose_label')
-        self.chords_tab_layout.addWidget(self.transpose_label, 0, 2)
-        self.transpose_edit = QtGui.QSpinBox(self.chords_tab)
+        self.key_area_layout.addWidget(self.transpose_label, 0, 2)
+        self.transpose_edit = QtGui.QSpinBox(self.lyrics_tab)
         self.transpose_edit.setRange(-11, 11)
         self.transpose_edit.setObjectName('transpose_edit')
         self.transpose_label.setBuddy(self.transpose_edit)
-        self.chords_tab_layout.addWidget(self.transpose_edit, 0, 3, 1, 1)
-        self.transposed_key_label = QtGui.QLabel(self.chords_tab)
+        self.key_area_layout.addWidget(self.transpose_edit, 0, 3, 1, 1)
+        self.transposed_key_label = QtGui.QLabel(self.lyrics_tab)
         self.transposed_key_label.setObjectName('transposed_key_label')
-        self.chords_tab_layout.addWidget(self.transposed_key_label, 0, 4, 1, 1)
-        self.song_tab_widget.addTab(self.chords_tab, '')
+        self.key_area_layout.addWidget(self.transposed_key_label, 0, 4, 1, 1)
+        self.lyrics_tab_layout.addLayout(self.key_area_layout, 4, 1, 1, 3)
+
+        self.song_tab_widget.addTab(self.lyrics_tab, '')
+
 
         # authors tab
         self.authors_tab = QtGui.QWidget()
@@ -326,15 +328,16 @@ class Ui_EditSongDialog(object):
         self.lyrics_label.setText(translate('SongsPlugin.EditSongForm', '&Lyrics:'))
         self.verse_order_label.setText(translate('SongsPlugin.EditSongForm', '&Verse order:'))
         self.verse_add_button.setText(UiStrings().Add)
-        self.verse_edit_button.setText(UiStrings().Edit)
-        self.verse_edit_all_button.setText(translate('SongsPlugin.EditSongForm', 'Ed&it All'))
+        #self.verse_edit_button.setText(UiStrings().Edit)
+        #self.verse_edit_all_button.setText(translate('SongsPlugin.EditSongForm', 'Ed&it All'))
+        self.verse_edit_all_chords_button.setText(translate('SongsPlugin.EditSongForm', 'Edit Chords'))
         self.verse_delete_button.setText(UiStrings().Delete)
         self.song_tab_widget.setTabText(self.song_tab_widget.indexOf(self.lyrics_tab),
                                         translate('SongsPlugin.EditSongForm', 'Title && Lyrics'))
         self.song_key_label.setText(translate('SongsPlugin.EditSongForm', 'Song &key:'))
         self.transpose_label.setText(translate('SongsPlugin.EditSongForm', 'Trans&pose by:'))
-        self.song_tab_widget.setTabText(self.song_tab_widget.indexOf(self.chords_tab),
-                                        translate('SongsPlugin.EditSongForm', 'Key && Chords'))
+        #self.song_tab_widget.setTabText(self.song_tab_widget.indexOf(self.chords_tab),
+        #                                translate('SongsPlugin.EditSongForm', 'Key && Chords'))
         self.authors_group_box.setTitle(SongStrings.Authors)
         self.author_add_button.setText(translate('SongsPlugin.EditSongForm', '&Add to Song'))
         self.author_edit_button.setText(translate('SongsPlugin.EditSongForm', '&Edit Author Type'))

@@ -40,7 +40,9 @@ from openlp.plugins.songs.lib.ui import SongStrings
 from openlp.plugins.songs.lib.openlyricsxml import SongXML
 from openlp.plugins.songs.forms.editsongdialog import Ui_EditSongDialog
 from openlp.plugins.songs.forms.editverseform import EditVerseForm
+from openlp.plugins.songs.forms.editversechordsform import EditVerseChordsForm
 from openlp.plugins.songs.forms.mediafilesform import MediaFilesForm
+from openlp.plugins.songs.lib.chords import Chords
 
 log = logging.getLogger(__name__)
 
@@ -72,11 +74,12 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         self.topic_remove_button.clicked.connect(self.on_topic_remove_button_clicked)
         self.topics_list_view.itemClicked.connect(self.on_topic_list_view_clicked)
         self.copyright_insert_button.clicked.connect(self.on_copyright_insert_button_triggered)
-        self.verse_add_button.clicked.connect(self.on_verse_add_button_clicked)
-        self.verse_list_widget.doubleClicked.connect(self.on_verse_edit_button_clicked)
-        self.verse_edit_button.clicked.connect(self.on_verse_edit_button_clicked)
-        self.verse_edit_all_button.clicked.connect(self.on_verse_edit_all_button_clicked)
-        self.verse_delete_button.clicked.connect(self.on_verse_delete_button_clicked)
+        ###self.verse_add_button.clicked.connect(self.on_verse_add_button_clicked)
+        self.verse_list_widget.doubleClicked.connect(self.on_verse_edit_all_chords_button_clicked)
+        #self.verse_edit_button.clicked.connect(self.on_verse_edit_button_clicked)
+        #self.verse_edit_all_button.clicked.connect(self.on_verse_edit_all_button_clicked)
+        self.verse_edit_all_chords_button.clicked.connect(self.on_verse_edit_all_chords_button_clicked)
+        ###self.verse_delete_button.clicked.connect(self.on_verse_delete_button_clicked)
         self.verse_list_widget.itemClicked.connect(self.on_verse_list_view_clicked)
         self.verse_order_edit.textChanged.connect(self.on_verse_order_text_changed)
         self.theme_add_button.clicked.connect(self.theme_manager.on_add_theme)
@@ -94,6 +97,7 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         # Create other objects and forms
         self.manager = manager
         self.verse_form = EditVerseForm(self)
+        self.verse_chords_form = EditVerseChordsForm(self)
         self.media_form = MediaFilesForm(self)
         self.initialise()
         self.authors_list_view.setSortingEnabled(False)
@@ -104,6 +108,7 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         self.find_verse_split = re.compile('---\[\]---\n', re.UNICODE)
         self.whitespace = re.compile(r'\W+', re.UNICODE)
         self.find_tags = re.compile(u'\{/?\w+\}', re.UNICODE)
+
 
     def _load_objects(self, cls, combo, cache):
         """
@@ -211,6 +216,10 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
             critical_error_message_box(
                 message=translate('SongsPlugin.EditSongForm', 'You need to type in at least one verse.'))
             return False
+        if (self.chords_and_lyrics.find('@') != -1) and (self.song_key_edit.currentIndex() == -1):
+            # Song has chords but no key
+            critical_error_message_box('SongsPlugin.EditSongForm', 'You need to choose a key for the song.')
+            return False
         if self.authors_list_view.count() == 0:
             self.song_tab_widget.setCurrentIndex(1)
             self.authors_list_view.setFocus()
@@ -314,6 +323,97 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
             log.exception('Problem processing song Lyrics \n%s', sxml.dump_xml())
             raise
 
+
+    def _process_chords(self):
+        """
+        Process the chords data entered by the user into the OpenLP XML format.
+        """
+        # This method must only be run after the self.song = Song() assignment.
+        log.debug('_processChords')
+        sxml = None
+        try:
+            sxml = SongXML()
+            for row in self.find_verse_split.split(self.chords_and_lyrics):
+                for match in row.split('---['):
+                    for count, parts in enumerate(match.split(']---\n')):
+                        if count == 0:
+                            # Processing verse tag
+                            if len(parts) == 0:
+                                continue
+                            # handling carefully user inputted versetags
+                            separator = parts.find(':')
+                            if separator >= 0:
+                                verse_name = parts[0:separator].strip()
+                                verse_num = parts[separator + 1:].strip()
+                            else:
+                                verse_name = parts
+                                verse_num = '1'
+                            verse_index = VerseType.from_loose_input(verse_name)
+                            verse_tag = VerseType.tags[verse_index]
+                            # Later we need to handle v1a as well.
+                            regex = re.compile(r'\D*(\d+)\D*')
+                            match = regex.match(verse_num)
+                            if match:
+                                verse_num = match.group(1)
+                            else:
+                                verse_num = '1'
+                            verse_def = '%s%s' % (verse_tag, verse_num)
+                        else:
+                            # Processing lyrics
+                            if parts.endswith('\n'):
+                                parts = parts.rstrip('\n')
+
+                            previous_line = '¬¬DONE¬¬'
+                            section_text = ''
+
+                            for line in parts.split('\n'):
+                                if previous_line == '¬¬DONE¬¬':
+                                    if line.rstrip().endswith('@'):
+                                        previous_line = line
+                                    elif line.startswith('['):
+                                        # Break line
+                                        section_text += line + '\n'
+                                    else:
+                                        # Lyrics line
+                                        section_text += line.replace("#", "") + '\n'
+                                else:
+                                    # Previous line was chords...
+                                    if line.rstrip().endswith('@'):
+                                        # Two successive lines of chords.
+                                        section_text += Chords.parseLinesToXml(previous_line.replace('@', ''), '', self.song.song_key) + '\n'
+                                        previous_line = line
+                                    elif line.startswith('['):
+                                        # Break line following chords
+                                        section_text += Chords.parseLinesToXml(previous_line.replace('@', ''), '', self.song.song_key) + '\n'
+                                        section_text += line + '\n'
+                                        previous_line = '¬¬DONE¬¬'
+                                    elif line.replace(" ", "") == '':
+                                        # Spacer line following Chords
+                                        print("Spacer")
+                                        section_text += Chords.parseLinesToXml(previous_line.replace('@', ''), '', self.song.song_key) + '\n'
+                                        section_text += '\n'
+                                        previous_line = '¬¬DONE¬¬'
+                                    else:
+                                        # These are lyrics corresponding to previous chords
+                                        section_text += Chords.parseLinesToXml(previous_line.replace('@', ''), line, self.song.song_key) + '\n'
+                                        previous_line = '¬¬DONE¬¬'
+
+                            if not previous_line == '¬¬DONE¬¬':
+                                # Process final line of chords stored in previous_line; no corresponding lyrics
+                                section_text += Chords.parseLinesToXml(previous_line.replace('@', ''), '', self.song.song_key)
+
+                            if section_text.endswith('\n'):
+                                section_text = section_text.rstrip('\n')
+
+                            sxml.add_verse_to_lyrics(verse_tag, verse_num, section_text)
+
+            self.song.chords = str(sxml.extract_xml(), 'utf-8')
+
+        except:
+            log.exception('Problem processing song chords \n%s', sxml.dump_xml())
+            raise
+
+
     def keyPressEvent(self, event):
         """
         Re-implement the keyPressEvent to react on Return/Enter keys. When some combo boxes have focus we do not want
@@ -334,7 +434,8 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         """
         Set up the form for when it is displayed.
         """
-        self.verse_edit_button.setEnabled(False)
+        #self.verse_edit_button.setEnabled(False)
+        self.verse_add_button.setEnabled(False) # Added in until Add works with chords
         self.verse_delete_button.setEnabled(False)
         self.author_edit_button.setEnabled(False)
         self.author_remove_button.setEnabled(False)
@@ -427,6 +528,7 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         self.theme_combo_box.setCurrentIndex(0)
         # it's a new song to preview is not possible
         self.preview_button.setVisible(False)
+        self.chords_and_lyrics = ''
 
     def load_song(self, song_id, preview=False):
         """
@@ -537,6 +639,44 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         self.preview_button.setVisible(preview)
         # Check if all verse tags are used.
         self.on_verse_order_text_changed(self.verse_order_edit.text())
+        # Process chords XML
+        if self.song.chords:
+            song_2_xml = SongXML()
+            verse_chords_xml = song_2_xml.get_verses(self.song.chords)
+            self.chords_and_lyrics = ''
+            for count, verse in enumerate(verse_chords_xml):
+                # This silently migrates from localized verse type markup.
+                # If we trusted the database, this would be unnecessary.
+                verse_tag = verse[0]['type']
+                index = None
+                if len(verse_tag) > 1:
+                    index = VerseType.from_translated_string(verse_tag)
+                    if index is None:
+                        index = VerseType.from_string(verse_tag, None)
+                    else:
+                        verse_tags_translated = True
+                if index is None:
+                    index = VerseType.from_tag(verse_tag)
+                verse[0]['type'] = VerseType.tags[index]
+                if verse[0]['label'] == '':
+                    verse[0]['label'] = '1'
+                verse_tag = VerseType.translated_name(verse[0]['type'])
+                self.chords_and_lyrics += '---[%s:%s]---\n' % (verse_tag, verse[0]['label'])
+
+                for line in verse[1].split('\n'):
+                    if line == '':
+                        self.chords_and_lyrics += '\n'
+                    else:
+                        parsed_line = Chords.parseXmlToLines(line)
+                        if not parsed_line[0].strip() == '':
+                            self.chords_and_lyrics += parsed_line[0]
+                            self.chords_and_lyrics += '@\n'
+                        if not parsed_line[1].replace('#', '').strip() == '':
+                            self.chords_and_lyrics += parsed_line[1]
+                            self.chords_and_lyrics += '\n'
+        else:
+            self.chords_and_lyrics = ''
+
 
     def tag_rows(self):
         """
@@ -683,80 +823,156 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         self.topics_list_view.takeItem(row)
 
     def on_verse_list_view_clicked(self):
-        self.verse_edit_button.setEnabled(True)
-        self.verse_delete_button.setEnabled(True)
+        #self.verse_edit_button.setEnabled(True)
+        ###self.verse_delete_button.setEnabled(True)
+        return # Can remove when delete functionality restored!
 
-    def on_verse_add_button_clicked(self):
-        self.verse_form.set_verse('', True)
-        if self.verse_form.exec_():
-            after_text, verse_tag, verse_num = self.verse_form.get_verse()
-            verse_def = '%s%s' % (verse_tag, verse_num)
-            item = QtGui.QTableWidgetItem(after_text)
-            item.setData(QtCore.Qt.UserRole, verse_def)
-            item.setText(after_text)
-            self.verse_list_widget.setRowCount(self.verse_list_widget.rowCount() + 1)
-            self.verse_list_widget.setItem(self.verse_list_widget.rowCount() - 1, 0, item)
-        self.tag_rows()
-        # Check if all verse tags are used.
-        self.on_verse_order_text_changed(self.verse_order_edit.text())
+###    def on_verse_add_button_clicked(self):
+###        self.verse_form.set_verse('', True)
+###        if self.verse_form.exec_():
+###            after_text, verse_tag, verse_num = self.verse_form.get_verse()
+###            verse_def = '%s%s' % (verse_tag, verse_num)
+###            item = QtGui.QTableWidgetItem(after_text)
+###            item.setData(QtCore.Qt.UserRole, verse_def)
+###            item.setText(after_text)
+###            self.verse_list_widget.setRowCount(self.verse_list_widget.rowCount() + 1)
+###            self.verse_list_widget.setItem(self.verse_list_widget.rowCount() - 1, 0, item)
+###        self.tag_rows()
+###        # Check if all verse tags are used.
+###        self.on_verse_order_text_changed(self.verse_order_edit.text())
 
-    def on_verse_edit_button_clicked(self):
-        item = self.verse_list_widget.currentItem()
-        if item:
-            temp_text = item.text()
-            verse_id = item.data(QtCore.Qt.UserRole)
-            self.verse_form.set_verse(temp_text, True, verse_id)
-            if self.verse_form.exec_():
-                after_text, verse_tag, verse_num = self.verse_form.get_verse()
-                verse_def = '%s%s' % (verse_tag, verse_num)
-                item.setData(QtCore.Qt.UserRole, verse_def)
-                item.setText(after_text)
-                # number of lines has changed, repaint the list moving the data
-                if len(temp_text.split('\n')) != len(after_text.split('\n')):
-                    temp_list = []
-                    temp_ids = []
-                    for row in range(self.verse_list_widget.rowCount()):
-                        item = self.verse_list_widget.item(row, 0)
-                        temp_list.append(item.text())
-                        temp_ids.append(item.data(QtCore.Qt.UserRole))
-                    self.verse_list_widget.clear()
-                    for row, entry in enumerate(temp_list):
-                        item = QtGui.QTableWidgetItem(entry, 0)
-                        item.setData(QtCore.Qt.UserRole, temp_ids[row])
-                        self.verse_list_widget.setItem(row, 0, item)
-        self.tag_rows()
-        # Check if all verse tags are used.
-        self.on_verse_order_text_changed(self.verse_order_edit.text())
+#    def on_verse_edit_button_clicked(self):
+#        item = self.verse_list_widget.currentItem()
+#        if item:
+#            temp_text = item.text()
+#            verse_id = item.data(QtCore.Qt.UserRole)
+#            self.verse_form.set_verse(temp_text, True, verse_id)
+#            if self.verse_form.exec_():
+#                after_text, verse_tag, verse_num = self.verse_form.get_verse()
+#                verse_def = '%s%s' % (verse_tag, verse_num)
+#                item.setData(QtCore.Qt.UserRole, verse_def)
+#                item.setText(after_text)
+#                # number of lines has changed, repaint the list moving the data
+#                if len(temp_text.split('\n')) != len(after_text.split('\n')):
+#                    temp_list = []
+#                    temp_ids = []
+#                    for row in range(self.verse_list_widget.rowCount()):
+#                        item = self.verse_list_widget.item(row, 0)
+#                        temp_list.append(item.text())
+#                        temp_ids.append(item.data(QtCore.Qt.UserRole))
+#                    self.verse_list_widget.clear()
+#                    for row, entry in enumerate(temp_list):
+#                        item = QtGui.QTableWidgetItem(entry, 0)
+#                        item.setData(QtCore.Qt.UserRole, temp_ids[row])
+#                        self.verse_list_widget.setItem(row, 0, item)
+#        self.tag_rows()
+#        # Check if all verse tags are used.
+#        self.on_verse_order_text_changed(self.verse_order_edit.text())
 
-    def on_verse_edit_all_button_clicked(self):
+#    def on_verse_edit_all_button_clicked(self):
+#        """
+#        Verse edit all button (save) pressed
+#
+#        :return:
+#        """
+#        verse_list = ''
+#        if self.verse_list_widget.rowCount() > 0:
+#            for row in range(self.verse_list_widget.rowCount()):
+#                item = self.verse_list_widget.item(row, 0)
+#                field = item.data(QtCore.Qt.UserRole)
+#                verse_tag = VerseType.translated_name(field[0])
+#                verse_num = field[1:]
+#                verse_list += '---[%s:%s]---\n' % (verse_tag, verse_num)
+#                verse_list += item.text()
+#                verse_list += '\n'
+#            self.verse_form.set_verse(verse_list)
+#        else:
+#            self.verse_form.set_verse('')
+#        if not self.verse_form.exec_():
+#            return
+#        verse_list = self.verse_form.get_all_verses()
+#        verse_list = str(verse_list.replace('\r\n', '\n'))
+#        self.verse_list_widget.clear()
+#        self.verse_list_widget.setRowCount(0)
+#        for row in self.find_verse_split.split(verse_list):
+#            for match in row.split('---['):
+#                for count, parts in enumerate(match.split(']---\n')):
+#                    if count == 0:
+#                        if len(parts) == 0:
+#                            continue
+#                        # handling carefully user inputted versetags
+#                        separator = parts.find(':')
+#                        if separator >= 0:
+#                            verse_name = parts[0:separator].strip()
+#                            verse_num = parts[separator + 1:].strip()
+#                        else:
+#                            verse_name = parts
+#                            verse_num = '1'
+#                        verse_index = VerseType.from_loose_input(verse_name)
+#                        verse_tag = VerseType.tags[verse_index]
+#                        # Later we need to handle v1a as well.
+#                        regex = re.compile(r'\D*(\d+)\D*')
+#                        match = regex.match(verse_num)
+#                        if match:
+#                            verse_num = match.group(1)
+#                        else:
+#                            verse_num = '1'
+#                        verse_def = '%s%s' % (verse_tag, verse_num)
+#                    else:
+#                        if parts.endswith('\n'):
+#                            parts = parts.rstrip('\n')
+#                        item = QtGui.QTableWidgetItem(parts)
+#                        item.setData(QtCore.Qt.UserRole, verse_def)
+#                        self.verse_list_widget.setRowCount(self.verse_list_widget.rowCount() + 1)
+#                        self.verse_list_widget.setItem(self.verse_list_widget.rowCount() - 1, 0, item)
+#        self.tag_rows()
+#        self.verse_edit_button.setEnabled(False)
+#        self.verse_delete_button.setEnabled(False)
+#        # Check if all verse tags are used.
+#        self.on_verse_order_text_changed(self.verse_order_edit.text())
+
+
+    def on_verse_edit_all_chords_button_clicked(self):
         """
-        Verse edit all button (save) pressed
+        Verse edit all chords button (save) pressed
 
         :return:
         """
-        verse_list = ''
-        if self.verse_list_widget.rowCount() > 0:
-            for row in range(self.verse_list_widget.rowCount()):
-                item = self.verse_list_widget.item(row, 0)
-                field = item.data(QtCore.Qt.UserRole)
-                verse_tag = VerseType.translated_name(field[0])
-                verse_num = field[1:]
-                verse_list += '---[%s:%s]---\n' % (verse_tag, verse_num)
-                verse_list += item.text()
-                verse_list += '\n'
-            self.verse_form.set_verse(verse_list)
+
+        if not self.chords_and_lyrics == '':
+            self.verse_chords_form.set_verse(self.chords_and_lyrics)
         else:
-            self.verse_form.set_verse('')
-        if not self.verse_form.exec_():
+            verse_list = ''
+            if self.verse_list_widget.rowCount() > 0:
+                for row in range(self.verse_list_widget.rowCount()):
+                    item = self.verse_list_widget.item(row, 0)
+                    field = item.data(QtCore.Qt.UserRole)
+                    verse_tag = VerseType.translated_name(field[0])
+                    verse_num = field[1:]
+                    verse_list += '---[%s:%s]---\n' % (verse_tag, verse_num)
+                    verse_list += item.text()
+                    verse_list += '\n'
+                self.verse_chords_form.set_verse(verse_list)
+            else:
+                self.verse_chords_form.set_verse('')
+        if not self.verse_chords_form.exec_():
             return
-        verse_list = self.verse_form.get_all_verses()
-        verse_list = str(verse_list.replace('\r\n', '\n'))
+
+        verse_chords_list = self.verse_chords_form.get_all_verses()
+        verse_chords_list = str(verse_chords_list.replace('\r\n', '\n'))
+
+        # Update temporary storage of chords and lyrics information (update self.song and database
+        #  in save_song method)
+        self.chords_and_lyrics = verse_chords_list
+
+        # Strip out chord lines and # characters and update verse_list_widget
         self.verse_list_widget.clear()
         self.verse_list_widget.setRowCount(0)
-        for row in self.find_verse_split.split(verse_list):
+        for row in self.find_verse_split.split(verse_chords_list):
             for match in row.split('---['):
                 for count, parts in enumerate(match.split(']---\n')):
                     if count == 0:
+                        # Processing verse tag
                         if len(parts) == 0:
                             continue
                         # handling carefully user inputted versetags
@@ -778,27 +994,41 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
                             verse_num = '1'
                         verse_def = '%s%s' % (verse_tag, verse_num)
                     else:
+                        # Processing lyrics
                         if parts.endswith('\n'):
                             parts = parts.rstrip('\n')
-                        item = QtGui.QTableWidgetItem(parts)
+
+                        lyric_parts = ''
+                        for line in parts.split('\n'):
+                            if not line.rstrip().endswith('@'):
+                                # Add on next lyric line, removing any chord padding (#)
+                                lyric_parts += line.replace("#", "") + '\n'
+
+                        if lyric_parts.endswith('\n'):
+                            lyric_parts = lyric_parts.rstrip('\n')
+
+                        item = QtGui.QTableWidgetItem(lyric_parts)
                         item.setData(QtCore.Qt.UserRole, verse_def)
                         self.verse_list_widget.setRowCount(self.verse_list_widget.rowCount() + 1)
                         self.verse_list_widget.setItem(self.verse_list_widget.rowCount() - 1, 0, item)
+
         self.tag_rows()
-        self.verse_edit_button.setEnabled(False)
+#        self.verse_edit_button.setEnabled(False)
         self.verse_delete_button.setEnabled(False)
         # Check if all verse tags are used.
         self.on_verse_order_text_changed(self.verse_order_edit.text())
 
-    def on_verse_delete_button_clicked(self):
-        """
-        Verse Delete button pressed
 
-        """
-        self.verse_list_widget.removeRow(self.verse_list_widget.currentRow())
-        if not self.verse_list_widget.selectedItems():
-            self.verse_edit_button.setEnabled(False)
-            self.verse_delete_button.setEnabled(False)
+###    def on_verse_delete_button_clicked(self):
+###        """
+###        Verse Delete button pressed
+###
+###        """
+###        self.verse_list_widget.removeRow(self.verse_list_widget.currentRow())
+###        if not self.verse_list_widget.selectedItems():
+###            #self.verse_edit_button.setEnabled(False)
+###            self.verse_delete_button.setEnabled(False)
+
 
     def on_verse_order_text_changed(self, text):
         """
@@ -931,7 +1161,7 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         """
         if (self.song_key_edit.currentIndex() > -1) and (self.transpose_edit.value() != 0):
 
-            self.transposed_key_label.setText('Transposed to: ' + Ui_EditSongDialog.key_list[
+            self.transposed_key_label.setText('Transposed to: ' + Chords.key_list[
                 (self.song_key_edit.currentIndex() + self.transpose_edit.value()) % 12])
         else:
             self.transposed_key_label.setText('')
@@ -1006,6 +1236,7 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         else:
             self.song.theme_name = None
         self._process_lyrics()
+        self._process_chords()
         self.song.authors_songs = []
         for row in range(self.authors_list_view.count()):
             item = self.authors_list_view.item(row)
