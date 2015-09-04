@@ -75,8 +75,8 @@ class Chords(object):
         #      but E/G# instead of E/Ab (as G# is valid in the key of E)
 
         # Split chord into root note and the rest of the chord
-        if (len(chord) > 1) and (chord[1] == "b" or chord[1] == "#"):
-            root_note = chord[0].upper() + chord[1]
+        if (len(chord) > 1) and (chord[1].lower() == "b" or chord[1] == "#"):
+            root_note = chord[0].upper() + chord[1].lower()
             rem_chord = chord[2:]
         else:
             root_note = chord[0].upper()
@@ -84,10 +84,10 @@ class Chords(object):
 
         # Detect bass note, if any
         if rem_chord.find("/") != -1:
-            chord_mod = rem_chord[0:rem_chord.find("/")]
-            bass_note = rem_chord[rem_chord.find("/") + 1:].upper()
+            chord_mod = rem_chord[0:rem_chord.find("/")].lower()
+            bass_note = rem_chord[rem_chord.find("/") + 1:].capitalize()
         else:
-            chord_mod = rem_chord
+            chord_mod = rem_chord.lower()
             bass_note = ""
 
         # Adjust root note, if necessary, to be a valid note in the song key
@@ -117,8 +117,8 @@ class Chords(object):
         transposed_key = Chords.key_list[(Chords.key_list.index(root_key) + transpose_amount) % 12]
 
         # Split chord into root_note, modifier and bass_note
-        if (len(chord) > 1) and (chord[1] == "b" or chord[1] == "#"):
-            root_note = chord[0].upper() + chord[1]
+        if (len(chord) > 1) and (chord[1].lower() == "b" or chord[1] == "#"):
+            root_note = chord[0].upper() + chord[1].lower()
             rem_chord = chord[2:]
         else:
             root_note = chord[0].upper()
@@ -126,10 +126,10 @@ class Chords(object):
 
         # Detect bass note, if any
         if rem_chord.find("/") != -1:
-            chord_mod = rem_chord[0:rem_chord.find("/")]
-            bass_note = rem_chord[rem_chord.find("/") + 1:].upper()
+            chord_mod = rem_chord[0:rem_chord.find("/")].lower()
+            bass_note = rem_chord[rem_chord.find("/") + 1:].capitalize()
         else:
-            chord_mod = rem_chord
+            chord_mod = rem_chord.lower()
             bass_note = ""
 
         # Assume we are in C major and get the valid names for root_note and bass_note

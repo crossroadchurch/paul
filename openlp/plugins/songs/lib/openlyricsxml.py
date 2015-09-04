@@ -162,7 +162,7 @@ class OpenLyrics(object):
         OpenLP does not support the attribute *lang*.
 
     ``<chord>``
-        This property is not supported.
+        This property is fully supported.
 
     ``<comments>``
         The ``<comments>`` property is fully supported. But comments in lyrics are not supported.
@@ -199,7 +199,7 @@ class OpenLyrics(object):
         considered, but neither the *id* nor *lang*.
 
     ``<transposition>``
-        This property is not supported.
+        This property is fully supported.
 
     ``<variant>``
         This property is not supported.
@@ -301,7 +301,10 @@ class OpenLyrics(object):
             tags_element.set('application', 'OpenLP')
         # Process the song's lyrics.
         lyrics = etree.SubElement(song_xml, 'lyrics')
-        verse_list = sxml.get_verses(song.lyrics)
+        if song.chords:
+            verse_list = sxml.get_verses(song.chords)
+        else:
+            verse_list = sxml.get_verses(song.lyrics)
         # Add a suffix letter to each verse
         verse_tags = []
         for verse in verse_list:
@@ -322,7 +325,13 @@ class OpenLyrics(object):
             if 'lang' in verse[0]:
                 verse_element.set('lang', verse[0]['lang'])
             # Create a list with all "optional" verses.
-            optional_verses = html.escape(verse[1])
+            # Don't html.escape the chord tags
+            optional_verses = ''
+            for lyric_chord_part in re.split('(<[\w\+#"=// ]* />)', verse[1]):
+                if lyric_chord_part.startswith('<'):
+                    optional_verses += lyric_chord_part
+                else:
+                    optional_verses += html.escape(lyric_chord_part)
             optional_verses = optional_verses.split('\n[---]\n')
             start_tags = ''
             end_tags = ''
@@ -610,7 +619,7 @@ class OpenLyrics(object):
 
     def _process_lines_mixed_content(self, element, newlines=True):
         """
-        Converts the xml text with mixed content to OpenLP representation. Chords are skipped and formatting tags are
+        Converts the xml text with mixed content to OpenLP representation. Chords are included and formatting tags are
         converted.
 
         :param element: The property object (lxml.etree.Element).
@@ -625,8 +634,10 @@ class OpenLyrics(object):
                 # Append tail text at chord element.
                 text += element.tail
             return text
-        # Skip <chord> element - not yet supported.
+        # Process <chord> element.
         elif element.tag == NSMAP % 'chord':
+            text += '<chord name=\"' + element.get('name') + '\" />'
+
             if element.tail:
                 # Append tail text at chord element.
                 text += element.tail
@@ -768,7 +779,15 @@ class OpenLyrics(object):
         # We have to use a list to keep the order, as dicts are not sorted.
         for verse in verse_def_list:
             sxml.add_verse_to_lyrics(verse[0], verse[1], verses[verse], verse[2])
-        song_obj.lyrics = str(sxml.extract_xml(), 'utf-8')
+
+        # Determine if song has chords - if so store both chords and lyrics
+        if(str(sxml.extract_xml(), 'utf-8').find('<chord') > -1):
+            song_obj.chords = str(sxml.extract_xml(), 'utf-8')
+            # Remove chord tags and store in lyrics
+            song_obj.lyrics = ''.join(re.split('<chord[\w\+#"=// ]* />', str(sxml.extract_xml(), 'utf-8')))
+        else:
+            song_obj.lyrics = str(sxml.extract_xml(), 'utf-8')
+
         # Process verse order
         song_obj.verse_order = ' '.join(verse_order)
 
