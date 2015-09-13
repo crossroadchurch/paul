@@ -158,6 +158,7 @@ class HttpRouter(RegistryProperties):
             (r'^/main/image$', {'function': self.main_image, 'secure': False}),
             (r'^/api/controller/(live|preview)/text$', {'function': self.controller_text, 'secure': False}),
             (r'^/api/controller/(live|preview)/(.*)$', {'function': self.controller, 'secure': True}),
+            (r'^/api/controller/live_chords$', {'function': self.live_chords, 'secure': False}),
             (r'^/api/service/list$', {'function': self.service_list, 'secure': False}),
             (r'^/api/service/(.*)$', {'function': self.service, 'secure': True}),
             (r'^/api/display/(hide|show|blank|theme|desktop)$', {'function': self.display, 'secure': True}),
@@ -489,6 +490,43 @@ class HttpRouter(RegistryProperties):
             success = False
         self.do_json_header()
         return json.dumps({'results': {'success': success}}).encode()
+
+
+    def live_chords(self):
+        """
+        Return JSON of current song, including chords if used.
+        """
+        log.debug("live_chords")
+        current_item = self.live_controller.service_item
+
+        # Should we also package the service data here as well - songs only?
+
+        # current_item is a song that has been rendered into frames
+        # need to split the xml for the song into equal frames and then pass
+        # that to the JSON object as the html field.  Alternatively this might
+        # be better to do in serviceitem.py/render function (once for item, rather than once per call)
+
+        data = []
+        if current_item and current_item.get_plugin_name() == 'songs':
+            current_xml = current_item.get_item_xml()
+            for index, frame in enumerate(current_item.get_frames()):
+                item = {}
+                if frame['verseTag']:
+                    item['tag'] = str(frame['verseTag'])
+                else:
+                    item['tag'] = str(index + 1)
+                item['text'] = str(frame['text'])
+                item['html'] = str(frame['html'])
+                item['chords'] = str(frame['extraInfo']).replace("\"", "'")
+                item['selected'] = (self.live_controller.selected_row == index)
+                data.append(item)
+        json_data = {'results': {'slides': data}}
+        if current_item:
+            json_data['results']['item'] = self.live_controller.service_item.unique_identifier
+        self.do_json_header()
+        return json.dumps(json_data).encode()
+
+
 
     def controller_text(self, var):
         """

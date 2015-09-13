@@ -853,6 +853,42 @@ class OpenLyrics(object):
         return etree.tostring(xml, encoding='UTF-8', xml_declaration=True, pretty_print=True)
 
 
+    def song_to_line_dict(self, song):
+
+        song_xml = SongXML()
+        if song.chords:
+            verse_chords_xml = song_xml.get_verses(song.chords)
+        else:
+            verse_chords_xml = song_xml.get_verses(song.lyrics)
+
+        section_line_dict = {}
+        for count, verse in enumerate(verse_chords_xml):
+            # This silently migrates from localized verse type markup.
+            # If we trusted the database, this would be unnecessary.
+            verse_tag = verse[0]['type']
+            index = None
+            if len(verse_tag) > 1:
+                index = VerseType.from_translated_string(verse_tag)
+                if index is None:
+                    index = VerseType.from_string(verse_tag, None)
+                else:
+                    verse_tags_translated = True
+            if index is None:
+                index = VerseType.from_tag(verse_tag)
+            verse[0]['type'] = VerseType.tags[index]
+            if verse[0]['label'] == '':
+                verse[0]['label'] = '1'
+            section_header = '%s%s' % (verse[0]['type'], verse[0]['label'])
+
+            line_list = []
+            for line in verse[1].split('\n'):
+                line_list.append(line)
+
+            section_line_dict[section_header] = line_list
+
+        return section_line_dict
+
+
 class OpenLyricsError(Exception):
     # XML tree is missing the lyrics tag
     LyricsError = 1

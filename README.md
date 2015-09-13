@@ -21,3 +21,6 @@ A fork of OpenLP church projection software
 * Edit song dialog now supports Add/Edit/Delete sections again.
 
 * Minor changes to chord sanitization routine.
+
+*13 Sept 2015*
+* New route added to httprouter (Remote plugin): /api/controller/live_chords.  This returns the chords for the current song (inline with the lyrics), with slide breaks in the same places as in the regular projector output.

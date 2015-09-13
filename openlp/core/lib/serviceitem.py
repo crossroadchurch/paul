@@ -30,11 +30,13 @@ import logging
 import os
 import uuid
 import ntpath
+import re
 
 from PyQt4 import QtGui
 
 from openlp.core.common import RegistryProperties, Settings, translate, AppLocation, md5_hash
 from openlp.core.lib import ImageSource, build_icon, clean_tags, expand_tags, create_thumb
+from openlp.plugins.songs.lib.openlyricsxml import OpenLyrics
 
 log = logging.getLogger(__name__)
 
@@ -158,6 +160,7 @@ class ServiceItem(RegistryProperties):
         """
         if plugin:
             self.name = plugin.name
+            self.plugin = plugin
         self.title = ''
         self.processor = None
         self.audit = ''
@@ -196,6 +199,7 @@ class ServiceItem(RegistryProperties):
         self.timed_slide_interval = 0
         self.will_auto_start = False
         self.has_original_files = True
+        self.extra_data_dict = {}
         self._new_item()
 
     def _new_item(self):
@@ -220,6 +224,9 @@ class ServiceItem(RegistryProperties):
         :param capability: The capability to test for
         """
         return capability in self.capabilities
+
+    def set_extra_data_dict(self, data_dict):
+        self.extra_data_dict = data_dict
 
     def add_icon(self, icon):
         """
@@ -247,26 +254,82 @@ class ServiceItem(RegistryProperties):
             self.renderer.set_item_theme(self.theme)
             self.theme_data, self.main, self.footer = self.renderer.pre_render()
         if self.service_item_type == ServiceItemType.Text:
+            # TODO: Add branching code to cope with non-song ServiceItemType.Text objects
+            # if self.get_plugin_name() == 'songs' ...
             log.debug('Formatting slides: %s' % self.title)
             # Save rendered pages to this dict. In the case that a slide is used twice we can use the pages saved to
             # the dict instead of rendering them again.
-            previous_pages = {}
-            for slide in self._raw_frames:
-                verse_tag = slide['verseTag']
-                if verse_tag in previous_pages and previous_pages[verse_tag][0] == slide['raw_slide']:
-                    pages = previous_pages[verse_tag][1]
-                else:
-                    pages = self.renderer.format_slide(slide['raw_slide'], self)
-                    previous_pages[verse_tag] = (slide['raw_slide'], pages)
-                for page in pages:
-                    page = page.replace('<br>', '{br}')
-                    html_data = expand_tags(html.escape(page.rstrip()))
-                    self._display_frames.append({
-                        'title': clean_tags(page),
-                        'text': clean_tags(page.rstrip()),
-                        'html': html_data.replace('&amp;nbsp;', '&nbsp;'),
-                        'verseTag': verse_tag
-                    })
+
+            if self.get_plugin_name() == 'songs':
+
+                previous_pages = {}
+                for slide in self._raw_frames:
+                    verse_tag = slide['verseTag']
+                    if verse_tag in previous_pages and previous_pages[verse_tag][0] == slide['raw_slide']:
+                        pages = previous_pages[verse_tag][1]
+                    else:
+                        pages = self.renderer.format_slide(slide['raw_slide'], self)
+                        previous_pages[verse_tag] = (slide['raw_slide'], pages)
+
+                    xml_lines = self.extra_data_dict[verse_tag.lower()]
+                    xml_line_lower, xml_line_upper = 0, 0
+
+                    for page in pages:
+                        page_lines = page.split('<br>')
+
+                        # Given the current page_lines, calculate the corresponding xml_lines
+                        xml_segment = ''
+                        xml_line_lower = xml_line_upper
+
+                        for line in page_lines:
+                            while (xml_line_upper < len(xml_lines)) and not (''.join(re.split('<chord[\w\+#"=// ]* />', xml_lines[xml_line_upper])).strip() == line.strip()):
+                                xml_line_upper += 1
+
+                        xml_line_upper += 1
+                        page_xml = xml_lines[xml_line_lower: xml_line_upper]
+
+                        # Exclude any [br] or [---] elements from the XML list
+                        page_xml_short = []
+                        for item in page_xml:
+                            if item != 'br' and item != '[---]':
+                                page_xml_short.append(item)
+
+                        # Back to existing code...
+                        page = page.replace('<br>', '{br}')
+                        html_data = expand_tags(html.escape(page.rstrip()))
+                        self._display_frames.append({
+                            'title': clean_tags(page),
+                            'text': clean_tags(page.rstrip()),
+                            'html': html_data.replace('&amp;nbsp;', '&nbsp;'),
+                            'verseTag': verse_tag,
+                            'extraInfo': '<br>'.join(page_xml_short)
+                        })
+
+                        # Deal with any [br] tag in XML before processing next page
+                        # TODO: Check if we need to also do this for [---] tags
+                        if xml_line_upper < len(xml_lines) and xml_lines[xml_line_upper].strip() == '[br]':
+                            xml_line_upper += 1
+
+            else:
+                previous_pages = {}
+                for slide in self._raw_frames:
+                    verse_tag = slide['verseTag']
+                    if verse_tag in previous_pages and previous_pages[verse_tag][0] == slide['raw_slide']:
+                        pages = previous_pages[verse_tag][1]
+                    else:
+                        pages = self.renderer.format_slide(slide['raw_slide'], self)
+                        previous_pages[verse_tag] = (slide['raw_slide'], pages)
+
+                    for page in pages:
+                        page = page.replace('<br>', '{br}')
+                        html_data = expand_tags(html.escape(page.rstrip()))
+                        self._display_frames.append({
+                            'title': clean_tags(page),
+                            'text': clean_tags(page.rstrip()),
+                            'html': html_data.replace('&amp;nbsp;', '&nbsp;'),
+                            'verseTag': verse_tag,
+                        })
+
         elif self.service_item_type == ServiceItemType.Image or self.service_item_type == ServiceItemType.Command:
             pass
         else:
@@ -335,6 +398,19 @@ class ServiceItem(RegistryProperties):
         self._raw_frames.append({'title': file_name, 'image': image, 'path': path,
                                  'display_title': display_title, 'notes': notes})
         self._new_item()
+
+
+    def get_item_xml(self):
+        if self.xml_version:
+            return self.xml_version
+        else:
+            return ''
+
+    def get_plugin_name(self):
+        if self.name:
+            return self.name
+        else:
+            return ''
 
     def get_service_repr(self, lite_save):
         """

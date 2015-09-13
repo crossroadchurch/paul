@@ -463,6 +463,7 @@ class SongMediaItem(MediaManagerItem):
         service_item.title = song.title
         author_list = self.generate_footer(service_item, song)
         service_item.data_string = {'title': song.search_title, 'authors': ', '.join(author_list)}
+        service_item.set_extra_data_dict(self.open_lyrics.song_to_line_dict(song))
         service_item.xml_version = self.open_lyrics.song_to_xml(song)
         # Add the audio file to the service item.
         if song.media_files:
