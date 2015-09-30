@@ -161,6 +161,8 @@ class ServiceItem(RegistryProperties):
         if plugin:
             self.name = plugin.name
             self.plugin = plugin
+        else:
+            self.name = '' # Added to stop crash when trying to edit template
         self.title = ''
         self.processor = None
         self.audit = ''
@@ -254,13 +256,36 @@ class ServiceItem(RegistryProperties):
             self.renderer.set_item_theme(self.theme)
             self.theme_data, self.main, self.footer = self.renderer.pre_render()
         if self.service_item_type == ServiceItemType.Text:
-            # TODO: Add branching code to cope with non-song ServiceItemType.Text objects
-            # if self.get_plugin_name() == 'songs' ...
             log.debug('Formatting slides: %s' % self.title)
             # Save rendered pages to this dict. In the case that a slide is used twice we can use the pages saved to
             # the dict instead of rendering them again.
 
             if self.get_plugin_name() == 'songs':
+                if not self.extra_data_dict:
+                    self.extra_data_dict = {}
+                    if not self.xml_version.startswith('<?xml') and not self.xml_version.startswith('<song'):
+                        # This is an old style song, without XML.
+                        verses = self.xml_version.split('\n\n')
+                        for count, verse in enumerate(verses):
+                            self.extra_data_dict['v' + str(count)] = str(verse).split('\n')
+
+                    elif self.xml_version.startswith('<?xml'):
+                        # New style song, output as XML.
+                        song_xml_split = re.split('(<verse[\w"= ]*>)', self.xml_version)
+                        current_section = ''
+
+                        for song_part in song_xml_split:
+                            if song_part.startswith("<verse name"):
+                                current_section = song_part.replace('<verse name="', '').replace('">', '')
+                            elif song_part.startswith("<lines"):
+                                # New line needed between <lines> sections
+                                song_part = song_part.replace('</lines><line', '</lines><br/><line')
+                                # Split out <lines>, </lines>, </verse>, </lyrics> and </song> tags
+                                song_part = ''.join(re.split('<lines[\w"= ]*>', song_part))
+                                song_part = song_part.replace('</lines>','').replace('</verse>', '')
+                                song_part = song_part.replace('</lyrics>','').replace('</song>', '')
+                                # Convert to list
+                                self.extra_data_dict[current_section] = song_part.split('<br/>')
 
                 previous_pages = {}
                 for slide in self._raw_frames:
@@ -291,10 +316,9 @@ class ServiceItem(RegistryProperties):
                         # Exclude any [br] or [---] elements from the XML list
                         page_xml_short = []
                         for item in page_xml:
-                            if item != 'br' and item != '[---]':
+                            if item != '[br]' and item != '[---]':
                                 page_xml_short.append(item)
 
-                        # Back to existing code...
                         page = page.replace('<br>', '{br}')
                         html_data = expand_tags(html.escape(page.rstrip()))
                         self._display_frames.append({

@@ -24,3 +24,8 @@ A fork of OpenLP church projection software
 
 *13 Sept 2015*
 * New route added to httprouter (Remote plugin): /api/controller/live_chords.  This returns the chords for the current song (inline with the lyrics), with slide breaks in the same places as in the regular projector output.
+
+*30 Sept 2015*
+* Bug fix - Opening a service plan no longer crashes OpenLP.
+* Bug fix - Editing a template no longer crashes OpenLP.
+* Disabled OpenLP version checking thread.
