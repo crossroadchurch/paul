@@ -37,6 +37,7 @@ from PyQt4 import QtGui
 from openlp.core.common import RegistryProperties, Settings, translate, AppLocation, md5_hash
 from openlp.core.lib import ImageSource, build_icon, clean_tags, expand_tags, create_thumb
 from openlp.plugins.songs.lib.openlyricsxml import OpenLyrics
+from openlp.plugins.songs.lib.chords import Chords
 
 log = logging.getLogger(__name__)
 
@@ -288,6 +289,25 @@ class ServiceItem(RegistryProperties):
                                 self.extra_data_dict[current_section] = song_part.split('<br/>')
 
                 previous_pages = {}
+                
+                # Get key and transpose amount, if used in this song
+                if "<key>" in self.xml_version:
+                    current_key = self.xml_version[(self.xml_version.index('<key>') + 5):(self.xml_version.index('<key>')+7)]
+                    if current_key[1] == '<':
+                        current_key = current_key[0]
+                else:
+                    current_key = ''
+                
+                if "<transposition>" in self.xml_version:
+                    current_transpose = self.xml_version[(self.xml_version.index('<transposition>') + 15):(self.xml_version.index('<transposition>')+18)]
+                    # Possible options: 1,...,9, 10, 11, -1, ... -9, -10, -11
+                    if current_transpose[1] == '<':
+                        current_transpose = int(current_transpose[0])
+                    elif current_transpose[2] == '<':
+                        current_transpose = int(current_transpose[0:2])
+                else:
+                    current_transpose = 0
+                
                 for slide in self._raw_frames:
                     verse_tag = slide['verseTag']
                     if verse_tag in previous_pages and previous_pages[verse_tag][0] == slide['raw_slide']:
@@ -317,7 +337,19 @@ class ServiceItem(RegistryProperties):
                         page_xml_short = []
                         for item in page_xml:
                             if item != '[br]' and item != '[---]':
-                                page_xml_short.append(item)
+								# split item by chord tags, then transpose each chord tag
+                                if current_transpose != 0:
+                                    item_sections = re.split('(<chord[\w\+#"=// ]* />)', item)                                   
+                                    transposed_item = ''
+                                    
+                                    for item_section in item_sections:
+                                        if item_section.startswith('<chord name'):
+                                            transposed_item = transposed_item + Chords.transpose_chord_tag(item_section, current_key, current_transpose)
+                                        else:
+                                            transposed_item = transposed_item + item_section
+                                    page_xml_short.append(transposed_item)
+                                else:
+                                    page_xml_short.append(item)
 
                         page = page.replace('<br>', '{br}')
                         html_data = expand_tags(html.escape(page.rstrip()))

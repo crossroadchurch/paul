@@ -29,3 +29,6 @@ A fork of OpenLP church projection software
 * Bug fix - Opening a service plan no longer crashes OpenLP.
 * Bug fix - Editing a template no longer crashes OpenLP.
 * Disabled OpenLP version checking thread.
+
+*19 Oct 2015*
+* /api/controller/live_chords now returns the transposed chords for the current song, if a transpose amount has been selected for the song.

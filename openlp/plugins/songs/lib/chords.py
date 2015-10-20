@@ -107,6 +107,17 @@ class Chords(object):
         return chord
 
 
+    def transpose_chord_tag(chord_tag, root_key, transpose_amount):
+        """
+        Method to transpose and return a chord tag in a given root_key by a specified number of semitones.
+        The returned chord tag will be a valid chord in the transposed key.
+        Pre-condition: root_key is a member of key_list
+        """
+        
+        chord_tag_sections = chord_tag.split('\"')
+        return '<chord name = \"' +  Chords.transpose_chord(chord_tag_sections[1], root_key, transpose_amount) + '\" />'
+		
+		
     def transpose_chord(chord, root_key, transpose_amount):
         """
         Method to transpose and return a chord in a given root_key by a specified number of semitones.
@@ -114,7 +125,7 @@ class Chords(object):
         Pre-condition: root_key is a member of key_list
         """
 
-        transposed_key = Chords.key_list[(Chords.key_list.index(root_key) + transpose_amount) % 12]
+        transposed_key = Chords.key_list[(Chords.key_list.index(root_key) + int(transpose_amount)) % 12]
 
         # Split chord into root_note, modifier and bass_note
         if (len(chord) > 1) and (chord[1].lower() == "b" or chord[1] == "#"):
@@ -136,12 +147,12 @@ class Chords(object):
         # Then transpose root_note and bass_note by transpose_amount in C major
         if root_note in Chords.invalid_note_names['C']:
             root_note = Chords.notes_replacements[root_note]
-        root_note = Chords.key_list[(Chords.key_list.index(root_note) + transpose_amount) % 12]
+        root_note = Chords.key_list[(Chords.key_list.index(root_note) + int(transpose_amount)) % 12]
 
         if bass_note != "":
             if bass_note in Chords.invalid_note_names['C']:
                 bass_note = Chords.notes_replacements[bass_note]
-            bass_note = Chords.key_list[(Chords.key_list.index(bass_note) + transpose_amount) % 12]
+            bass_note = Chords.key_list[(Chords.key_list.index(bass_note) + int(transpose_amount)) % 12]
 
         # Reform chord and sanitize in transposed key
         transposed_chord = root_note + chord_mod
