@@ -28,7 +28,7 @@ import os
 from PyQt4 import QtCore, QtGui
 
 from openlp.core.common import Registry, RegistryProperties, UiStrings, translate
-from openlp.core.lib.theme import BackgroundType, BackgroundGradientType
+from openlp.core.lib.theme import BackgroundType, BackgroundGradientType, PositionType
 from openlp.core.lib.ui import critical_error_message_box
 from openlp.core.ui import ThemeLayoutForm
 from openlp.core.utils import get_images_filter, is_not_image_file
@@ -88,6 +88,8 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard, RegistryProperties):
         self.main_font_combo_box.activated.connect(self.calculate_lines)
         self.footer_font_combo_box.activated.connect(self.update_theme)
         self.footer_size_spin_box.valueChanged.connect(self.update_theme)
+        self.main_position_method.currentIndexChanged.connect(self.on_main_position_method_changed)
+        
 
     def set_defaults(self):
         """
@@ -123,6 +125,7 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard, RegistryProperties):
         self.main_area_page.registerField('shadow_color_button', self.shadow_color_button)
         self.main_area_page.registerField('shadow_size_spin_box', self.shadow_size_spin_box)
         self.main_area_page.registerField('footer_size_spin_box', self.footer_size_spin_box)
+        self.area_position_page.registerField('main_position_method', self.main_position_method)
         self.area_position_page.registerField('main_position_x', self.main_x_spin_box)
         self.area_position_page.registerField('main_position_y', self.main_y_spin_box)
         self.area_position_page.registerField('main_position_width', self.main_width_spin_box)
@@ -135,7 +138,7 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard, RegistryProperties):
         self.background_page.registerField('vertical', self.vertical_combo_box)
         self.background_page.registerField('slide_transition', self.transitions_check_box)
         self.background_page.registerField('name', self.theme_name_edit)
-
+    
     def calculate_lines(self):
         """
         Calculate the number of lines on a page by rendering text
@@ -252,6 +255,51 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard, RegistryProperties):
         """
         if self.update_theme_allowed:
             self.theme.font_footer_override = not (value == QtCore.Qt.Checked)
+            
+    
+    def on_main_position_method_changed(self, index):
+        """
+        Change labels for data fields based on position method chosen
+        """
+        if self.pos_type != index:
+            # Save old values before loading new ones
+            self.position_data[self.pos_type][0] = self.field('main_position_x')
+            self.position_data[self.pos_type][1] = self.field('main_position_y')
+            self.position_data[self.pos_type][2] = self.field('main_position_width')
+            self.position_data[self.pos_type][3] = self.field('main_position_height')
+        if index == PositionType.Classic:
+            self.main_x_label.setText(translate('OpenLP.ThemeWizard', 'X position:'))
+            self.main_y_label.setText(translate('OpenLP.ThemeWizard', 'Y position:'))
+            self.main_width_label.setText(translate('OpenLP.ThemeWizard', 'Width:'))
+            self.main_height_label.setText(translate('OpenLP.ThemeWizard', 'Height:'))
+            self.main_x_spin_box.setSuffix(translate('OpenLP.ThemeWizard', 'px'))
+            self.main_y_spin_box.setSuffix(translate('OpenLP.ThemeWizard', 'px'))
+            self.main_width_spin_box.setSuffix(translate('OpenLP.ThemeWizard', 'px'))
+            self.main_height_spin_box.setSuffix(translate('OpenLP.ThemeWizard', 'px'))
+        elif index == PositionType.Margins:
+            self.main_x_label.setText(translate('OpenLP.ThemeWizard', 'Left margin:'))
+            self.main_y_label.setText(translate('OpenLP.ThemeWizard', 'Top margin:'))
+            self.main_width_label.setText(translate('OpenLP.ThemeWizard', 'Right margin:'))
+            self.main_height_label.setText(translate('OpenLP.ThemeWizard', 'Bottom margin:'))
+            self.main_x_spin_box.setSuffix(translate('OpenLP.ThemeWizard', 'px'))
+            self.main_y_spin_box.setSuffix(translate('OpenLP.ThemeWizard', 'px'))
+            self.main_width_spin_box.setSuffix(translate('OpenLP.ThemeWizard', 'px'))
+            self.main_height_spin_box.setSuffix(translate('OpenLP.ThemeWizard', 'px'))
+        elif index == PositionType.Proportional:
+            self.main_x_label.setText(translate('OpenLP.ThemeWizard', 'Left margin:'))
+            self.main_y_label.setText(translate('OpenLP.ThemeWizard', 'Top margin:'))
+            self.main_width_label.setText(translate('OpenLP.ThemeWizard', 'Right margin:'))
+            self.main_height_label.setText(translate('OpenLP.ThemeWizard', 'Bottom margin:'))
+            self.main_x_spin_box.setSuffix(translate('OpenLP.ThemeWizard', '%'))
+            self.main_y_spin_box.setSuffix(translate('OpenLP.ThemeWizard', '%'))
+            self.main_width_spin_box.setSuffix(translate('OpenLP.ThemeWizard', '%'))
+            self.main_height_spin_box.setSuffix(translate('OpenLP.ThemeWizard', '%')) 
+        self.setField('main_position_x', self.position_data[index][0])
+        self.setField('main_position_y', self.position_data[index][1])
+        self.setField('main_position_width', self.position_data[index][2])
+        self.setField('main_position_height', self.position_data[index][3])
+        self.setField('main_position_method', index)
+        self.pos_type = index
 
     def exec_(self, edit=False):
         """
@@ -348,16 +396,35 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard, RegistryProperties):
         """
         # Main Area
         self.main_position_check_box.setChecked(not self.theme.font_main_override)
-        self.setField('main_position_x', self.theme.font_main_x)
-        self.setField('main_position_y', self.theme.font_main_y)
-        self.setField('main_position_height', self.theme.font_main_height)
-        self.setField('main_position_width', self.theme.font_main_width)
+        self.position_data = [[20, 20, 940, 680],[20, 20, 20, 20],[5, 5, 5, 5]] # Default values for the different position methods
+        if hasattr(self.theme, "font_main_pos_type"):
+            # This is the new format of the file, including the position tag
+            self.pos_type = PositionType.Names.index(self.theme.font_main_pos_type)
+            self.position_data[self.pos_type] = [int(self.theme.font_main_data1),
+                                                 int(self.theme.font_main_data2),
+                                                 int(self.theme.font_main_data3),
+                                                 int(self.theme.font_main_data4)]
+            
+        else:
+            # Old style theme file
+            self.pos_type = 0
+            self.position_data[0] = [int(self.theme.font_main_x),
+                                     int(self.theme.font_main_y),
+                                     int(self.theme.font_main_width),
+                                     int(self.theme.font_main_height)]
+                             
+        self.setField('main_position_method', self.pos_type)
+        self.setField('main_position_x', self.position_data[self.pos_type][0])
+        self.setField('main_position_y', self.position_data[self.pos_type][1])
+        self.setField('main_position_width', self.position_data[self.pos_type][2])
+        self.setField('main_position_height', self.position_data[self.pos_type][3])
         # Footer
         self.footer_position_check_box.setChecked(not self.theme.font_footer_override)
         self.setField('footer_position_x', self.theme.font_footer_x)
         self.setField('footer_position_y', self.theme.font_footer_y)
-        self.setField('footer_position_height', self.theme.font_footer_height)
         self.setField('footer_position_width', self.theme.font_footer_width)
+        self.setField('footer_position_height', self.theme.font_footer_height)
+
 
     def set_alignment_page_values(self):
         """
@@ -467,7 +534,7 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard, RegistryProperties):
     def update_theme(self):
         """
         Update the theme object from the UI for fields not already updated
-        when the are changed.
+        when they are changed.
         """
         if not self.update_theme_allowed:
             return
@@ -484,6 +551,11 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard, RegistryProperties):
         self.theme.font_footer_name = self.footer_font_combo_box.currentFont().family()
         self.theme.font_footer_size = self.field('footer_size_spin_box')
         # position page
+        self.theme.font_main_pos_type = PositionType.Names[self.field('main_position_method')]
+        self.theme.font_main_data1 = self.field('main_position_x')
+        self.theme.font_main_data2 = self.field('main_position_y')
+        self.theme.font_main_data3 = self.field('main_position_width')
+        self.theme.font_main_data4 = self.field('main_position_height')
         self.theme.font_main_x = self.field('main_position_x')
         self.theme.font_main_y = self.field('main_position_y')
         self.theme.font_main_height = self.field('main_position_height')

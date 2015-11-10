@@ -139,11 +139,21 @@ class VerticalType(object):
 
     Names = ['top', 'middle', 'bottom']
 
+class PositionType(object):
+    """
+    Type enumeration for position methods.
+    """
+    Classic = 0
+    Margins = 1
+    Proportional = 2
+    
+    Names = ['classic', 'margins', 'proportional']
+    
 
 BOOLEAN_LIST = ['bold', 'italics', 'override', 'outline', 'shadow', 'slide_transition']
 
 INTEGER_LIST = ['size', 'line_adjustment', 'x', 'height', 'y', 'width', 'shadow_size', 'outline_size',
-                'horizontal_align', 'vertical_align', 'wrap_style']
+                'horizontal_align', 'vertical_align', 'data1', 'data2', 'data3', 'data4', 'wrap_style']
 
 
 class ThemeXML(object):
@@ -318,6 +328,73 @@ class ThemeXML(object):
         element.appendChild(value)
         background.appendChild(element)
 
+
+    def add_font_position_options(self, name, color, size, override, fonttype='main', bold='False', italics='False',
+                              line_adjustment=0, pos_type=0, data1=0, data2=0, data3=0, data4=0, outline='False', 
+                              outline_color='#ffffff', outline_pixel=2, shadow='False', shadow_color='#ffffff', shadow_pixel=5):
+        """
+        Add a Font.
+
+        :param name: The name of the font.
+        :param color: The colour of the font.
+        :param size: The size of the font.
+        :param override: Whether or not to override the default positioning of the theme.
+        :param fonttype: The type of font, ``main`` or ``footer``. Defaults to ``main``.
+        :param bold:
+        :param italics: The weight of then font Defaults to 50 Normal
+        :param line_adjustment: Does the font render to italics Defaults to 0 Normal
+        :param pos_type: The method used to specify the text block position (can be classic, margins or proportional)
+        :param data1: The X position of the text block (Classic) or the Left margin in pixels (Margins) or as a percentage of the screen width (Proportional)
+        :param data2: The Y position of the text block (Classic) or the Top margin in pixels (Margins) or as a percentage of the screen height (Proportional)
+        :param data3: The width of the text block (Classic) or the Right margin in pixels (Margins) or as a percentage of the screen width (Proportional)
+        :param data4: The height of the text block (Classic) or the Bottom margin in pixels (Margins) or as a percentage of the screen height (Proportional).
+        :param outline: Whether or not to show an outline.
+        :param outline_color: The colour of the outline.
+        :param outline_pixel:  How big the Shadow is
+        :param shadow: Whether or not to show a shadow.
+        :param shadow_color: The colour of the shadow.
+        :param shadow_pixel: How big the Shadow is
+        """
+        background = self.theme_xml.createElement('font')
+        background.setAttribute('type', fonttype)
+        self.theme.appendChild(background)
+        # Create Font name element
+        self.child_element(background, 'name', name)
+        # Create Font color element
+        self.child_element(background, 'color', str(color))
+        # Create Proportion name element
+        self.child_element(background, 'size', str(size))
+        # Create weight name element
+        self.child_element(background, 'bold', str(bold))
+        # Create italics name element
+        self.child_element(background, 'italics', str(italics))
+        # Create indentation name element
+        self.child_element(background, 'line_adjustment', str(line_adjustment))
+        # Create Location element
+        element = self.theme_xml.createElement('position')
+        element.setAttribute('override', str(override))
+        element.setAttribute('pos_type', str(pos_type))
+        element.setAttribute('data1', str(data1))
+        element.setAttribute('data2', str(data2))
+        element.setAttribute('data3', str(data3))
+        element.setAttribute('data4', str(data4))
+        background.appendChild(element)
+        # Shadow
+        element = self.theme_xml.createElement('shadow')
+        element.setAttribute('shadowColor', str(shadow_color))
+        element.setAttribute('shadowSize', str(shadow_pixel))
+        value = self.theme_xml.createTextNode(str(shadow))
+        element.appendChild(value)
+        background.appendChild(element)
+        # Outline
+        element = self.theme_xml.createElement('outline')
+        element.setAttribute('outlineColor', str(outline_color))
+        element.setAttribute('outlineSize', str(outline_pixel))
+        value = self.theme_xml.createTextNode(str(outline))
+        element.appendChild(value)
+        background.appendChild(element)        
+        
+        
     def add_display(self, horizontal, vertical, transition):
         """
         Add a Display options.
@@ -514,7 +591,7 @@ class ThemeXML(object):
             self.add_background_image(filename, self.background_border_color)
         elif self.background_type == BackgroundType.to_string(BackgroundType.Transparent):
             self.add_background_transparent()
-        self.add_font(
+        self.add_font_position_options(
             self.font_main_name,
             self.font_main_color,
             self.font_main_size,
@@ -522,10 +599,11 @@ class ThemeXML(object):
             self.font_main_bold,
             self.font_main_italics,
             self.font_main_line_adjustment,
-            self.font_main_x,
-            self.font_main_y,
-            self.font_main_width,
-            self.font_main_height,
+            self.font_main_pos_type,
+            self.font_main_data1,
+            self.font_main_data2,
+            self.font_main_data3,
+            self.font_main_data4,
             self.font_main_outline,
             self.font_main_outline_color,
             self.font_main_outline_size,

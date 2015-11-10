@@ -27,6 +27,7 @@ from openlp.core.common import Registry, RegistryProperties, OpenLPMixin, Regist
 from openlp.core.lib import FormattingTags, ImageSource, ItemCapabilities, ScreenList, ServiceItem, expand_tags, \
     build_lyrics_format_css, build_lyrics_outline_css
 from openlp.core.common import ThemeLevel
+from openlp.core.lib.theme import PositionType
 from openlp.core.ui import MainDisplay
 
 VERSE = 'The Lord said to {r}Noah{/r}: \n' \
@@ -370,8 +371,28 @@ class Renderer(OpenLPMixin, RegistryMixin, RegistryProperties):
         if not theme_data.font_main_override:
             return QtCore.QRect(10, 0, self.width - 20, self.footer_start)
         else:
-            return QtCore.QRect(theme_data.font_main_x, theme_data.font_main_y,
-                                theme_data.font_main_width - 1, theme_data.font_main_height - 1)
+            if hasattr(theme_data, 'font_main_pos_type'):
+                # New style theme
+                if theme_data.font_main_pos_type == PositionType.Names[PositionType.Margins]:
+                    return QtCore.QRect(theme_data.font_main_data1,
+                                        theme_data.font_main_data2,
+                                        self.width - (theme_data.font_main_data1 + theme_data.font_main_data3),
+                                        self.height - (theme_data.font_main_data2 + theme_data.font_main_data4))
+                                        
+                elif theme_data.font_main_pos_type == PositionType.Names[PositionType.Proportional]:
+                    return QtCore.QRect(self.width * (theme_data.font_main_data1 / 100),
+                                        self.height * (theme_data.font_main_data2 / 100),
+                                        self.width * ((100 - theme_data.font_main_data1 - theme_data.font_main_data3) / 100),
+                                        self.height * ((100 - theme_data.font_main_data2 - theme_data.font_main_data4) / 100))
+                    
+                else:
+                    return QtCore.QRect(theme_data.font_main_data1, theme_data.font_main_data2,
+                                        theme_data.font_main_data3, theme_data.font_main_data4)
+                                        
+            else:
+                # Old style theme
+                return QtCore.QRect(theme_data.font_main_x, theme_data.font_main_y,
+                                    theme_data.font_main_width - 1, theme_data.font_main_height - 1)
 
     def get_footer_rectangle(self, theme_data):
         """

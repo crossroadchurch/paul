@@ -7,9 +7,7 @@ A fork of OpenLP church projection software
 
 *22 Aug 2015*
 * Changed data directory to openlp-paul so that Paul can run alongside OpenLP 2.0
-
 * Songs now have a key and transpose amount, which the user can edit.
-
 * Song key, transpose amount supported for import from and export to OpenLyrics format (openlyrics.info for full XML description), as well as import from OpenLP format (.sqlite database)
 
 *01 Sept 2015*
@@ -17,9 +15,7 @@ A fork of OpenLP church projection software
 
 *04 Sept 2015*
 * Songs with chords can now be exported to and imported from the OpenLyrics format.
-
 * Edit song dialog now supports Add/Edit/Delete sections again.
-
 * Minor changes to chord sanitization routine.
 
 *13 Sept 2015*
@@ -32,3 +28,9 @@ A fork of OpenLP church projection software
 
 *19 Oct 2015*
 * /api/controller/live_chords now returns the transposed chords for the current song, if a transpose amount has been selected for the song.
+
+*10 Nov 2015*
+* In the Theme Wizard, the user can now choose between three different ways of specifying the song area dimensions (Classic, Margins, Proportional).
+
+* Known issues*
+* If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.

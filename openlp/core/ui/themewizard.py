@@ -26,7 +26,7 @@ from PyQt4 import QtCore, QtGui
 
 from openlp.core.common import UiStrings, translate, is_macosx
 from openlp.core.lib import build_icon, ColorButton
-from openlp.core.lib.theme import HorizontalType, BackgroundType, BackgroundGradientType
+from openlp.core.lib.theme import HorizontalType, BackgroundType, BackgroundGradientType, PositionType
 from openlp.core.lib.ui import add_welcome_page, create_valign_selection_widgets
 
 
@@ -274,6 +274,14 @@ class Ui_ThemeWizard(object):
         self.main_position_check_box = QtGui.QCheckBox(self.main_position_group_box)
         self.main_position_check_box.setObjectName('main_position_check_box')
         self.main_position_layout.addRow(self.main_position_check_box)
+        
+        self.main_position_method_label = QtGui.QLabel(self.main_position_group_box)
+        self.main_position_method_label.setObjectName('main_position_method_label')
+        self.main_position_method = QtGui.QComboBox(self.main_position_group_box)
+        self.main_position_method.addItems(['','',''])
+        self.main_position_method.setObjectName('main_position_method')
+        self.main_position_layout.addRow(self.main_position_method_label, self.main_position_method)
+        
         self.main_x_label = QtGui.QLabel(self.main_position_group_box)
         self.main_x_label.setObjectName('main_x_label')
         self.main_x_spin_box = QtGui.QSpinBox(self.main_position_group_box)
@@ -371,6 +379,8 @@ class Ui_ThemeWizard(object):
                                QtCore.SLOT('setEnabled(bool)'))
         QtCore.QObject.connect(self.shadow_check_box, QtCore.SIGNAL('toggled(bool)'), self.shadow_size_spin_box,
                                QtCore.SLOT('setEnabled(bool)'))
+        QtCore.QObject.connect(self.main_position_check_box, QtCore.SIGNAL('toggled(bool)'), self.main_position_method,
+                               QtCore.SLOT('setDisabled(bool)'))
         QtCore.QObject.connect(self.main_position_check_box, QtCore.SIGNAL('toggled(bool)'), self.main_x_spin_box,
                                QtCore.SLOT('setDisabled(bool)'))
         QtCore.QObject.connect(self.main_position_check_box, QtCore.SIGNAL('toggled(bool)'), self.main_y_spin_box,
@@ -463,6 +473,12 @@ class Ui_ThemeWizard(object):
                                                       ' Main and Footer areas.'))
         self.main_position_group_box.setTitle(translate('OpenLP.ThemeWizard', '&Main Area'))
         self.main_position_check_box.setText(translate('OpenLP.ThemeWizard', '&Use default location'))
+        
+        self.main_position_method_label.setText(translate('OpenLP.ThemeWizard', 'Position method:'))
+        self.main_position_method.setItemText(PositionType.Classic, translate('OpenLP.ThemeWizard', 'Classic'))
+        self.main_position_method.setItemText(PositionType.Margins, translate('OpenLP.ThemeWizard', 'Margins'))
+        self.main_position_method.setItemText(PositionType.Proportional, translate('OpenLP.ThemeWizard', 'Proportional'))
+        
         self.main_x_label.setText(translate('OpenLP.ThemeWizard', 'X position:'))
         self.main_x_spin_box.setSuffix(translate('OpenLP.ThemeWizard', 'px'))
         self.main_y_spin_box.setSuffix(translate('OpenLP.ThemeWizard', 'px'))
