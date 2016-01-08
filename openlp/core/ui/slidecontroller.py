@@ -1102,6 +1102,8 @@ class SlideController(DisplayController, RegistryProperties):
                     self.service_item.bg_image_bytes = None
             self.selected_row = row
             self.update_preview()
+            if self.is_live:
+                self.service_manager.last_update_count += 1
             self.preview_widget.change_slide(row)
         self.display.setFocus()
         # Release lock

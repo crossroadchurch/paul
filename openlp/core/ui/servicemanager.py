@@ -323,6 +323,11 @@ class ServiceManager(OpenLPMixin, RegistryMixin, QtGui.QWidget, Ui_ServiceManage
         self._modified = False
         self._file_name = ''
         self.service_has_all_original_files = True
+        # Variables for JSON chord view in remotes
+        self.last_update_count = -1
+        self.stored_chord_json_data = {}
+        self.stored_update_id = -2
+
 
     def bootstrap_initialise(self):
         """

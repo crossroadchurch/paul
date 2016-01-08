@@ -32,5 +32,12 @@ A fork of OpenLP church projection software
 *10 Nov 2015*
 * In the Theme Wizard, the user can now choose between three different ways of specifying the song area dimensions (Classic, Margins, Proportional).
 
-* Known issues*
+*08 Jan 2016*
+* Removed /api/controller/live_chords route.
+* Added /silas/{unique_id} route.  Returns musician oriented view of the live controller.  Slide data includes (transposed) chords, where used.  The song_order indicates current position with parentheses e.g. V1 (C1) V2.  Possible JSON-encoded dicts are:
+  * {"status": "inactive"} - if live controller not active, else:
+  * {"status": "current"} - no updates have occurred, based on value of {unique_id}, else:
+  * {"status": "update", "update_id": new update_id, "current_slide": "...", "next_slide": "...", "song_order": "..."}
+
+*Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.

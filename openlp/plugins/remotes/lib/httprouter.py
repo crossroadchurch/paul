@@ -104,6 +104,23 @@ the remotes.
         current service in a JSON-encoded dict like this::
 
             {"results": {"items": [{...}, {...}]}}
+
+``/silas/{update_id}``
+    Fetch musician oriented view of the live controller. Returned JSON-encoded
+    dicts are as follows:
+
+        Live controller not active:
+            {"status" : "inactive"}
+
+        Live controller active, {update_id} not current
+            {"status" : "update",
+             "update_id": current update_id,
+             "current_slide": current slide info including chords,
+             "next_slide": next slide info including chords,
+             "song_order": song order with current slide indicated by parentheses e.g. "V1 C1 (V2) C1"}
+
+        Live controller active, {update_id} is current
+            {"status": "current"}
 """
 import base64
 import json
@@ -158,7 +175,6 @@ class HttpRouter(RegistryProperties):
             (r'^/main/image$', {'function': self.main_image, 'secure': False}),
             (r'^/api/controller/(live|preview)/text$', {'function': self.controller_text, 'secure': False}),
             (r'^/api/controller/(live|preview)/(.*)$', {'function': self.controller, 'secure': True}),
-            (r'^/api/controller/live_chords$', {'function': self.live_chords, 'secure': False}),
             (r'^/api/service/list$', {'function': self.service_list, 'secure': False}),
             (r'^/api/service/(.*)$', {'function': self.service, 'secure': True}),
             (r'^/api/display/(hide|show|blank|theme|desktop)$', {'function': self.display, 'secure': True}),
@@ -166,7 +182,8 @@ class HttpRouter(RegistryProperties):
             (r'^/api/plugin/(search)$', {'function': self.plugin_info, 'secure': False}),
             (r'^/api/(.*)/search$', {'function': self.search, 'secure': False}),
             (r'^/api/(.*)/live$', {'function': self.go_live, 'secure': True}),
-            (r'^/api/(.*)/add$', {'function': self.add_to_service, 'secure': True})
+            (r'^/api/(.*)/add$', {'function': self.add_to_service, 'secure': True}),
+            (r'^/silas/(.*)$', {'function': self.process_chord_view, 'secure': False})
         ]
         self.settings_section = 'remotes'
         self.translate()
@@ -493,43 +510,6 @@ class HttpRouter(RegistryProperties):
         self.do_json_header()
         return json.dumps({'results': {'success': success}}).encode()
 
-
-    def live_chords(self):
-        """
-        Return JSON of current song, including chords if used.
-        """
-        log.debug("live_chords")
-        current_item = self.live_controller.service_item
-
-        # Should we also package the service data here as well - songs only?
-
-        # current_item is a song that has been rendered into frames
-        # need to split the xml for the song into equal frames and then pass
-        # that to the JSON object as the html field.  Alternatively this might
-        # be better to do in serviceitem.py/render function (once for item, rather than once per call)
-
-        data = []
-        if current_item and current_item.get_plugin_name() == 'songs':
-            current_xml = current_item.get_item_xml()
-            for index, frame in enumerate(current_item.get_frames()):
-                item = {}
-                if frame['verseTag']:
-                    item['tag'] = str(frame['verseTag'])
-                else:
-                    item['tag'] = str(index + 1)
-                item['text'] = str(frame['text'])
-                item['html'] = str(frame['html'])
-                item['chords'] = str(frame['extraInfo']).replace("\"", "'")
-                item['selected'] = (self.live_controller.selected_row == index)
-                data.append(item)
-        json_data = {'results': {'slides': data}}
-        if current_item:
-            json_data['results']['item'] = self.live_controller.service_item.unique_identifier
-        self.do_json_header()
-        return json.dumps(json_data).encode()
-
-
-
     def controller_text(self, var):
         """
         Perform an action on the slide controller.
@@ -689,3 +669,40 @@ class HttpRouter(RegistryProperties):
             item_id = plugin.media_item.create_item_from_id(request_id)
             plugin.media_item.emit(QtCore.SIGNAL('%s_add_to_service' % plugin_name), [item_id, True])
         self.do_http_success()
+
+
+    def process_chord_view(self, update_id):
+        current_item = self.live_controller.service_item
+        if current_item and current_item.get_plugin_name() == 'songs':
+            if update_id == str(self.service_manager.last_update_count):
+                json_data = {'status': 'current'}
+            else:
+                if self.service_manager.stored_update_id != self.service_manager.last_update_count:
+                    current_frames = current_item.get_frames()
+                    current_slide = str(current_frames[self.live_controller.selected_row]['extraInfo']).replace("\"", "'")
+                    if (self.live_controller.selected_row+1) != len(current_frames):
+                        next_slide = str(current_frames[self.live_controller.selected_row+1]['extraInfo']).replace("\"", "'")
+                    else:
+                        next_slide = ''
+
+                    song_order = []
+                    for item, frame in enumerate(current_frames):
+                        if item == self.live_controller.selected_row:
+                            song_order.append("(" + frame['verseTag'] + ")")
+                        else:
+                            song_order.append(frame['verseTag'])
+
+                    self.service_manager.stored_chord_json_data = {'status': 'update',
+                                                                   'update_id': str(self.service_manager.last_update_count),
+                                                                   'current_slide': current_slide,
+                                                                   'next_slide': next_slide,
+                                                                   'song_order': ' '.join(song_order)}
+                    self.service_manager.stored_update_id = self.service_manager.last_update_count
+
+                json_data = self.service_manager.stored_chord_json_data
+
+        else:
+            json_data = {'status': 'inactive'}
+
+        self.do_json_header()
+        return json.dumps(json_data).encode()
