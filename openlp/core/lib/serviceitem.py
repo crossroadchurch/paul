@@ -289,7 +289,7 @@ class ServiceItem(RegistryProperties):
                                 self.extra_data_dict[current_section] = song_part.split('<br/>')
 
                 previous_pages = {}
-                
+
                 # Get key and transpose amount, if used in this song
                 if "<key>" in self.xml_version:
                     current_key = self.xml_version[(self.xml_version.index('<key>') + 5):(self.xml_version.index('<key>')+7)]
@@ -297,7 +297,7 @@ class ServiceItem(RegistryProperties):
                         current_key = current_key[0]
                 else:
                     current_key = ''
-                
+
                 if "<transposition>" in self.xml_version:
                     current_transpose = self.xml_version[(self.xml_version.index('<transposition>') + 15):(self.xml_version.index('<transposition>')+18)]
                     # Possible options: 1,...,9, 10, 11, -1, ... -9, -10, -11
@@ -307,7 +307,7 @@ class ServiceItem(RegistryProperties):
                         current_transpose = int(current_transpose[0:2])
                 else:
                     current_transpose = 0
-                
+
                 for slide in self._raw_frames:
                     verse_tag = slide['verseTag']
                     if verse_tag in previous_pages and previous_pages[verse_tag][0] == slide['raw_slide']:
@@ -319,7 +319,9 @@ class ServiceItem(RegistryProperties):
                     xml_lines = self.extra_data_dict[verse_tag.lower()]
                     xml_line_lower, xml_line_upper = 0, 0
 
+                    subpage_count = 0
                     for page in pages:
+                        subpage_count += 1
                         page_lines = page.split('<br>')
 
                         # Given the current page_lines, calculate the corresponding xml_lines
@@ -339,9 +341,9 @@ class ServiceItem(RegistryProperties):
                             if item != '[br]' and item != '[---]':
 								# split item by chord tags, then transpose each chord tag
                                 if current_transpose != 0:
-                                    item_sections = re.split('(<chord[\w\+#"=// ]* />)', item)                                   
+                                    item_sections = re.split('(<chord[\w\+#"=// ]* />)', item)
                                     transposed_item = ''
-                                    
+
                                     for item_section in item_sections:
                                         if item_section.startswith('<chord name'):
                                             transposed_item = transposed_item + Chords.transpose_chord_tag(item_section, current_key, current_transpose)
@@ -358,6 +360,7 @@ class ServiceItem(RegistryProperties):
                             'text': clean_tags(page.rstrip()),
                             'html': html_data.replace('&amp;nbsp;', '&nbsp;'),
                             'verseTag': verse_tag,
+                            'verseSubpage': subpage_count,
                             'extraInfo': '<br>'.join(page_xml_short)
                         })
 

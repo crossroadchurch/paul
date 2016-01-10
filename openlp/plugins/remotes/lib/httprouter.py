@@ -689,9 +689,13 @@ class HttpRouter(RegistryProperties):
                     song_order = []
                     for item, frame in enumerate(current_frames):
                         if item == self.live_controller.selected_row:
-                            song_order.append("(" + frame['verseTag'] + ")")
+                            if frame['verseSubpage'] == 1: # First page of a verse/chorus
+                                song_order.append("(" + frame['verseTag'] + ")")
+                            else: # Not first page of verse/chorus, so verseTag already in list
+                                song_order[-1] = "(" + frame['verseTag'] + ")"
                         else:
-                            song_order.append(frame['verseTag'])
+                            if frame['verseSubpage'] == 1:
+                                song_order.append(frame['verseTag'])
 
                     self.service_manager.stored_chord_json_data = {'status': 'update',
                                                                    'update_id': str(self.service_manager.last_update_count),
