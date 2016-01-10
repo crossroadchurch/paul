@@ -63,6 +63,11 @@ class CustomHandler(BaseHTTPRequestHandler, HttpRouter):
         """
         self.do_post_processor()
 
+    def do_OPTIONS(self):
+        """
+        Allow JSON OPTIONS requests
+        """
+        self.do_post_processor()
 
 class ThreadingHTTPServer(ThreadingMixIn, HTTPServer):
     pass

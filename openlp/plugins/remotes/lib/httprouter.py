@@ -270,6 +270,7 @@ class HttpRouter(RegistryProperties):
         """
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
+        self.send_header('Access-Control-Allow-Headers', 'Content-type')
         self.send_header('Access-Control-Allow-Origin', '*')
 
         self.set_cache_headers()
