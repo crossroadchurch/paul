@@ -308,6 +308,12 @@ class ServiceItem(RegistryProperties):
                 else:
                     current_transpose = 0
 
+                # Calculate resultant key for musician oriented view
+                if current_key != '':
+                    resultant_key = Chords.transpose_chord(current_key, current_key, current_transpose)
+                else:
+                    resultant_key = ''
+
                 for slide in self._raw_frames:
                     verse_tag = slide['verseTag']
                     if verse_tag in previous_pages and previous_pages[verse_tag][0] == slide['raw_slide']:
@@ -361,7 +367,8 @@ class ServiceItem(RegistryProperties):
                             'html': html_data.replace('&amp;nbsp;', '&nbsp;'),
                             'verseTag': verse_tag,
                             'verseSubpage': subpage_count,
-                            'extraInfo': '<br>'.join(page_xml_short)
+                            'extraInfo': '<br>'.join(page_xml_short),
+                            'playedKey': resultant_key
                         })
 
                         # Deal with any [br] tag in XML before processing next page

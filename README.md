@@ -34,10 +34,14 @@ A fork of OpenLP church projection software
 
 *08 Jan 2016*
 * Removed /api/controller/live_chords route.
-* Added /silas/{unique_id} route.  Returns musician oriented view of the live controller.  Slide data includes (transposed) chords, where used.  The song_order indicates current position with parentheses e.g. V1 (C1) V2.  Possible JSON-encoded dicts are:
+* Added /silas/{update_id} route.  Returns musician oriented view of the live controller.  Slide data includes (transposed) chords, where used.  The song_order indicates current position with parentheses e.g. V1 (C1) V2.  Possible JSON-encoded dicts are:
   * {"status": "inactive"} - if live controller not active, else:
-  * {"status": "current"} - no updates have occurred, based on value of {unique_id}, else:
+  * {"status": "current"} - no updates have occurred, based on value of {update_id}, else:
   * {"status": "update", "update_id": new update_id, "current_slide": "...", "next_slide": "...", "song_order": "..."}
+
+*17 Jan 2016*
+* Update musician oriented view.  Route is now /silas/update={update_id}&capo={capo}, both arguments optional.  The status=update JSON has an additional field, played_key, indicating the key that the musician will be playing e.g. "E" or "Capo 2 (D)".
+* Compacted the song order returned by /silas/
 
 *Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.

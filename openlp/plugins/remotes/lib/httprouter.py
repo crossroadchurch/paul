@@ -105,9 +105,9 @@ the remotes.
 
             {"results": {"items": [{...}, {...}]}}
 
-``/silas/{update_id}``
-    Fetch musician oriented view of the live controller. Returned JSON-encoded
-    dicts are as follows:
+``/silas/update={update_id}&capo={capo}``
+    Fetch musician oriented view of the live controller, both arguments optional
+    Returned JSON-encoded dicts are as follows:
 
         Live controller not active:
             {"status" : "inactive"}
@@ -117,7 +117,8 @@ the remotes.
              "update_id": current update_id,
              "current_slide": current slide info including chords,
              "next_slide": next slide info including chords,
-             "song_order": song order with current slide indicated by parentheses e.g. "V1 C1 (V2) C1"}
+             "song_order": song order with current slide indicated by parentheses e.g. "V1 C1 (V2) C1",
+             "played_key": the key that the musician will be playing in e.g. "E" or "Capo 2 (D)"}
 
         Live controller active, {update_id} is current
             {"status": "current"}
@@ -136,6 +137,7 @@ from PyQt4 import QtCore
 
 from openlp.core.common import RegistryProperties, AppLocation, Settings, translate, UiStrings
 from openlp.core.lib import PluginStatus, StringContent, image_to_byte, ItemCapabilities, create_thumb
+from openlp.plugins.songs.lib.chords import Chords
 
 log = logging.getLogger(__name__)
 FILE_TYPES = {
@@ -672,19 +674,59 @@ class HttpRouter(RegistryProperties):
         self.do_http_success()
 
 
-    def process_chord_view(self, update_id):
+    def process_chord_view(self, args):
+        # Pre-condition: args is of the form update=n&capo=m, either one is optional
+        # Also capo must be an integer m, 0<=m<=11
+        update_id = "unset"
+        capo = 0
+
+        for update_option in args.split("&"):
+            option_parts = update_option.split("=")
+            if (option_parts[0] == "update"):
+                update_id = option_parts[1]
+            elif (option_parts[0] == "capo"):
+                if (option_parts[1].isdigit() and int(option_parts[1]) >=0 and int(option_parts[1]) <= 11):
+                    capo = int(option_parts[1])
+
         current_item = self.live_controller.service_item
         if current_item and current_item.get_plugin_name() == 'songs':
             if update_id == str(self.service_manager.last_update_count):
                 json_data = {'status': 'current'}
             else:
-                if self.service_manager.stored_update_id != self.service_manager.last_update_count:
+                if (self.service_manager.stored_update_id == self.service_manager.last_update_count) and (capo == 0):
+                    json_data = self.service_manager.stored_chord_json_data
+                else:
                     current_frames = current_item.get_frames()
-                    current_slide = str(current_frames[self.live_controller.selected_row]['extraInfo']).replace("\"", "'")
+                    current_slide = str(current_frames[self.live_controller.selected_row]['extraInfo'])
                     if (self.live_controller.selected_row+1) != len(current_frames):
-                        next_slide = str(current_frames[self.live_controller.selected_row+1]['extraInfo']).replace("\"", "'")
+                        next_slide = str(current_frames[self.live_controller.selected_row+1]['extraInfo'])
                     else:
                         next_slide = ''
+
+                    if (capo > 0) and (current_frames[0]['playedKey'] != ''): # Song has a key specified and a non-zero capo
+                        musician_key = 'Capo ' + str(capo) + ' (' + Chords.transpose_chord(current_frames[0]['playedKey'], current_frames[0]['playedKey'], -capo) + ')'
+                        current_slide_sections = re.split('(<chord[\w\+#"=// ]* />)', current_slide)
+                        transposed_current_slide = ''
+
+                        next_slide_sections = re.split('(<chord[\w\+#"=// ]* />)', next_slide)
+                        transposed_next_slide = ''
+
+                        for current_slide_section in current_slide_sections:
+                            if current_slide_section.startswith('<chord name'):
+                                transposed_current_slide = transposed_current_slide + Chords.transpose_chord_tag(current_slide_section, current_frames[0]['playedKey'], -capo)
+                            else:
+                                transposed_current_slide = transposed_current_slide + current_slide_section
+
+                        for next_slide_section in next_slide_sections:
+                            if next_slide_section.startswith('<chord name'):
+                                transposed_next_slide = transposed_next_slide + Chords.transpose_chord_tag(next_slide_section, current_frames[0]['playedKey'], -capo)
+                            else:
+                                transposed_next_slide = transposed_next_slide + next_slide_section
+
+                        current_slide = transposed_current_slide
+                        next_slide = transposed_next_slide
+                    else:
+                        musician_key = current_frames[0]['playedKey']
 
                     song_order = []
                     for item, frame in enumerate(current_frames):
@@ -697,14 +739,16 @@ class HttpRouter(RegistryProperties):
                             if frame['verseSubpage'] == 1:
                                 song_order.append(frame['verseTag'])
 
-                    self.service_manager.stored_chord_json_data = {'status': 'update',
-                                                                   'update_id': str(self.service_manager.last_update_count),
-                                                                   'current_slide': current_slide,
-                                                                   'next_slide': next_slide,
-                                                                   'song_order': ' '.join(song_order)}
-                    self.service_manager.stored_update_id = self.service_manager.last_update_count
+                    json_data = {'status': 'update',
+                                 'update_id': str(self.service_manager.last_update_count),
+                                 'current_slide': current_slide.replace("\"", "'"),
+                                 'next_slide': next_slide.replace("\"", "'"),
+                                 'song_order': ' '.join(song_order),
+                                 'played_key': musician_key}
 
-                json_data = self.service_manager.stored_chord_json_data
+                    if capo == 0:
+                        self.service_manager.stored_update_id = self.service_manager.last_update_count
+                        self.service_manager.stored_chord_json_data = json_data
 
         else:
             json_data = {'status': 'inactive'}
