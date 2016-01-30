@@ -20,6 +20,8 @@ window.OpenLP = {
 
   updateMusic: function () {
 
+    $("#playedkey").html(OpenLP.played_key);
+
     verse_order_list = "<ul><li>" + OpenLP.song_order.split(" ").join("</li><li>") + "</li></ul>";
     verse_order_list = verse_order_list.replace("(", '<span class="current-verse">');
     verse_order_list = verse_order_list.replace(")", '</span>');
@@ -52,10 +54,21 @@ window.OpenLP = {
         }
       }
     );
+  },
+
+  updateCapo: function() {
+    OpenLP.capo = $("#caposelect").val();
+    OpenLP.update_id = "Refresh";
   }
 }
+
 OpenLP.update_id = "None";
 OpenLP.capo = 0;
+
+$(document).ready(function(){
+    $("#caposelect").change(OpenLP.updateCapo);
+});
+
 $.ajaxSetup({ cache: false });
 setInterval("OpenLP.pollServer();", 500);
 OpenLP.pollServer();

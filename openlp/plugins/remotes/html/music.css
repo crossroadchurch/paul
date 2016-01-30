@@ -76,6 +76,7 @@ body {
 }
 
 #verseorder ul {
+  display: inline;
   list-style-type: none;
   padding: 0;
   margin-bottom: 2rem;
@@ -90,4 +91,14 @@ body {
 
 .current-verse {
   color: green;
+}
+
+#playedkey, #capoarea, #verseorder {
+  display: inline;
+}
+
+#playedkey {
+  font-size: 1rem;
+  margin: 0px 5px;
+  color: yellow;
 }

@@ -43,5 +43,8 @@ A fork of OpenLP church projection software
 * Update musician oriented view.  Route is now /silas/update={update_id}&capo={capo}, both arguments optional.  The status=update JSON has an additional field, played_key, indicating the key that the musician will be playing e.g. "E" or "Capo 2 (D)".
 * Compacted the song order returned by /silas/
 
+*30 Jan 2016*
+* Added /music route to return a stage view with chords.  The capo can be changed from this page.
+
 *Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.
