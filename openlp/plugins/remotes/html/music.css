@@ -1,0 +1,93 @@
+/******************************************************************************
+* OpenLP - Open Source Lyrics Projection                                      *
+* --------------------------------------------------------------------------- *
+* Copyright (c) 2008-2015 OpenLP Developers                                   *
+* --------------------------------------------------------------------------- *
+* This program is free software; you can redistribute it and/or modify it     *
+* under the terms of the GNU General Public License as published by the Free  *
+* Software Foundation; version 2 of the License.                              *
+*                                                                             *
+* This program is distributed in the hope that it will be useful, but WITHOUT *
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or       *
+* FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for    *
+* more details.                                                               *
+*                                                                             *
+* You should have received a copy of the GNU General Public License along     *
+* with this program; if not, write to the Free Software Foundation, Inc., 59  *
+* Temple Place, Suite 330, Boston, MA 02111-1307 USA                          *
+******************************************************************************/
+
+body {
+  background-color: rgb(20, 22, 29);
+  font-family: 'Open Sans', sans-serif;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 10px;
+  }
+}
+
+#songarea {
+  max-width: 1000px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 0.95rem;
+  padding-top: 2rem;
+  font-size: 2.5rem;
+}
+
+.currenttag {
+   color: lightgreen;
+   font-weight: bold;
+}
+
+.chord-line {
+  color: #d922d2;
+  display: inline-block;
+  position: relative;
+  top: -2.5rem;
+  width: 0px;
+  margin-top: 0.5rem;
+}
+
+.lyric-line {
+  color: white;
+  display: block;
+  margin: 2rem 0rem;
+}
+
+.next-chord-line {
+  color: #999;
+  display: inline-block;
+  position: relative;
+  top: -2.5rem;
+  width: 0px;
+  margin-top: 0.5rem;
+}
+
+.next-lyric-line {
+  display: block;
+  color: #999;
+  margin: 2rem 0rem;
+  font-size: 2rem;
+}
+
+#verseorder ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+#verseorder ul li {
+  display: inline;
+  color: white;
+  margin: 0px 5px;
+}
+
+.current-verse {
+  color: green;
+}
