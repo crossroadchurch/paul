@@ -41,6 +41,7 @@ from openlp.core.lib import Renderer, OpenLPDockWidget, PluginManager, ImageMana
 from openlp.core.lib.ui import UiStrings, create_action
 from openlp.core.ui import AboutForm, SettingsForm, ServiceManager, ThemeManager, LiveController, PluginForm, \
     MediaDockManager, ShortcutListForm, FormattingTagForm, PreviewController
+from openlp.plugins.loops.loopmanager import LoopManager
 
 from openlp.core.ui.media import MediaController
 from openlp.core.utils import LanguageManager, add_actions, get_application_version
@@ -180,6 +181,13 @@ class Ui_MainWindow(object):
         self.projector_manager_contents.setObjectName('projector_manager_contents')
         self.projector_manager_dock.setWidget(self.projector_manager_contents)
         main_window.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.projector_manager_dock)
+        # Create the loop manager
+        self.loop_manager_dock = OpenLPDockWidget(main_window, 'loop_manager_dock',
+                                                   ':/system/system_thememanager.png')
+        self.loop_manager_contents = LoopManager(self.loop_manager_dock)
+        self.loop_manager_contents.setObjectName('loop_manager_contents')
+        self.loop_manager_dock.setWidget(self.loop_manager_contents)
+        main_window.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.loop_manager_dock)
         # Create the menu items
         action_list = ActionList.get_instance()
         action_list.add_category(UiStrings().File, CategoryOrder.standard_menu)
@@ -393,6 +401,7 @@ class Ui_MainWindow(object):
         self.service_manager_dock.setWindowTitle(translate('OpenLP.MainWindow', 'Service Manager'))
         self.theme_manager_dock.setWindowTitle(translate('OpenLP.MainWindow', 'Theme Manager'))
         self.projector_manager_dock.setWindowTitle(translate('OpenLP.MainWindow', 'Projector Manager'))
+        self.loop_manager_dock.setWindowTitle(translate('OpenLP.MainWindow', 'Loop Manager'))
         self.file_new_item.setText(translate('OpenLP.MainWindow', '&New'))
         self.file_new_item.setToolTip(UiStrings().NewService)
         self.file_new_item.setStatusTip(UiStrings().CreateService)

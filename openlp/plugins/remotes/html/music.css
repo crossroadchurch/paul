@@ -75,6 +75,39 @@ body {
   font-size: 2rem;
 }
 
+
+.chord-chunk {
+  color: #d922d2;
+  display: inline-block;
+  position: absolute;
+  top: -2.5rem;
+  left: 0px;
+  margin-top: 0.5rem;
+  padding-right: 1rem;
+}
+
+.lyric-chunk {
+  color: white;
+  display: inline-block;
+  margin: 2rem 0rem;
+}
+
+.lyric-chord-block{
+  position:relative;
+  margin-right: 0px;
+}
+
+.midword-spacer {
+  display: inline-block;
+  color: white;
+  text-align: center;
+}
+
+span {
+  white-space: pre;
+}
+
+
 #verseorder ul {
   display: inline;
   list-style-type: none;
