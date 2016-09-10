@@ -37,7 +37,7 @@ import time
 from PyQt4 import QtCore, QtGui
 
 from openlp.core.common import Registry, OpenLPMixin, AppLocation, Settings, UiStrings, check_directory_exists, \
-    is_macosx, is_win, translate
+    is_macosx, is_win,  translate
 from openlp.core.lib import ScreenList
 from openlp.core.resources import qInitResources
 from openlp.core.ui.mainwindow import MainWindow

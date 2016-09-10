@@ -286,6 +286,7 @@ class Settings(QtCore.QSettings):
         'shortcuts/up': [QtGui.QKeySequence(QtCore.Qt.Key_Up)],
         'shortcuts/viewProjectorManagerItem': [QtGui.QKeySequence('F6')],
         'shortcuts/viewThemeManagerItem': [QtGui.QKeySequence('F10')],
+        'shortcuts/viewLoopManagerItem': [QtGui.QKeySequence('F5')],
         'shortcuts/viewMediaManagerItem': [QtGui.QKeySequence('F8')],
         'shortcuts/viewPreviewPanel': [QtGui.QKeySequence('F11')],
         'shortcuts/viewLivePanel': [QtGui.QKeySequence('F12')],

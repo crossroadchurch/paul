@@ -338,6 +338,25 @@ class SongMediaItem(MediaManagerItem):
                     return item
         return None
 
+
+    def on_remote_refresh(self, song_id):
+        song_id = int(song_id)
+        valid = self.plugin.manager.get_object(Song, song_id)
+        if valid:
+            self.edit_song_form.load_song(song_id, False)
+            self.edit_song_form.save_song()
+            self.auto_select_id = -1
+            self.on_song_list_load()
+            self.remote_song = song_id
+            self.remote_triggered = True
+            item = self.build_service_item(remote=True)
+            self.remote_song = -1
+            self.remote_triggered = None
+            if item:
+                return item
+        return None
+
+
     def on_edit_click(self):
         """
         Edit a song

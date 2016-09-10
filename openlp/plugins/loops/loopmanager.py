@@ -26,9 +26,6 @@ import os, glob, shutil, subprocess
 
 from PyQt4 import QtCore, QtGui
 
-from PIL import Image
-from resizeimage import resizeimage
-
 from openlp.core.common import Registry, RegistryProperties, AppLocation, Settings, OpenLPMixin, RegistryMixin, \
     check_directory_exists, UiStrings, translate
 from openlp.core.lib import FileDialog, OpenLPToolbar, build_icon, check_item_selected
@@ -188,14 +185,11 @@ class LoopManager(OpenLPMixin, RegistryMixin, QtGui.QWidget, Ui_LoopManager, Reg
         Creates a thumbnail for the specified video loop, which is already in self.path
         :param loop_file: Video file (inc extension), relative to self.path
         """
-        vlc_cmd = 'vlc \"' +  os.path.join(self.path, loop_file) + '\" --rate=1 --scene-prefix=video_thumb --video-filter=scene --vout=dummy --aout=dummy --start-time=1 --stop-time=2 --scene-replace --scene-format=jpg --scene-path=\"' + self.thumb_path + '\" -V dummy --intf=dummy --dummy-quiet vlc://quit'
-
-        ret_code = os.system(vlc_cmd)
-        if ret_code == 0:
-            with open(os.path.join(self.thumb_path, 'video_thumb.jpg'), 'r+b') as img_file:
-                with Image.open(img_file) as image:
-                    sized_thumb = resizeimage.resize_contain(image, [88,50])
-                    sized_thumb.save(os.path.join(self.thumb_path, os.path.splitext(loop_file)[0] + '.jpg'), image.format)
+        vlc_cmd = ['vlc', os.path.join(self.path, loop_file), '--rate=1', '--scene-prefix=' + os.path.splitext(loop_file)[0],
+                   '--video-filter=scene', '--vout=dummy', '--aout=dummy', '--start-time=1', '--stop-time=2',
+                   '--scene-replace', '--scene-format=jpg', '--scene-path=' + self.thumb_path,
+                   '--width=88', '--height=50', '--intf=dummy', 'vlc://quit']
+        ret_code = subprocess.call(vlc_cmd)
         return True
 
 
@@ -252,13 +246,18 @@ class LoopManager(OpenLPMixin, RegistryMixin, QtGui.QWidget, Ui_LoopManager, Reg
                                translate('OpenLP.LoopManager', 'You must select a loop to play.')):
             item = self.loop_list_widget.currentItem()
             loop_file = os.path.join(self.path, item.data(QtCore.Qt.UserRole))
-            vlc_cmd = 'vlc --one-instance --repeat -f \"' + loop_file + '\"'
+            vlc_cmd = ['vlc', loop_file, '--one-instance', '--repeat', '-f']
             subprocess.Popen(vlc_cmd)
+            # Update GUI to show currently playing loop_thumb
+            #f = item.font
+            #QtGui.QFont.setBold(True)
+            #item.setFont(f)
+            #item.setBackgroundColor(QtGui.QColor(0,255,0,255))
             return True
 
 
     def on_stop_loop(self, field=None):
-        vlc_cmd = 'vlc --one-instance -f vlc://quit'
+        vlc_cmd = ['vlc', '--one-instance', '-f', 'vlc://quit']
         subprocess.Popen(vlc_cmd)
         return True
 

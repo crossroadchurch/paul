@@ -636,7 +636,7 @@ class OpenLyrics(object):
             return text
         # Process <chord> element.
         elif element.tag == NSMAP % 'chord':
-            text += '<chord name=\"' + element.get('name') + '\" />'
+            text += '<chord name = \"' + element.get('name') + '\" />'
 
             if element.tail:
                 # Append tail text at chord element.

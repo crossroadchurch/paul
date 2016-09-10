@@ -251,6 +251,7 @@ class ServiceItem(RegistryProperties):
             for the theme manager.
         """
         log.debug('Render called')
+        print("Rendering...")
         self._display_frames = []
         self.bg_image_bytes = None
         if not provides_own_theme_data:
@@ -323,20 +324,22 @@ class ServiceItem(RegistryProperties):
                         previous_pages[verse_tag] = (slide['raw_slide'], pages)
 
                     xml_lines = self.extra_data_dict[verse_tag.lower()]
+                    #print(xml_lines)
+                    #print("-----")
                     xml_line_lower, xml_line_upper = 0, 0
 
                     subpage_count = 0
                     for page in pages:
                         subpage_count += 1
-                        page_lines = page.split('<br>')
 
                         # Given the current page_lines, calculate the corresponding xml_lines
-                        xml_segment = ''
                         xml_line_lower = xml_line_upper
+                        xml_segment = ''.join(re.split('<chord[\w\+#"=// ]*/>', xml_lines[xml_line_upper]))
 
-                        for line in page_lines:
-                            while (xml_line_upper < len(xml_lines)) and not (''.join(re.split('<chord[\w\+#"=// ]* />', xml_lines[xml_line_upper])).strip() == line.strip()):
-                                xml_line_upper += 1
+                        while (xml_line_upper < len(xml_lines)) and not (xml_segment.strip() == page.strip()):
+                            xml_line_upper += 1
+                            xml_segment = xml_segment + '<br>' + ''.join(re.split('<chord[\w\+#"=// ]*/>', xml_lines[xml_line_upper]))
+                            print("xml_segment = " + xml_segment)
 
                         xml_line_upper += 1
                         page_xml = xml_lines[xml_line_lower: xml_line_upper]
@@ -347,7 +350,7 @@ class ServiceItem(RegistryProperties):
                             if item != '[br]' and item != '[---]':
 								# split item by chord tags, then transpose each chord tag
                                 if current_transpose != 0:
-                                    item_sections = re.split('(<chord[\w\+#"=// ]* />)', item)
+                                    item_sections = re.split('(<chord[\w\+#"=// ]*/>)', item)
                                     transposed_item = ''
 
                                     for item_section in item_sections:

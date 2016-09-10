@@ -46,5 +46,14 @@ A fork of OpenLP church projection software
 *30 Jan 2016*
 * Added /music route to return a stage view with chords.  The capo can be changed from this page.
 
+*19 Feb 2016*
+* Added looped videos (played using VLC) and associated Loop manager component.
+
+*10 Sept 2016*
+* Bug fix: chords render correctly for services that have been loaded in from a save file.
+* Bug fix: multiple identical lines rendered on Musician View.
+* CSS and JS fixes to improve rendering of Musician View.
+* Loop manager can be hidden and shown.
+
 *Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.

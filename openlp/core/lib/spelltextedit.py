@@ -55,6 +55,7 @@ class SpellTextEdit(QtGui.QPlainTextEdit):
         global ENCHANT_AVAILABLE
         super(SpellTextEdit, self).__init__(parent)
         self.formatting_tags_allowed = formatting_tags_allowed
+        self.setTabChangesFocus(True)
         # Default dictionary based on the current locale.
         if ENCHANT_AVAILABLE:
             try:

@@ -17,9 +17,24 @@
 * Temple Place, Suite 330, Boston, MA 02111-1307 USA                          *
 ******************************************************************************/
 
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Raleway-Bold'), url(/files/fonts/Raleway-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Ubuntu Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Ubuntu Condensed'), url(/files/fonts/Ubuntu-C.ttf) format('truetype');
+}
+
+
 body {
   background-color: rgb(20, 22, 29);
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Ubuntu Condensed', 'Open Sans', sans-serif;
   overflow: hidden;
   font-size: 16px;
 }
@@ -37,6 +52,10 @@ body {
   padding: 0.95rem;
   padding-top: 2rem;
   font-size: 2.5rem;
+}
+
+#header {
+  padding-bottom: 1rem;
 }
 
 .currenttag {
@@ -75,18 +94,19 @@ body {
   font-size: 2rem;
 }
 
-
 .chord-chunk {
+  font-family: 'Ubuntu Condensed', sans-serif;
   color: #d922d2;
   display: inline-block;
   position: absolute;
-  top: -2.5rem;
+  top: -3rem;
   left: 0px;
   margin-top: 0.5rem;
   padding-right: 1rem;
 }
 
 .lyric-chunk {
+  font-family: 'Raleway', sans-serif;;
   color: white;
   display: inline-block;
   margin: 2rem 0rem;
@@ -95,6 +115,36 @@ body {
 .lyric-chord-block{
   position:relative;
   margin-right: 0px;
+}
+
+
+.next-chord-chunk {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color: #999;
+  display: inline-block;
+  position: absolute;
+  top: -3rem;
+  left: 0px;
+  margin-top: 0.5rem;
+  padding-right: 1rem;
+}
+
+.next-lyric-chunk {
+  font-family: 'Raleway', sans-serif;;
+  color: #999;
+  display: inline-block;
+  margin: 2rem 0rem;
+}
+
+.next-lyric-chord-block{
+  position:relative;
+  margin-right: 0px;
+}
+
+.next-midword-spacer {
+  display: inline-block;
+  color: #999;
+  text-align: center;
 }
 
 .midword-spacer {
@@ -113,7 +163,7 @@ span {
   list-style-type: none;
   padding: 0;
   margin-bottom: 2rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 #verseorder ul li {
@@ -131,7 +181,11 @@ span {
 }
 
 #playedkey {
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin: 0px 5px;
   color: yellow;
+}
+
+#caposelect {
+  font-size: 1.25rem;
 }

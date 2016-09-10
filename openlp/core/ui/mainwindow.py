@@ -183,7 +183,7 @@ class Ui_MainWindow(object):
         main_window.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.projector_manager_dock)
         # Create the loop manager
         self.loop_manager_dock = OpenLPDockWidget(main_window, 'loop_manager_dock',
-                                                   ':/system/system_thememanager.png')
+                                                   './resources/images/system_loopmanager.png')
         self.loop_manager_contents = LoopManager(self.loop_manager_dock)
         self.loop_manager_contents.setObjectName('loop_manager_contents')
         self.loop_manager_dock.setWidget(self.loop_manager_contents)
@@ -239,6 +239,10 @@ class Ui_MainWindow(object):
                                                      icon=':/system/system_thememanager.png',
                                                      checked=self.theme_manager_dock.isVisible(),
                                                      category=UiStrings().View, triggers=self.toggle_theme_manager)
+        self.view_loop_manager_item = create_action(main_window, 'viewLoopManagerItem', can_shortcuts=True,
+                                                    icon='./resources/images/system_loopmanager.png',
+                                                    checked=self.loop_manager_dock.isVisible(),
+                                                    category=UiStrings().View, triggers=self.toggle_loop_manager)
         self.view_service_manager_item = create_action(main_window, 'viewServiceManagerItem', can_shortcuts=True,
                                                        icon=':/system/system_servicemanager.png',
                                                        checked=self.service_manager_dock.isVisible(),
@@ -346,7 +350,7 @@ class Ui_MainWindow(object):
         add_actions(self.view_mode_menu, (self.mode_default_item, self.mode_setup_item, self.mode_live_item))
         add_actions(self.view_menu, (self.view_mode_menu.menuAction(), None, self.view_media_manager_item,
                     self.view_projector_manager_item, self.view_service_manager_item, self.view_theme_manager_item,
-                    None, self.view_preview_panel, self.view_live_panel, None, self.lock_panel))
+                    self.view_loop_manager_item, None, self.view_preview_panel, self.view_live_panel, None, self.lock_panel))
         # i18n add Language Actions
         add_actions(self.settings_language_menu, (self.auto_language_item, None))
         add_actions(self.settings_language_menu, self.language_group.actions())
@@ -445,6 +449,10 @@ class Ui_MainWindow(object):
         self.view_theme_manager_item.setToolTip(translate('OpenLP.MainWindow', 'Toggle Theme Manager'))
         self.view_theme_manager_item.setStatusTip(translate('OpenLP.MainWindow',
                                                   'Toggle the visibility of the theme manager.'))
+        self.view_loop_manager_item.setText(translate('OpenLP.MainWindow', '&Loop Manager'))
+        self.view_loop_manager_item.setToolTip(translate('OpenLP.MainWindow', 'Toggle Loop Manager'))
+        self.view_loop_manager_item.setStatusTip(translate('OpenLP.MainWindow',
+                                                 'Toggle the visibility of the loop manager.'))
         self.view_service_manager_item.setText(translate('OpenLP.MainWindow', '&Service Manager'))
         self.view_service_manager_item.setToolTip(translate('OpenLP.MainWindow', 'Toggle Service Manager'))
         self.view_service_manager_item.setStatusTip(translate('OpenLP.MainWindow',
@@ -546,6 +554,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow, RegistryProperties):
         self.media_manager_dock.visibilityChanged.connect(self.view_media_manager_item.setChecked)
         self.service_manager_dock.visibilityChanged.connect(self.view_service_manager_item.setChecked)
         self.theme_manager_dock.visibilityChanged.connect(self.view_theme_manager_item.setChecked)
+        self.loop_manager_dock.visibilityChanged.connect(self.view_loop_manager_item.setChecked)
         self.projector_manager_dock.visibilityChanged.connect(self.view_projector_manager_item.setChecked)
         self.import_theme_item.triggered.connect(self.theme_manager_contents.on_import_theme)
         self.export_theme_item.triggered.connect(self.theme_manager_contents.on_export_theme)
@@ -643,10 +652,10 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow, RegistryProperties):
         if view_mode == 'default':
             self.mode_default_item.setChecked(True)
         elif view_mode == 'setup':
-            self.set_view_mode(True, True, False, True, False, True)
+            self.set_view_mode(True, True, False, True, False, False, True)
             self.mode_setup_item.setChecked(True)
         elif view_mode == 'live':
-            self.set_view_mode(False, True, False, False, True, True)
+            self.set_view_mode(False, True, False, False, True, True, True)
             self.mode_live_item.setChecked(True)
 
     def app_startup(self):
@@ -1021,21 +1030,21 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow, RegistryProperties):
         """
         Put OpenLP into "Default" view mode.
         """
-        self.set_view_mode(True, True, True, True, True, True, 'default')
+        self.set_view_mode(True, True, True, True, True, True, True, 'default')
 
     def on_mode_setup_item_clicked(self):
         """
         Put OpenLP into "Setup" view mode.
         """
-        self.set_view_mode(True, True, False, True, False, True, 'setup')
+        self.set_view_mode(True, True, False, True, False, True, False, 'setup')
 
     def on_mode_live_item_clicked(self):
         """
         Put OpenLP into "Live" view mode.
         """
-        self.set_view_mode(False, True, False, False, True, True, 'live')
+        self.set_view_mode(False, True, False, False, True, True, True, 'live')
 
-    def set_view_mode(self, media=True, service=True, theme=True, preview=True, live=True, projector=True, mode=''):
+    def set_view_mode(self, media=True, service=True, theme=True, preview=True, live=True, projector=True, loop=True, mode=''):
         """
         Set OpenLP to a different view mode.
         """
@@ -1045,6 +1054,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow, RegistryProperties):
         self.media_manager_dock.setVisible(media)
         self.service_manager_dock.setVisible(service)
         self.theme_manager_dock.setVisible(theme)
+        self.loop_manager_dock.setVisible(loop)
         self.projector_manager_dock.setVisible(projector)
         self.set_preview_panel_visibility(preview)
         self.set_live_panel_visibility(live)
@@ -1187,6 +1197,12 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow, RegistryProperties):
         """
         self.theme_manager_dock.setVisible(not self.theme_manager_dock.isVisible())
 
+    def toggle_loop_manager(self):
+        """
+        Toggle the visibility of the theme manager
+        """
+        self.loop_manager_dock.setVisible(not self.loop_manager_dock.isVisible())
+
     def set_preview_panel_visibility(self, visible):
         """
         Sets the visibility of the preview panel including saving the setting and updating the menu.
@@ -1206,23 +1222,27 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow, RegistryProperties):
         """
         if lock:
             self.theme_manager_dock.setFeatures(QtGui.QDockWidget.NoDockWidgetFeatures)
+            self.loop_manager_dock.setFeatures(QtGui.QDockWidget.NoDockWidgetFeatures)
             self.service_manager_dock.setFeatures(QtGui.QDockWidget.NoDockWidgetFeatures)
             self.media_manager_dock.setFeatures(QtGui.QDockWidget.NoDockWidgetFeatures)
             self.projector_manager_dock.setFeatures(QtGui.QDockWidget.NoDockWidgetFeatures)
             self.view_media_manager_item.setEnabled(False)
             self.view_service_manager_item.setEnabled(False)
             self.view_theme_manager_item.setEnabled(False)
+            self.view_loop_manager_item.setEnabled(False)
             self.view_projector_manager_item.setEnabled(False)
             self.view_preview_panel.setEnabled(False)
             self.view_live_panel.setEnabled(False)
         else:
             self.theme_manager_dock.setFeatures(QtGui.QDockWidget.AllDockWidgetFeatures)
+            self.loop_manager_dock.setFeatures(QtGui.QDockWidget.AllDockWidgetFeatures)
             self.service_manager_dock.setFeatures(QtGui.QDockWidget.AllDockWidgetFeatures)
             self.media_manager_dock.setFeatures(QtGui.QDockWidget.AllDockWidgetFeatures)
             self.projector_manager_dock.setFeatures(QtGui.QDockWidget.AllDockWidgetFeatures)
             self.view_media_manager_item.setEnabled(True)
             self.view_service_manager_item.setEnabled(True)
             self.view_theme_manager_item.setEnabled(True)
+            self.view_loop_manager_item.setEnabled(True)
             self.view_projector_manager_item.setEnabled(True)
             self.view_preview_panel.setEnabled(True)
             self.view_live_panel.setEnabled(True)

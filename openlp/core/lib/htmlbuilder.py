@@ -85,6 +85,7 @@ is the function which has to be called from outside. The generated and returned 
             }
 
         #footer {
+            display: none;
             position: absolute;
             z-index: 6;
 

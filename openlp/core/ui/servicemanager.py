@@ -836,6 +836,8 @@ class ServiceManager(OpenLPMixin, RegistryMixin, QtGui.QWidget, Ui_ServiceManage
                         service_item = new_item
                 self.add_service_item(service_item, repaint=False)
 
+        self.remote_refresh_all_songs()
+
     def load_last_file(self):
         """
         Load the last service item from the service manager when the service was last closed. Can be blank if there was
@@ -1505,6 +1507,17 @@ class ServiceManager(OpenLPMixin, RegistryMixin, QtGui.QWidget, Ui_ServiceManage
                 on_remote_edit(self.service_items[item]['service_item'].edit_id)
             if new_item:
                 self.add_service_item(new_item, replace=True)
+
+    def remote_refresh_all_songs(self):
+        limit = len(self.service_items)
+        for i in range(0, limit):
+            print(i)
+            print(self.service_items[i]['service_item'].name)
+            if self.service_items[i]['service_item'].name == 'songs':
+                new_item = Registry().get(self.service_items[i]['service_item'].name).on_remote_refresh(self.service_items[i]['service_item'].edit_id)
+                if new_item:
+                    self.service_items.remove(self.service_items[i])
+                    self.add_service_item(new_item, position=i)
 
     def on_service_item_rename(self, field=None):
         """
