@@ -36,21 +36,20 @@ body {
   background-color: rgb(20, 22, 29);
   font-family: 'Ubuntu Condensed', 'Open Sans', sans-serif;
   overflow: hidden;
-  font-size: 16px;
 }
 
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
   body {
     font-size: 10px;
   }
-}
+}*/
 
 #songarea {
-  max-width: 1000px;
+  max-width: 95vw;
   height: 100vh;
   margin: 0 auto;
   padding: 0.95rem;
-  padding-top: 2rem;
+  padding-top: 0rem;
   font-size: 2.5rem;
 }
 

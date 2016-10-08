@@ -195,6 +195,20 @@ $(document).ready(function(){
     $("#caposelect").change(OpenLP.updateCapo);
 });
 
+// Adjust document body size based on ?size=n parameter, if it exists
+params = window.location.search.slice(1);
+body_size = "16px";
+if (params != ""){
+  param_arr = params.split('&');
+  for(var i=0; i<param_arr.length; i++){
+    param_pair = param_arr[i].split('=');
+    if (param_pair[0] == 'size'){
+      body_size = param_pair[1] + "px";
+    }
+  }
+}
+$("html").css("font-size", body_size);
+
 $.ajaxSetup({ cache: false });
 setInterval("OpenLP.pollServer();", 500);
 OpenLP.pollServer();

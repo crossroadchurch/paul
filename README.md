@@ -55,5 +55,8 @@ A fork of OpenLP church projection software
 * CSS and JS fixes to improve rendering of Musician View.
 * Loop manager can be hidden and shown.
 
+*08 Oct 2016*
+* Base font size of Musician view can be changed by adding the size parameter to the music route: /music?size=n
+
 *Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.
