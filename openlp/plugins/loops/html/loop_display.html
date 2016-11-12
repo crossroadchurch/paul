@@ -1,0 +1,36 @@
+<html>
+<head>
+  <script src='./jquery-3.1.1.min.js'></script>
+  <script>
+  function fadeOutUpperVid(){
+    $('#upper_vid').fadeOut(2000);
+  };
+  function fadeInUpperVid(){
+    $('#upper_vid').fadeIn(2000);
+  };
+  function loadVideo(id, new_src){
+    var vid = document.getElementById(id);
+    vid.src = new_src;
+    vid.load();
+    vid.play();
+  }
+  function fs(){
+    var docElm = document.getElementById('body-elem');
+    if (docElm.requestFullscreen) {
+      docElm.requestFullscreen();
+    }
+    else if (docElm.mozRequestFullScreen) {
+      docElm.mozRequestFullScreen();
+    }
+  }
+  </script>
+</head>
+<body id="body-elem" style="overflow:hidden;">
+  <div id="click_fs" onclick="fs()">
+    <div onclick="fs()">
+      <video id="lower_vid" src='./black_matte.mp4' autoplay width="1920px" height="1080px" loop style=""></video>
+      <video id="upper_vid" src='./black_matte.mp4' autoplay width="1920px" height="1080px" loop style="margin-top:-1080px;"></video>
+    </div>
+  </div>
+</body>
+</html>

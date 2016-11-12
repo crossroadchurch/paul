@@ -150,7 +150,8 @@ class MainDisplay(OpenLPMixin, Display, RegistryProperties):
             self.audio_player = None
         self.first_time = True
         self.web_loaded = True
-        self.setStyleSheet(OPAQUE_STYLESHEET)
+        #self.setStyleSheet(OPAQUE_STYLESHEET)
+        self.setStyleSheet(TRANSPARENT_STYLESHEET)
         window_flags = QtCore.Qt.FramelessWindowHint | QtCore.Qt.Tool | QtCore.Qt.WindowStaysOnTopHint
         if Settings().value('advanced/x11 bypass wm'):
             window_flags |= QtCore.Qt.X11BypassWindowManagerHint
@@ -168,7 +169,8 @@ class MainDisplay(OpenLPMixin, Display, RegistryProperties):
                 window_flags |= QtCore.Qt.WindowStaysOnTopHint
         self.setWindowFlags(window_flags)
         self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
-        self.set_transparency(False)
+        #self.set_transparency(False)
+        self.set_transparency(True)
         if self.is_live:
             Registry().register_function('live_display_hide', self.hide_display)
             Registry().register_function('live_display_show', self.show_display)
@@ -220,30 +222,31 @@ class MainDisplay(OpenLPMixin, Display, RegistryProperties):
         self.screen = self.screens.current
         self.setVisible(False)
         Display.setup(self)
-        if self.is_live:
-            # Build the initial frame.
-            background_color = QtGui.QColor()
-            background_color.setNamedColor(Settings().value('advanced/default color'))
-            if not background_color.isValid():
-                background_color = QtCore.Qt.white
-            image_file = Settings().value('advanced/default image')
-            splash_image = QtGui.QImage(image_file)
-            self.initial_fame = QtGui.QImage(
-                self.screen['size'].width(),
-                self.screen['size'].height(),
-                QtGui.QImage.Format_ARGB32_Premultiplied)
-            painter_image = QtGui.QPainter()
-            painter_image.begin(self.initial_fame)
-            painter_image.fillRect(self.initial_fame.rect(), background_color)
-            painter_image.drawImage(
-                (self.screen['size'].width() - splash_image.width()) // 2,
-                (self.screen['size'].height() - splash_image.height()) // 2,
-                splash_image)
-            service_item = ServiceItem()
-            service_item.bg_image_bytes = image_to_byte(self.initial_fame)
-            self.web_view.setHtml(build_html(service_item, self.screen, self.is_live, None,
-                                  plugins=self.plugin_manager.plugins))
-            self._hide_mouse()
+        #if self.is_live:
+        #    # Build the initial frame.
+        #    background_color = QtGui.QColor()
+        #    background_color.setNamedColor(Settings().value('advanced/default color'))
+        #    if not background_color.isValid():
+        #        background_color = QtCore.Qt.white
+    #        image_file = Settings().value('advanced/default image')
+    #        splash_image = QtGui.QImage(image_file)
+    #        self.initial_fame = QtGui.QImage(
+    #            self.screen['size'].width(),
+    #            self.screen['size'].height(),
+    #            QtGui.QImage.Format_ARGB32_Premultiplied)
+    #        painter_image = QtGui.QPainter()
+    #        painter_image.begin(self.initial_fame)
+    #        painter_image.fillRect(self.initial_fame.rect(), background_color)
+    #        painter_image.drawImage(
+    #            (self.screen['size'].width() - splash_image.width()) // 2,
+    #            (self.screen['size'].height() - splash_image.height()) // 2,
+    #            splash_image)
+    #        service_item = ServiceItem()
+    #        service_item.bg_image_bytes = image_to_byte(self.initial_fame)
+    #        self.web_view.setHtml(build_html(service_item, self.screen, self.is_live, None,
+    #                              plugins=self.plugin_manager.plugins))
+    #        self._hide_mouse()
+    
 
     def text(self, slide, animate=True):
         """

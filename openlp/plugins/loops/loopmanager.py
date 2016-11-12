@@ -33,6 +33,12 @@ from openlp.core.lib.ui import critical_error_message_box, create_widget_action
 from openlp.core.ui import FileRenameForm
 from openlp.core.utils import get_locale_key, split_filename
 
+from openlp.core.ui import HideMode, AlertLocation # Remove later
+
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+
 
 class Ui_LoopManager(object):
     """
@@ -104,7 +110,7 @@ class Ui_LoopManager(object):
                                                    icon=':/slides/media_playback_start.png', triggers=self.on_display_loop)
 
         # Signals
-        self.loop_list_widget.doubleClicked.connect(self.on_display_loop)
+        self.loop_list_widget.itemClicked.connect(self.on_loop_selected)
 
 
 class LoopManager(OpenLPMixin, RegistryMixin, QtGui.QWidget, Ui_LoopManager, RegistryProperties):
@@ -119,6 +125,9 @@ class LoopManager(OpenLPMixin, RegistryMixin, QtGui.QWidget, Ui_LoopManager, Reg
         self.settings_section = 'loops'
         # Variables
         self.loop_list = []
+        self.video_elements = ["upper_vid", "lower_vid"]
+        self.transition_methods = ["fadeOutUpperVid()", "fadeInUpperVid()"]
+        self.visible_video_index = 0
 
 
     def bootstrap_initialise(self):
@@ -138,6 +147,13 @@ class LoopManager(OpenLPMixin, RegistryMixin, QtGui.QWidget, Ui_LoopManager, Reg
         self.on_new_prompt = translate('OpenLP.LoopManager', 'Select Video Loop')
         self.on_new_file_masks = translate('OpenLP.LoopManager', 'Videos (%s);;%s (*)') % (
             ' '.join(self.media_controller.video_extensions_list), UiStrings().AllFiles)
+        self.binary = FirefoxBinary('C:/Program Files (x86)/Mozilla Firefox/firefox.exe')
+        self.browser = webdriver.Firefox(firefox_binary=self.binary)
+        self.browser.set_window_position(2000,0)
+        plugin_dir = AppLocation.get_directory(AppLocation.PluginsDir).replace("\\", "/")
+        loop_html = "file:///" + plugin_dir  + "/loops/html/loop_display.html"
+        self.browser.get(loop_html)
+        self.browser.find_element_by_id("click_fs").click()
 
 
     def build_loop_path(self):
@@ -160,6 +176,15 @@ class LoopManager(OpenLPMixin, RegistryMixin, QtGui.QWidget, Ui_LoopManager, Reg
         if item is None:
             return
         self.menu.exec_(self.loop_list_widget.mapToGlobal(point))
+
+
+    def on_loop_selected(self):
+        item = self.loop_list_widget.currentItem()
+        loop_file = os.path.join(self.path, item.data(QtCore.Qt.UserRole))
+        loop_url = "file:///" + loop_file.replace("\\", "/")
+        script_string = 'loadVideo("' + self.video_elements[(self.visible_video_index+1)%2] + '", "' + loop_url + '")'
+        self.browser.execute_script(script_string)
+        return
 
 
     def on_add_loop(self, field=None):
@@ -244,21 +269,16 @@ class LoopManager(OpenLPMixin, RegistryMixin, QtGui.QWidget, Ui_LoopManager, Reg
     def on_display_loop(self, field=None):
         if check_item_selected(self.loop_list_widget,
                                translate('OpenLP.LoopManager', 'You must select a loop to play.')):
-            item = self.loop_list_widget.currentItem()
-            loop_file = os.path.join(self.path, item.data(QtCore.Qt.UserRole))
-            vlc_cmd = ['vlc', loop_file, '--one-instance', '--repeat', '-f']
-            subprocess.Popen(vlc_cmd)
-            # Update GUI to show currently playing loop_thumb
-            #f = item.font
-            #QtGui.QFont.setBold(True)
-            #item.setFont(f)
-            #item.setBackgroundColor(QtGui.QColor(0,255,0,255))
+            self.browser.execute_script(self.transition_methods[self.visible_video_index])
+            self.visible_video_index = (self.visible_video_index + 1) % 2
             return True
 
 
     def on_stop_loop(self, field=None):
-        vlc_cmd = ['vlc', '--one-instance', '-f', 'vlc://quit']
-        subprocess.Popen(vlc_cmd)
+        script_string = 'loadVideo("' + self.video_elements[(self.visible_video_index+1)%2] + '", "./black_matte.mp4")'
+        self.browser.execute_script(script_string)
+        self.browser.execute_script(self.transition_methods[self.visible_video_index])
+        self.visible_video_index = (self.visible_video_index + 1) % 2
         return True
 
 

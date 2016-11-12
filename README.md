@@ -58,5 +58,10 @@ A fork of OpenLP church projection software
 *08 Oct 2016*
 * Base font size of Musician view can be changed by adding the size parameter to the music route: /music?size=n
 
+*12 Nov 2016 (loops-and-lights branch)*
+* Initial implementation of loops using html5 video in Firefox, replacing VLC
+
 *Known issues*
+* Sometimes the instance of Firefox playing the loops does not go fullscreen.  Click on the black video to manually force fullscreen mode.
+* If the instance of Firefox playing the loops is closed, any subsequent interaction with the Loop Manager will cause OpenLP to generate an error.
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.
