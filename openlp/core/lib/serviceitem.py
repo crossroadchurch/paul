@@ -251,7 +251,6 @@ class ServiceItem(RegistryProperties):
             for the theme manager.
         """
         log.debug('Render called')
-        print("Rendering...")
         self._display_frames = []
         self.bg_image_bytes = None
         if not provides_own_theme_data:
@@ -339,7 +338,6 @@ class ServiceItem(RegistryProperties):
                         while (xml_line_upper < len(xml_lines)) and not (xml_segment.strip() == page.strip()):
                             xml_line_upper += 1
                             xml_segment = xml_segment + '<br>' + ''.join(re.split('<chord[\w\+#"=// ]*/>', xml_lines[xml_line_upper]))
-                            print("xml_segment = " + xml_segment)
 
                         xml_line_upper += 1
                         page_xml = xml_lines[xml_line_lower: xml_line_upper]
@@ -374,9 +372,9 @@ class ServiceItem(RegistryProperties):
                             'playedKey': resultant_key
                         })
 
-                        # Deal with any [br] tag in XML before processing next page
-                        # TODO: Check if we need to also do this for [---] tags
-                        if xml_line_upper < len(xml_lines) and xml_lines[xml_line_upper].strip() == '[br]':
+                        # Deal with any [br] or [---] tag in XML before processing next page
+                        if xml_line_upper < len(xml_lines) and \
+                            (xml_lines[xml_line_upper].strip() == '[br]' or xml_lines[xml_line_upper].strip() == '[---]'):
                             xml_line_upper += 1
 
             else:

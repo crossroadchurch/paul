@@ -58,5 +58,8 @@ A fork of OpenLP church projection software
 *08 Oct 2016*
 * Base font size of Musician view can be changed by adding the size parameter to the music route: /music?size=n
 
+*29 Nov 2016*
+* Bug fix: songs with optional slide breaks can now be added to service plan without crashing OpenLP.
+
 *Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.
