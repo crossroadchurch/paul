@@ -260,7 +260,6 @@ class ServiceItem(RegistryProperties):
             log.debug('Formatting slides: %s' % self.title)
             # Save rendered pages to this dict. In the case that a slide is used twice we can use the pages saved to
             # the dict instead of rendering them again.
-
             if self.get_plugin_name() == 'songs':
                 if not self.extra_data_dict:
                     self.extra_data_dict = {}
@@ -377,7 +376,27 @@ class ServiceItem(RegistryProperties):
                             (xml_lines[xml_line_upper].strip() == '[br]' or xml_lines[xml_line_upper].strip() == '[---]'):
                             xml_line_upper += 1
 
-            else:
+            elif (self.get_plugin_name() == "custom") or (self.get_plugin_name() == ''):
+                previous_pages = {}
+                for slide in self._raw_frames:
+                    verse_tag = slide['verseTag']
+                    if verse_tag in previous_pages and previous_pages[verse_tag][0] == slide['raw_slide']:
+                        pages = previous_pages[verse_tag][1]
+                    else:
+                        pages = self.renderer.format_slide(slide['raw_slide'], self)
+                        previous_pages[verse_tag] = (slide['raw_slide'], pages)
+
+                    for page in pages:
+                        page = page.replace('<br>', '{br}')
+                        html_data = expand_tags(html.escape(page.rstrip()))
+                        self._display_frames.append({
+                            'title': clean_tags(page),
+                            'text': clean_tags(page.rstrip()),
+                            'html': html_data.replace('&amp;nbsp;', '&nbsp;'),
+                            'verseTag': verse_tag
+                        })
+
+            elif self.get_plugin_name() == "bibles":
                 previous_pages = {}
                 for slide in self._raw_frames:
                     verse_tag = slide['verseTag']
@@ -395,6 +414,7 @@ class ServiceItem(RegistryProperties):
                             'text': clean_tags(page.rstrip()),
                             'html': html_data.replace('&amp;nbsp;', '&nbsp;'),
                             'verseTag': verse_tag,
+                            'extraInfo': self.simple_title
                         })
 
         elif self.service_item_type == ServiceItemType.Image or self.service_item_type == ServiceItemType.Command:

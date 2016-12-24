@@ -152,6 +152,24 @@ body {
   text-align: center;
 }
 
+.nonsong-block {
+  font-family: 'Raleway', sans-serif;;
+  color: white;
+  display: inline-block;
+  margin: 0.5rem 0rem;
+}
+
+.nonsong-line {
+  margin: 0.5rem 0rem;
+}
+
+.next-nonsong-block {
+  font-family: 'Raleway', sans-serif;;
+  color: #999;
+  display: inline-block;
+  margin: 0.5rem 0rem;
+}
+
 span {
   white-space: pre;
 }

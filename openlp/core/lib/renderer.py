@@ -378,17 +378,17 @@ class Renderer(OpenLPMixin, RegistryMixin, RegistryProperties):
                                         theme_data.font_main_data2,
                                         self.width - (theme_data.font_main_data1 + theme_data.font_main_data3),
                                         self.height - (theme_data.font_main_data2 + theme_data.font_main_data4))
-                                        
+
                 elif theme_data.font_main_pos_type == PositionType.Names[PositionType.Proportional]:
                     return QtCore.QRect(self.width * (theme_data.font_main_data1 / 100),
                                         self.height * (theme_data.font_main_data2 / 100),
                                         self.width * ((100 - theme_data.font_main_data1 - theme_data.font_main_data3) / 100),
                                         self.height * ((100 - theme_data.font_main_data2 - theme_data.font_main_data4) / 100))
-                    
+
                 else:
                     return QtCore.QRect(theme_data.font_main_data1, theme_data.font_main_data2,
                                         theme_data.font_main_data3, theme_data.font_main_data4)
-                                        
+
             else:
                 # Old style theme
                 return QtCore.QRect(theme_data.font_main_x, theme_data.font_main_y,

@@ -751,11 +751,50 @@ class HttpRouter(RegistryProperties):
                                  'current_slide': current_slide.replace("\"", "'"),
                                  'next_slide': next_slide.replace("\"", "'"),
                                  'song_order': ' '.join(song_order),
-                                 'played_key': musician_key}
+                                 'played_key': musician_key,
+                                 'slide_type': 'songs'}
 
                     if capo == 0:
                         self.service_manager.stored_update_id = self.service_manager.last_update_count
                         self.service_manager.stored_chord_json_data = json_data
+
+        elif current_item and current_item.get_plugin_name() == 'custom':
+            if update_id == str(self.service_manager.last_update_count):
+                json_data = {'status': 'current'}
+            else:
+                current_frames = current_item.get_frames()
+                current_slide = str(current_frames[self.live_controller.selected_row]['html'])
+                if (self.live_controller.selected_row+1) != len(current_frames):
+                    next_slide = str(current_frames[self.live_controller.selected_row+1]['html'])
+                else:
+                    next_slide = ''
+
+                json_data = {'status': 'update',
+                             'update_id': str(self.service_manager.last_update_count),
+                             'current_slide': current_slide.replace("\"", "'"),
+                             'next_slide': next_slide.replace("\"", "'"),
+                             'song_order': '',
+                             'played_key': '',
+                             'slide_type': 'custom'}
+
+        elif current_item and current_item.get_plugin_name() == 'bibles':
+            if update_id == str(self.service_manager.last_update_count):
+                json_data = {'status': 'current'}
+            else:
+                current_frames = current_item.get_frames()
+                current_slide = str(current_frames[self.live_controller.selected_row]['html'])
+                if (self.live_controller.selected_row+1) != len(current_frames):
+                    next_slide = str(current_frames[self.live_controller.selected_row+1]['html'])
+                else:
+                    next_slide = ''
+
+                json_data = {'status': 'update',
+                             'update_id': str(self.service_manager.last_update_count),
+                             'current_slide': current_slide.replace("\"", "'"),
+                             'next_slide': next_slide.replace("\"", "'"),
+                             'song_order': current_frames[self.live_controller.selected_row]['extraInfo'],
+                             'played_key': '',
+                             'slide_type': 'bibles'}
 
         else:
             json_data = {'status': 'inactive'}

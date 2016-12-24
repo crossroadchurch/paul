@@ -61,5 +61,10 @@ A fork of OpenLP church projection software
 *29 Nov 2016*
 * Bug fix: songs with optional slide breaks can now be added to service plan without crashing OpenLP.
 
+*24 Dec 2016*
+* Musician view now displays Bible verses and Custom slides.
+* Bug fix: Problem with importing Songs of Fellowship song books fixed.
+* Bug fix: First-time setup crashes caused by theme modifications (10/11/2015) fixed.
+
 *Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.

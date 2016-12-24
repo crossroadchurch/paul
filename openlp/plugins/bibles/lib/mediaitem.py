@@ -850,6 +850,7 @@ class BibleMediaItem(MediaManagerItem):
         service_item.add_capability(ItemCapabilities.CanEditTitle)
         # Service Item: Title
         service_item.title = '%s %s' % (verses.format_verses(), verses.format_versions())
+        service_item.simple_title = '%s %s' % (verses.format_verses(), verses.format_versions(False, False))
         # Service Item: Theme
         if not self.settings.bible_theme:
             service_item.theme = None

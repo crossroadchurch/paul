@@ -146,9 +146,9 @@ class PositionType(object):
     Classic = 0
     Margins = 1
     Proportional = 2
-    
+
     Names = ['classic', 'margins', 'proportional']
-    
+
 
 BOOLEAN_LIST = ['bold', 'italics', 'override', 'outline', 'shadow', 'slide_transition']
 
@@ -330,7 +330,7 @@ class ThemeXML(object):
 
 
     def add_font_position_options(self, name, color, size, override, fonttype='main', bold='False', italics='False',
-                              line_adjustment=0, pos_type=0, data1=0, data2=0, data3=0, data4=0, outline='False', 
+                              line_adjustment=0, pos_type=0, data1=0, data2=0, data3=0, data4=0, outline='False',
                               outline_color='#ffffff', outline_pixel=2, shadow='False', shadow_color='#ffffff', shadow_pixel=5):
         """
         Add a Font.
@@ -392,9 +392,9 @@ class ThemeXML(object):
         element.setAttribute('outlineSize', str(outline_pixel))
         value = self.theme_xml.createTextNode(str(outline))
         element.appendChild(value)
-        background.appendChild(element)        
-        
-        
+        background.appendChild(element)
+
+
     def add_display(self, horizontal, vertical, transition):
         """
         Add a Display options.
@@ -591,6 +591,18 @@ class ThemeXML(object):
             self.add_background_image(filename, self.background_border_color)
         elif self.background_type == BackgroundType.to_string(BackgroundType.Transparent):
             self.add_background_transparent()
+        if hasattr(self, 'font_main_pos_type'):
+            pos_type = self.font_main_pos_type
+            data_1 = self.font_main_data1
+            data_2 = self.font_main_data2
+            data_3 = self.font_main_data3
+            data_4 = self.font_main_data4
+        else:
+            pos_type = 'classic'
+            data_1 = 0
+            data_2 = 0
+            data_3 = 0
+            data_4 = 0
         self.add_font_position_options(
             self.font_main_name,
             self.font_main_color,
@@ -599,11 +611,11 @@ class ThemeXML(object):
             self.font_main_bold,
             self.font_main_italics,
             self.font_main_line_adjustment,
-            self.font_main_pos_type,
-            self.font_main_data1,
-            self.font_main_data2,
-            self.font_main_data3,
-            self.font_main_data4,
+            pos_type,
+            data_1,
+            data_2,
+            data_3,
+            data_4,
             self.font_main_outline,
             self.font_main_outline_color,
             self.font_main_outline_size,

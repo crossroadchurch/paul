@@ -171,7 +171,7 @@ class OpenOfficeImport(SongImport):
         """
         log.debug('create property OpenOffice')
         if is_win():
-            property_object = self.controller.manager.Bridge_GetStruct('com.sun.star.beans.PropertyValue')
+            property_object = self.ooo_manager.Bridge_GetStruct('com.sun.star.beans.PropertyValue')
         else:
             property_object = PropertyValue()
         property_object.Name = name
