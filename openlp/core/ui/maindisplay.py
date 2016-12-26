@@ -266,6 +266,9 @@ class MainDisplay(OpenLPMixin, Display, RegistryProperties):
             # Setting the div elements direct seems to solve the issue
             self.frame.findFirstElement("#lyricsmain").setInnerXml(slide)
 
+    def verseOrderUpdate(self, verse_order):
+        self.frame.evaluateJavaScript('show_verseorder("%s")' % verse_order)
+
     def alert(self, text, location):
         """
         Display an alert.

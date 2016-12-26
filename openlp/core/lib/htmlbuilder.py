@@ -84,7 +84,7 @@ is the function which has to be called from outside. The generated and returned 
                 word-wrap: break-word;
             }
 
-        #footer {
+        #footerarea {
             display: none;
             position: absolute;
             z-index: 6;
@@ -97,8 +97,23 @@ is the function which has to be called from outside. The generated and returned 
             color: #FFFFFF;
             text-align: left;
             white-space: nowrap;
-
         }
+
+        #verseorder ul {
+          list-style-type: none;
+          padding: 0;
+          font-size: 1.5rem;
+        }
+
+        #verseorder ul li {
+          display: inline;
+          padding: 0px 5px;
+        }
+
+        .current-verse {
+          background-color: green;
+        }
+
         /* lyric css */
 
         .lyricstable {
@@ -317,6 +332,10 @@ is the function which has to be called from outside. The generated and returned 
                 document.getElementById('footer').innerHTML = footertext;
             }
 
+            function show_verseorder(text){
+                document.getElementById('verseorder').innerHTML = text;
+            }
+
             function show_text(new_text){
                 var match = /-webkit-text-fill-color:[^;"]+/gi;
                 if(timer != null)
@@ -383,7 +402,10 @@ is the function which has to be called from outside. The generated and returned 
             <div id="alert" style="visibility:hidden"></div>
 
         <div class="lyricstable"><div id="lyricsmain" style="opacity:1" class="lyricscell lyricsmain"></div></div>
-        <div id="footer" class="footer"></div>
+        <div id="footerarea">
+            <div id="footer" class="footer"></div>
+            <div id="verseorder"></div>
+        </div>
         <div id="black" class="size"></div>
         </body>
         </html>
@@ -432,10 +454,26 @@ body {
     z-index: 2;
 }
 %s
-#footer {
+#footerarea {
     position: absolute;
     z-index: 6;
     %s
+}
+#verseorder ul {
+  list-style-type: none;
+  padding: 0;
+  /*font-size: 1.5rem;*/
+  font-size: 150%%;
+}
+
+#verseorder ul li {
+  display: inline;
+  padding: 5px 5px;
+  font-weight: bold;
+}
+
+.current-verse {
+  background-color: green;
 }
 /* lyric css */
 %s
@@ -481,6 +519,10 @@ sup {
 
     function show_footer(footertext){
         document.getElementById('footer').innerHTML = footertext;
+    }
+
+    function show_verseorder(text){
+      document.getElementById('verseorder').innerHTML = text;
     }
 
     function show_text(new_text){
@@ -542,7 +584,10 @@ sup {
 <img id="image" class="size" %s />
 %s
 <div class="lyricstable"><div id="lyricsmain" style="opacity:1" class="lyricscell lyricsmain"></div></div>
-<div id="footer" class="footer"></div>
+<div id="footerarea">
+  <div id="footer" class="footer"></div>
+  <div id="verseorder"></div>
+</div>
 <div id="black" class="size"></div>
 </body>
 </html>

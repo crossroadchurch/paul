@@ -66,5 +66,8 @@ A fork of OpenLP church projection software
 * Bug fix: Problem with importing Songs of Fellowship song books fixed.
 * Bug fix: First-time setup crashes caused by theme modifications (10/11/2015) fixed.
 
+*26 Dec 2016*
+* Added verse order to footer area, set to 150% of footer font size, with current verse indicated by green background (settings hard-coded for the moment).
+
 *Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.

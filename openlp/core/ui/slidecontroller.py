@@ -1105,6 +1105,22 @@ class SlideController(DisplayController, RegistryProperties):
             if self.is_live:
                 self.service_manager.last_update_count += 1
             self.preview_widget.change_slide(row)
+        if (self.service_item.get_plugin_name() == 'songs'):
+            self.display.verseOrderUpdate("order")
+            current_frames = self.service_item.get_frames()
+            song_order = []
+            for item, frame in enumerate(current_frames):
+                if item == self.live_controller.selected_row:
+                    if frame['verseSubpage'] == 1: # First page of a verse/chorus
+                        song_order.append("<li class='current-verse'>" + frame['verseTag'] + "</li>")
+                    else: # Not first page of verse/chorus, so verseTag already in list
+                        song_order[-1] = "<li class='current-verse'>" + frame['verseTag'] + "</li>"
+                else:
+                    if frame['verseSubpage'] == 1:
+                        song_order.append("<li>" + frame['verseTag'] + "</li>")
+            self.display.verseOrderUpdate("<ul>" + ''.join(song_order) + "</ul>")
+        else:
+            self.display.verseOrderUpdate("")
         self.display.setFocus()
         # Release lock
         self.slide_selected_lock.release()

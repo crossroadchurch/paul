@@ -322,8 +322,6 @@ class ServiceItem(RegistryProperties):
                         previous_pages[verse_tag] = (slide['raw_slide'], pages)
 
                     xml_lines = self.extra_data_dict[verse_tag.lower()]
-                    #print(xml_lines)
-                    #print("-----")
                     xml_line_lower, xml_line_upper = 0, 0
 
                     subpage_count = 0
