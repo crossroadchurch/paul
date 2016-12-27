@@ -68,10 +68,10 @@ class AuthorsForm(QtGui.QDialog, Ui_AuthorsDialog):
 
         :param display_name: The text from the first_name_edit widget.
         """
-        if not self.auto_display_name:
-            return
         display_name = display_name.replace(',','')
         self.first_name_edit.setText(display_name)
+        if not self.auto_display_name:
+            return
         if self.last_name_edit.text():
             display_name = display_name + ' ' + self.last_name_edit.text()
         self.display_edit.setText(display_name)
@@ -85,10 +85,10 @@ class AuthorsForm(QtGui.QDialog, Ui_AuthorsDialog):
 
         :param display_name: The text from the last_name_edit widget.
         """
-        if not self.auto_display_name:
-            return
         display_name = display_name.replace(',','')
         self.last_name_edit.setText(display_name)
+        if not self.auto_display_name:
+            return
         if self.first_name_edit.text():
             display_name = self.first_name_edit.text() + ' ' + display_name
         self.display_edit.setText(display_name)
