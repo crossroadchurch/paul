@@ -709,7 +709,9 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog, RegistryProperties):
         Add the author to the list of authors associated with this song when the button is clicked.
         """
         item = int(self.authors_combo_box.currentIndex())
-        text = self.authors_combo_box.currentText().strip(' \r\n\t')
+        # Also remove commas from author names. Songs that have authors with commas in
+        # their names are re-added to database when a service plan containing themis loaded
+        text = self.authors_combo_box.currentText().strip(' \r\n\t').replace(',','')
         author_type = self.author_types_combo_box.itemData(self.author_types_combo_box.currentIndex())
         # This if statement is for OS X, which doesn't seem to work well with
         # the QCompleter auto-completion class. See bug #812628.

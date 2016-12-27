@@ -30,6 +30,10 @@ from openlp.plugins.songs.forms.authorsdialog import Ui_AuthorsDialog
 class AuthorsForm(QtGui.QDialog, Ui_AuthorsDialog):
     """
     Class to control the Maintenance of Authors Dialog
+
+    Commas in an author's name will result in duplicate songs being added to the
+    database when service plans containing these authors are opened. Hence commas
+    are removed from the user's input.
     """
     def __init__(self, parent=None):
         """
@@ -40,6 +44,7 @@ class AuthorsForm(QtGui.QDialog, Ui_AuthorsDialog):
         self.auto_display_name = False
         self.first_name_edit.textEdited.connect(self.on_first_name_edited)
         self.last_name_edit.textEdited.connect(self.on_last_name_edited)
+        self.display_edit.textEdited.connect(self.on_display_name_edited)
 
     def exec_(self, clear=True):
         """
@@ -65,6 +70,8 @@ class AuthorsForm(QtGui.QDialog, Ui_AuthorsDialog):
         """
         if not self.auto_display_name:
             return
+        display_name = display_name.replace(',','')
+        self.first_name_edit.setText(display_name)
         if self.last_name_edit.text():
             display_name = display_name + ' ' + self.last_name_edit.text()
         self.display_edit.setText(display_name)
@@ -80,8 +87,20 @@ class AuthorsForm(QtGui.QDialog, Ui_AuthorsDialog):
         """
         if not self.auto_display_name:
             return
+        display_name = display_name.replace(',','')
+        self.last_name_edit.setText(display_name)
         if self.first_name_edit.text():
             display_name = self.first_name_edit.text() + ' ' + display_name
+        self.display_edit.setText(display_name)
+
+    def on_display_name_edited(self, display_name):
+        """
+        Slot for when the display name is edited.
+
+        :param display_name: The text from the display_edit widget.
+        """
+
+        display_name = display_name.replace(',','')
         self.display_edit.setText(display_name)
 
     def accept(self):

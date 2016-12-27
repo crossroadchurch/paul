@@ -407,12 +407,16 @@ class ServiceItem(RegistryProperties):
                     for page in pages:
                         page = page.replace('<br>', '{br}')
                         html_data = expand_tags(html.escape(page.rstrip()))
+                        if hasattr(self, 'simple_title'):
+                            title = self.simple_title
+                        else:
+                            title = self.title
                         self._display_frames.append({
                             'title': clean_tags(page),
                             'text': clean_tags(page.rstrip()),
                             'html': html_data.replace('&amp;nbsp;', '&nbsp;'),
                             'verseTag': verse_tag,
-                            'extraInfo': self.simple_title
+                            'extraInfo': title
                         })
 
         elif self.service_item_type == ServiceItemType.Image or self.service_item_type == ServiceItemType.Command:
