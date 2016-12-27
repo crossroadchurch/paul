@@ -99,6 +99,16 @@ is the function which has to be called from outside. The generated and returned 
             white-space: nowrap;
         }
 
+        #footer {
+            width: 60%%;
+        }
+        
+        #verseorder {
+          position:absolute;
+          bottom:0;
+          right:0px;
+        }
+
         #verseorder ul {
           list-style-type: none;
           padding: 0;
@@ -459,10 +469,20 @@ body {
     z-index: 6;
     %s
 }
+
+#footer {
+    width: 60%%;
+}
+
+#verseorder {
+  position:absolute;
+  bottom:0;
+  right:0px;
+}
+
 #verseorder ul {
   list-style-type: none;
   padding: 0;
-  /*font-size: 1.5rem;*/
   font-size: 150%%;
 }
 
