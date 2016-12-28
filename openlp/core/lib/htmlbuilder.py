@@ -102,7 +102,7 @@ is the function which has to be called from outside. The generated and returned 
         #footer {
             width: 60%%;
         }
-        
+
         #verseorder {
           position:absolute;
           bottom:0;
@@ -335,7 +335,7 @@ is the function which has to be called from outside. The generated and returned 
                 document.getElementById('black').style.display = black;
                 document.getElementById('lyricsmain').style.visibility = lyrics;
                 document.getElementById('image').style.visibility = lyrics;
-                document.getElementById('footer').style.visibility = lyrics;
+                document.getElementById('footerarea').style.visibility = lyrics;
             }
 
             function show_footer(footertext){
@@ -534,7 +534,7 @@ sup {
         document.getElementById('black').style.display = black;
         document.getElementById('lyricsmain').style.visibility = lyrics;
         document.getElementById('image').style.visibility = lyrics;
-        document.getElementById('footer').style.visibility = lyrics;
+        document.getElementById('footerarea').style.visibility = lyrics;
     }
 
     function show_footer(footertext){
