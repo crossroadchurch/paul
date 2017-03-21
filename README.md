@@ -74,5 +74,8 @@ A fork of OpenLP church projection software
 * Bug fix: Problem with loading saved Bible passages fixed.
 * Issue fixed: Author names including commas caused duplicate songs to be added to the database when service plans containing them were opened.  Commas are now removed from authors name to avoid this issue.
 
+* 21 Mar 2017*
+* Bible version can be chosen in the remote interface search.  The desired version (case-insensitive) should be placed in parentheses in the search string (e.g. John 3:16 (NLT)).
+
 *Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.

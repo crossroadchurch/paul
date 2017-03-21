@@ -20,7 +20,7 @@
 # Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
 ###############################################################################
 
-import logging
+import logging, re
 
 from PyQt4 import QtCore, QtGui
 
@@ -952,9 +952,25 @@ class BibleMediaItem(MediaManagerItem):
     def search(self, string, showError):
         """
         Search for some Bible verses (by reference).
+        The search string can contain a Bible version to search in.
+          The version should be placed in parentheses within the search string e.g. John 3:16 (NLT)
         """
         bible = self.quickVersionComboBox.currentText()
-        search_results = self.plugin.manager.get_verses(bible, string, False, showError)
+        opt_version = re.findall('\(.*?\)', string)
+        if(len(opt_version) > 0):
+            # User has entered a version in the search string
+            bible_idx = self.quickVersionComboBox.findText(opt_version[0][1:-1], QtCore.Qt.MatchFixedString)
+            if bible_idx > -1:
+                # Valid version: perform search, removing version from search string
+                #string = string.replace(opt_version[0], "")
+                search_results = self.plugin.manager.get_verses(self.quickVersionComboBox.itemText(bible_idx), 
+                                                                string.replace(opt_version[0], ""), False, showError)
+            else:
+                # Invalid version: return no results
+                return []
+        else:
+            # No version selected - use the current version in the Bible Manager
+            search_results = self.plugin.manager.get_verses(bible, string, False, showError)
         if search_results:
             verse_text = ' '.join([verse.text for verse in search_results])
             return [[string, verse_text]]
@@ -963,8 +979,18 @@ class BibleMediaItem(MediaManagerItem):
     def create_item_from_id(self, item_id):
         """
         Create a media item from an item id.
+        The item_id can contain a Bible version, following the reference e.g. John 3:16 (NLT)
         """
         bible = self.quickVersionComboBox.currentText()
+        opt_version = re.findall('\(.*?\)', item_id)
+        if(len(opt_version) > 0):
+            # A version has been specified 
+            bible_idx = self.quickVersionComboBox.findText(opt_version[0][1:-1], QtCore.Qt.MatchFixedString)
+            if bible_idx > -1:
+                # Valid version: update bible and item_id
+                # If invalid version or none specified, then use bible as defined above
+                bible = self.quickVersionComboBox.itemText(bible_idx)
+                item_id = item_id.replace(opt_version[0], "")
         search_results = self.plugin.manager.get_verses(bible, item_id, False)
         items = self.build_display_results(bible, '', search_results)
         return items
