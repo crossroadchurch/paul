@@ -76,6 +76,7 @@ A fork of OpenLP church projection software
 
 * 21 Mar 2017*
 * Bible version can be chosen in the remote interface search.  The desired version (case-insensitive) should be placed in parentheses in the search string (e.g. John 3:16 (NLT)).
+* Added Singers oriented view and associated route.
 
 *Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.

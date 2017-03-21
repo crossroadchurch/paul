@@ -109,6 +109,10 @@ the remotes.
     Returns a musician oriented view of the live controller, including song order,
     current slide and next slide data.
 
+``/singers``
+    Returns a singer oriented view of the live controller, including song order,
+    current slide and next slide lyrics.
+
 ``/silas/update={update_id}&capo={capo}``
     Fetch musician oriented JSON for the live controller, both arguments optional
     Returned JSON-encoded dicts are as follows:
@@ -175,6 +179,7 @@ class HttpRouter(RegistryProperties):
             ('^/(stage)$', {'function': self.serve_file, 'secure': False}),
             ('^/(main)$', {'function': self.serve_file, 'secure': False}),
             ('^/(music)$', {'function': self.serve_file, 'secure': False}),
+            ('^/(singers)$', {'function': self.serve_file, 'secure': False}),
             (r'^/files/(.*)$', {'function': self.serve_file, 'secure': False}),
             (r'^/(\w+)/thumbnails([^/]+)?/(.*)$', {'function': self.serve_thumbnail, 'secure': False}),
             (r'^/api/poll$', {'function': self.poll, 'secure': False}),
@@ -382,6 +387,8 @@ class HttpRouter(RegistryProperties):
             file_name = 'main.html'
         elif file_name == 'music':
             file_name = 'music.html'
+        elif file_name == 'singers':
+            file_name = 'singers.html'
         path = os.path.normpath(os.path.join(self.html_dir, file_name))
         if not path.startswith(self.html_dir):
             return self.do_not_found()
