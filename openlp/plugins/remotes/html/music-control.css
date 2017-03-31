@@ -1,0 +1,257 @@
+/******************************************************************************
+* OpenLP - Open Source Lyrics Projection                                      *
+* --------------------------------------------------------------------------- *
+* Copyright (c) 2008-2015 OpenLP Developers                                   *
+* --------------------------------------------------------------------------- *
+* This program is free software; you can redistribute it and/or modify it     *
+* under the terms of the GNU General Public License as published by the Free  *
+* Software Foundation; version 2 of the License.                              *
+*                                                                             *
+* This program is distributed in the hope that it will be useful, but WITHOUT *
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or       *
+* FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for    *
+* more details.                                                               *
+*                                                                             *
+* You should have received a copy of the GNU General Public License along     *
+* with this program; if not, write to the Free Software Foundation, Inc., 59  *
+* Temple Place, Suite 330, Boston, MA 02111-1307 USA                          *
+******************************************************************************/
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Raleway-Bold'), url(/files/fonts/Raleway-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Ubuntu Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Ubuntu Condensed'), url(/files/fonts/Ubuntu-C.ttf) format('truetype');
+}
+
+
+body {
+  background-color: rgb(51, 51, 51);
+  font-family: 'Ubuntu Condensed', 'Open Sans', sans-serif;
+  overflow: hidden;
+}
+
+/*@media (max-width: 768px) {
+  body {
+    font-size: 10px;
+  }
+}*/
+
+#songarea {
+  /*max-width: 95vw;*/
+  height: 100vh;
+  margin: 0 auto;
+  padding: 0.95rem;
+  padding-top: 0rem;
+  font-size: 2.5rem;
+}
+
+#header {
+  padding-bottom: 1rem;
+}
+
+.currenttag {
+   color: lightgreen;
+   font-weight: bold;
+}
+
+.chord-line {
+  color: #d922d2;
+  display: inline-block;
+  position: relative;
+  top: -2.5rem;
+  width: 0px;
+  margin-top: 0.5rem;
+}
+
+.lyric-line {
+  color: white;
+  display: block;
+  margin: 2rem 0rem;
+}
+
+.next-chord-line {
+  color: #999;
+  display: inline-block;
+  position: relative;
+  top: -2.5rem;
+  width: 0px;
+  margin-top: 0.5rem;
+}
+
+.next-lyric-line {
+  display: block;
+  color: #999;
+  margin: 2rem 0rem;
+  font-size: 2rem;
+}
+
+.chord-chunk {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color: #d922d2;
+  display: inline-block;
+  position: absolute;
+  top: -1rem;
+  left: 0px;
+  margin-top: 0.5rem;
+  padding-right: 1rem;
+}
+
+.lyric-chunk {
+  font-family: 'Raleway', sans-serif;;
+  color: white;
+  display: inline-block;
+  margin: 2rem 0rem 0.5rem 0rem;
+  white-space: pre-wrap;
+  max-width: 66vw;
+}
+
+.lyric-chord-block{
+  position:relative;
+  margin-right: 0px;
+  display: inline-block;
+  max-width: 66vw;
+}
+
+
+.next-chord-chunk {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color: #999;
+  display: inline-block;
+  position: absolute;
+  top: -1rem;
+  left: 0px;
+  margin-top: 0.5rem;
+  padding-right: 1rem;
+}
+
+.next-lyric-chunk {
+  font-family: 'Raleway', sans-serif;;
+  color: #999;
+  display: inline-block;
+  margin: 2rem 0rem 0.5rem 0rem;
+  white-space: pre-wrap;
+  max-width: 66vw;
+}
+
+.next-lyric-chord-block{
+  position:relative;
+  margin-right: 0px;
+  display: inline-block;
+  max-width: 66vw;
+}
+
+.next-midword-spacer {
+  display: inline-block;
+  color: #999;
+  text-align: center;
+}
+
+.midword-spacer {
+  display: inline-block;
+  color: white;
+  text-align: center;
+}
+
+.nonsong-block {
+  font-family: 'Raleway', sans-serif;;
+  color: white;
+  display: inline-block;
+  margin: 0.5rem 0rem;
+}
+
+.nonsong-line {
+  margin: 0.5rem 0rem;
+}
+
+.next-nonsong-block {
+  font-family: 'Raleway', sans-serif;;
+  color: #999;
+  display: inline-block;
+  margin: 0.5rem 0rem;
+}
+
+span {
+  white-space: pre;
+}
+
+
+#verseorder ul {
+  display: inline;
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+#verseorder ul li {
+  display: inline;
+  color: white;
+  margin: 0px 5px;
+}
+
+.current-verse {
+  color: green;
+}
+
+#playedkey, #capoarea, #verseorder {
+  display: inline;
+}
+
+#playedkey {
+  font-size: 1.5rem;
+  margin: 0px 5px;
+  color: yellow;
+}
+
+#caposelect {
+  font-size: 1.25rem;
+}
+
+#controlarea {
+  max-width: 30vw;
+  position: absolute;
+  top: 4rem;
+  bottom: 2%;
+  left: 70%;
+  right: 2%;
+}
+
+#musicarea {
+  position: absolute;
+  top: 4rem;
+  left: 2%;
+  bottom: 2%;
+  right: 30%;
+  overflow-y: auto;
+}
+
+#currentslide {
+  max-width: 70vw;
+}
+
+#nextslide {
+  max-width: 70vw;
+}
+
+.vert-half-button {
+  width:100%;
+  height:50%;
+}
+
+.vert-button-25 {
+  width:100%;
+  height:25%;
+}
+
+.vert-button-75 {
+  width:100%;
+  height:75%;
+}

@@ -179,6 +179,7 @@ class HttpRouter(RegistryProperties):
             ('^/(stage)$', {'function': self.serve_file, 'secure': False}),
             ('^/(main)$', {'function': self.serve_file, 'secure': False}),
             ('^/(music)$', {'function': self.serve_file, 'secure': False}),
+            ('^/(music-control)$', {'function': self.serve_file, 'secure': False}),
             ('^/(singers)$', {'function': self.serve_file, 'secure': False}),
             (r'^/files/(.*)$', {'function': self.serve_file, 'secure': False}),
             (r'^/(\w+)/thumbnails([^/]+)?/(.*)$', {'function': self.serve_thumbnail, 'secure': False}),
@@ -387,6 +388,8 @@ class HttpRouter(RegistryProperties):
             file_name = 'main.html'
         elif file_name == 'music':
             file_name = 'music.html'
+        elif file_name == 'music-control':
+            file_name = 'music-control.html'
         elif file_name == 'singers':
             file_name = 'singers.html'
         path = os.path.normpath(os.path.join(self.html_dir, file_name))

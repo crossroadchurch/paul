@@ -80,6 +80,7 @@ A fork of OpenLP church projection software
 
 * 31 Mar 2017 *
 * Song usage report exports to Excel spreadsheet in addition to text file
+* Music controller view added.  Currently allows the user to advance to the next or previous slide from a musician oriented view.  Route is /music-control
 
 *Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.

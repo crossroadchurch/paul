@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<!--
+###############################################################################
+# OpenLP - Open Source Lyrics Projection                                      #
+# --------------------------------------------------------------------------- #
+# Copyright (c) 2008-2015 OpenLP Developers                                   #
+# --------------------------------------------------------------------------- #
+# This program is free software; you can redistribute it and/or modify it     #
+# under the terms of the GNU General Public License as published by the Free  #
+# Software Foundation; version 2 of the License.                              #
+#                                                                             #
+# This program is distributed in the hope that it will be useful, but WITHOUT #
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or       #
+# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for    #
+# more details.                                                               #
+#                                                                             #
+# You should have received a copy of the GNU General Public License along     #
+# with this program; if not, write to the Free Software Foundation, Inc., 59  #
+# Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
+###############################################################################
+-->
+<head>
+  <meta charset="utf-8" />
+  <title>OpenLP Musician Control View</title>
+  <link rel="stylesheet" href="/files/music-control.css" />
+  <link rel="shortcut icon" type="image/x-icon" href="/files/images/favicon.ico">
+  <script type="text/javascript" src="/files/jquery.min.js"></script>
+  <script type="text/javascript" src="/files/music-control.js"></script>
+</head>
+<body>
+  <div id="songarea">
+    <div id="header">
+      <div id="playedkey"></div>
+      <div id="capoarea">
+        <select id="caposelect">
+          <option selected="selected" value="0">Capo 0</option>
+          <option value="1">Capo 1</option>
+          <option value="2">Capo 2</option>
+          <option value="3">Capo 3</option>
+          <option value="4">Capo 4</option>
+          <option value="5">Capo 5</option>
+          <option value="6">Capo 6</option>
+          <option value="7">Capo 7</option>
+          <option value="8">Capo 8</option>
+          <option value="9">Capo 9</option>
+          <option value="10">Capo 10</option>
+          <option value="11">Capo 11</option>
+        </select>
+      </div>
+      <div id="verseorder"></div>
+    </div>
+    <div id="musiccontrol">
+      <div id="musicarea">
+        <div id="currentslide"></div>
+        <div id="nextslide"></div>
+      </div>
+      <div id="controlarea">
+        <button id="controller-prev" class="vert-button-25">Previous</button>
+        <button id="controller-next" class="vert-button-75">Next</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
