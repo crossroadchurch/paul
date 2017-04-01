@@ -756,11 +756,23 @@ class HttpRouter(RegistryProperties):
                             if frame['verseSubpage'] == 1:
                                 song_order.append(frame['verseTag'])
 
+                    
+                    subpage_list = []
+                    subpage = 1
+                    for item, frame in enumerate(current_frames):
+                        if frame['verseSubpage'] == 1:
+                            subpage = 1
+                            subpage_list.append("1")
+                        else:
+                            subpage = subpage + 1
+                            subpage_list[-1] = str(subpage)
+
                     json_data = {'status': 'update',
                                  'update_id': str(self.service_manager.last_update_count),
                                  'current_slide': current_slide.replace("\"", "'"),
                                  'next_slide': next_slide.replace("\"", "'"),
                                  'song_order': ' '.join(song_order),
+                                 'subpages': ' '.join(subpage_list),
                                  'played_key': musician_key,
                                  'slide_type': 'songs'}
 
@@ -784,6 +796,7 @@ class HttpRouter(RegistryProperties):
                              'current_slide': current_slide.replace("\"", "'"),
                              'next_slide': next_slide.replace("\"", "'"),
                              'song_order': '',
+                             'subpages': '',
                              'played_key': '',
                              'slide_type': 'custom'}
 
@@ -803,6 +816,7 @@ class HttpRouter(RegistryProperties):
                              'current_slide': current_slide.replace("\"", "'"),
                              'next_slide': next_slide.replace("\"", "'"),
                              'song_order': current_frames[self.live_controller.selected_row]['extraInfo'],
+                             'subpages': '',
                              'played_key': '',
                              'slide_type': 'bibles'}
 

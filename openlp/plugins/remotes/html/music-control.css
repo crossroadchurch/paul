@@ -38,14 +38,7 @@ body {
   overflow: hidden;
 }
 
-/*@media (max-width: 768px) {
-  body {
-    font-size: 10px;
-  }
-}*/
-
 #songarea {
-  /*max-width: 95vw;*/
   height: 100vh;
   margin: 0 auto;
   padding: 0.95rem;
@@ -55,11 +48,7 @@ body {
 
 #header {
   padding-bottom: 1rem;
-}
-
-.currenttag {
-   color: lightgreen;
-   font-weight: bold;
+  width: 95vw;
 }
 
 .chord-line {
@@ -105,7 +94,7 @@ body {
 }
 
 .lyric-chunk {
-  font-family: 'Raleway', sans-serif;;
+  font-family: 'Raleway', sans-serif;
   color: white;
   display: inline-block;
   margin: 2rem 0rem 0.5rem 0rem;
@@ -119,7 +108,6 @@ body {
   display: inline-block;
   max-width: 66vw;
 }
-
 
 .next-chord-chunk {
   font-family: 'Ubuntu Condensed', sans-serif;
@@ -182,26 +170,7 @@ span {
   white-space: pre;
 }
 
-
-#verseorder ul {
-  display: inline;
-  list-style-type: none;
-  padding: 0;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-}
-
-#verseorder ul li {
-  display: inline;
-  color: white;
-  margin: 0px 5px;
-}
-
-.current-verse {
-  color: green;
-}
-
-#playedkey, #capoarea, #verseorder {
+#playedkey, #capoarea, #verseorder, #keyandcapo {
   display: inline;
 }
 
@@ -213,12 +182,13 @@ span {
 
 #caposelect {
   font-size: 1.25rem;
+  width: 6rem;
 }
 
 #controlarea {
   max-width: 30vw;
   position: absolute;
-  top: 4rem;
+  top: 4.5rem;
   bottom: 2%;
   left: 70%;
   right: 2%;
@@ -226,7 +196,7 @@ span {
 
 #musicarea {
   position: absolute;
-  top: 4rem;
+  top: 4.5rem;
   left: 2%;
   bottom: 2%;
   right: 30%;
@@ -241,17 +211,55 @@ span {
   max-width: 70vw;
 }
 
-.vert-half-button {
-  width:100%;
-  height:50%;
-}
-
 .vert-button-25 {
   width:100%;
-  height:25%;
+  height:21%;
+  margin: 1%;
 }
 
 .vert-button-75 {
   width:100%;
-  height:75%;
+  height:71%;
+  margin: 1%;
+}
+
+.large-button {
+  font-family: 'Ubuntu Condensed', 'Open Sans', sans-serif;
+  font-size: 2rem;
+  border: none;
+  background-color: gray;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.large-button:active {
+  background-color: darkmagenta;
+}
+
+.verse-button {
+  font-family: 'Ubuntu Condensed', 'Open Sans', sans-serif;
+  font-size: 2rem;
+  height: 3rem;
+  width: 6rem;
+  border:none;
+  background-color: gray;
+  margin-right: 5px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.verse-button:active {
+  background-color: darkmagenta;
+}
+
+.current-verse-button {
+  background-color: #4CAF50 !important;
+}
+
+.non-song-title {
+  font-family: 'Ubuntu Condensed', 'Open Sans', sans-serif;
+  font-size: 2rem;
+  color: white;
 }
