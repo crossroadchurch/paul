@@ -258,8 +258,42 @@ span {
   background-color: #4CAF50 !important;
 }
 
+.menu-button {
+  font-family: 'Ubuntu Condensed', 'Open Sans', sans-serif;
+  height: 3rem;
+  width: 3rem;
+  border: none;
+  background-color: gray;
+  color: white;
+  text-align: center;
+  text-decoration: none;  
+}
+
+.icon-bar {
+  width: 2rem;
+  height: 0.25rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  background-color: white !important;
+  display: block;
+}
+
 .non-song-title {
   font-family: 'Ubuntu Condensed', 'Open Sans', sans-serif;
   font-size: 2rem;
   color: white;
+}
+
+.menu-song-item {
+  font-family: 'Ubuntu Condensed', 'Open Sans', sans-serif;
+  font-size: 2rem;
+  color: white;
+  background: gray;
+}
+
+.menu-song-current-item {
+  font-family: 'Ubuntu Condensed', 'Open Sans', sans-serif;
+  font-size: 2rem;
+  color: white;
+  background: #4CAF50;
 }

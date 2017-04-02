@@ -78,12 +78,15 @@ A fork of OpenLP church projection software
 * Bible version can be chosen in the remote interface search.  The desired version (case-insensitive) should be placed in parentheses in the search string (e.g. John 3:16 (NLT)).
 * Added Singers oriented view and associated route.
 
-*31 Mar 2017 *
+*31 Mar 2017*
 * Song usage report exports to Excel spreadsheet in addition to text file
 * Music controller view added.  Currently allows the user to advance to the next or previous slide from a musician oriented view.  Route is /music-control
 
 *01 Apr 2017*
 * Music controller view improved. User can advance to start of any song section (verse, chorus etc) by tapping corresponding button in song order.
+
+*02 Apr 2017*
+* Song running order added as a menu to the music controller view. User can change songs within the current service plan by tapping a song in this menu.
 
 *Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.

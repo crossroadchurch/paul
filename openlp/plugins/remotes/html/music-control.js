@@ -23,6 +23,7 @@ window.OpenLP = {
     $("#playedkey").html(OpenLP.played_key);
 
     verse_control_list = "";
+    verse_list = "";
 
     if (OpenLP.slide_type == "songs"){
       verse_list = OpenLP.song_order.split(" ");
@@ -32,12 +33,12 @@ window.OpenLP = {
       for (i=0; i < verse_list.length; i++){
         if (verse_list[i].charAt(0) == "(") {
           verse_control_list = verse_control_list + 
-            "<button class='verse-button current-verse-button' data-id='" + subpage_sum + "'>" + 
+            "<button class='verse-button current-verse-button' onclick='OpenLP.changeVerse(" + subpage_sum + ")'>" + 
             verse_list[i].replace("(", "").replace(")","") +
             "</button>";
         } else {
           verse_control_list = verse_control_list + 
-            "<button class='verse-button' data-id='" + subpage_sum + "'>" + 
+            "<button class='verse-button' onclick='OpenLP.changeVerse(" + subpage_sum + ")'>" + 
             verse_list[i] +
             "</button>";
         }
@@ -47,14 +48,13 @@ window.OpenLP = {
       verse_control_list = "<span class='non-song-title'>" + OpenLP.song_order + "</div>";
     }
     $("#verseorder").html(verse_control_list);
-    $(".verse-button").live("click", OpenLP.changeVerse);
 
     /* Update widths of verse buttons to make sure they can all be seen */
     header_width = $("#header").width();
     keyandcapo_width = $("#keyandcapo").width();
     button_margin = parseInt($(".verse-button").css("margin-right"));
     buttons_width = header_width-keyandcapo_width - (button_margin * verse_list.length);
-    max_button_width = buttons_width / verse_list.length;
+    max_button_width = Math.floor(buttons_width / verse_list.length);
     pref_width = 6 * parseInt($("html").css("font-size")); /* 6rem */
     actual_width = Math.min(pref_width, max_button_width);
     $(".verse-button").css("width", actual_width + "px");
@@ -227,6 +227,30 @@ window.OpenLP = {
         }
       }
     );
+    $.getJSON(
+      "/api/service/list",
+      function (data, status) {
+        item_list = data.results.items;
+        if (item_list.length > 0) {
+          temp_menu = "<ul class='jq-dropdown-menu'>";
+          // Build up song choice menu, place divider at current song location
+          for (i=0; i<item_list.length; i++){
+            if (item_list[i].selected == false) {
+              temp_menu = temp_menu + "<li class='menu-song-item'><a onclick='OpenLP.changeSong(" + i + ")' class='menu-song-link'>" + item_list[i].title + "</a></li>";
+            } else {
+              temp_menu = temp_menu + "<li class='menu-song-current-item'><a>" + item_list[i].title + "</a></li>";
+            }
+          }
+          temp_menu = temp_menu + "</ul>";        
+        } else {
+          temp_menu = "<ul class='jq-dropdown-menu'></ul>";
+        }
+        if (temp_menu != OpenLP.menustring) {
+            $("#jq-dropdown-1").html(temp_menu);
+            OpenLP.menustring = temp_menu;
+        }
+      }
+    );
   },
 
   updateCapo: function() {
@@ -243,33 +267,18 @@ window.OpenLP = {
     $.getJSON("/api/controller/live/previous");
   },
 
-  getElement: function(event) {
-    var targ;
-    if (!event) {
-      var event = window.event;
-    }
-    if (event.target) {
-      targ = event.target;
-    }
-    else if (event.srcElement) {
-      targ = event.srcElement;
-    }
-    if (targ.nodeType == 3) {
-      // defeat Safari bug
-      targ = targ.parentNode;
-    }
-    var isSecure = false;
-    var isAuthorised = false;
-    return $(targ);
-  },
-
-  changeVerse: function(event) {
-    event.preventDefault();
-    button = OpenLP.getElement(event);
-    id = button.attr('data-id');
+  changeVerse: function(id) {
     text = "{\"request\": {\"id\": " + id + "}}";
     $.getJSON(
       "/api/controller/live/set",
+      {"data": text}
+    );
+  },
+
+  changeSong: function(id) {
+    text = "{\"request\": {\"id\": " + id + "}}";
+    $.getJSON(
+      "/api/service/set",
       {"data": text}
     );
   }
@@ -277,11 +286,12 @@ window.OpenLP = {
 
 OpenLP.update_id = "None";
 OpenLP.capo = 0;
+OpenLP.menustring = "";
 
 $(document).ready(function(){
     $("#caposelect").change(OpenLP.updateCapo);
-    $("#controller-next").live("click", OpenLP.nextSlide);
-    $("#controller-prev").live("click", OpenLP.previousSlide);
+    $("#controller-next").on("click", OpenLP.nextSlide);
+    $("#controller-prev").on("click", OpenLP.previousSlide);
 });
 
 

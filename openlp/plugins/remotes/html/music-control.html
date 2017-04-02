@@ -24,14 +24,21 @@
   <meta charset="utf-8" />
   <title>OpenLP Musician Control View</title>
   <link rel="stylesheet" href="/files/music-control.css" />
+  <link rel="stylesheet" href="/files/jquery.dropdown.css" />
   <link rel="shortcut icon" type="image/x-icon" href="/files/images/favicon.ico">
-  <script type="text/javascript" src="/files/jquery.min.js"></script>
+  <script type="text/javascript" src="/files/jquery-1.12.4.min.js"></script>
   <script type="text/javascript" src="/files/music-control.js"></script>
+  <script type="text/javascript" src="/files/jquery.dropdown.js"></script>
 </head>
 <body>
   <div id="songarea">
     <div id="header">
       <div id="keyandcapo">
+        <button id="action-menu" data-jq-dropdown="#jq-dropdown-1" class="menu-button">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <div id="playedkey"></div>
         <div id="capoarea">
           <select id="caposelect">
@@ -62,6 +69,10 @@
         <button id="controller-next" class="vert-button-75 large-button">Next</button>
       </div>
     </div>
+  </div>
+  <div id="jq-dropdown-1" class="jq-dropdown">
+    <ul class="jq-dropdown-menu">
+    </ul>
   </div>
 </body>
 </html>
