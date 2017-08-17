@@ -88,5 +88,8 @@ A fork of OpenLP church projection software
 *02 Apr 2017*
 * Song running order added as a menu to the music controller view. User can change songs within the current service plan by tapping a song in this menu.
 
+*17 Aug 2017*
+* Extra tab added to remote interface allowing the user to quickly add Bible chapters to the service plan.
+
 *Known issues*
 * If a song is live whilst a theme is edited then when that song is redisplayed OpenLP will hang.  Current workaround:  Display a different song before returning to the initial song.

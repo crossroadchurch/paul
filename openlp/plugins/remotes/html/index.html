@@ -50,6 +50,7 @@
       <a href="#slide-controller" data-role="button" data-icon="arrow-r" data-iconpos="right">${slide_controller}</a>
       <a href="#alerts" data-role="button" data-icon="arrow-r" data-iconpos="right">${alerts}</a>
       <a href="#search" data-role="button" data-icon="arrow-r" data-iconpos="right">${search}</a>
+      <a href="#bible" data-role="button" data-icon="arrow-r" data-iconpos="right">Bible Chapters</a>
     </div>
   </div>
 </div>
@@ -64,6 +65,7 @@
         <li><a href="#slide-controller">${slides}</a></li>
         <li><a href="#alerts">${alerts}</a></li>
         <li><a href="#search">${search}</a></li>
+        <li><a href="#bible">Bible</a></li>
       </ul>
     </div>
   </div>
@@ -95,6 +97,7 @@
         <li><a href="#slide-controller" data-theme="e">${slides}</a></li>
         <li><a href="#alerts">${alerts}</a></li>
         <li><a href="#search">${search}</a></li>
+        <li><a href="#bible">Bible</a></li>
       </ul>
     </div>
   </div>
@@ -125,6 +128,7 @@
         <li><a href="#slide-controller">${slides}</a></li>
         <li><a href="#alerts" data-theme="e">${alerts}</a></li>
         <li><a href="#search">${search}</a></li>
+        <li><a href="#bible">Bible</a></li>
       </ul>
     </div>
   </div>
@@ -146,6 +150,7 @@
         <li><a href="#slide-controller">${slides}</a></li>
         <li><a href="#alerts">${alerts}</a></li>
         <li><a href="#search" data-theme="e">${search}</a></li>
+        <li><a href="#bible">Bible</a></li>
       </ul>
     </div>
   </div>
@@ -160,6 +165,62 @@
     </div>
     <a href="#" id="search-submit" data-role="button">${search}</a>
     <ul data-role="listview" data-inset="true"/>
+  </div>
+</div>
+<div data-role="page" id="bible">
+  <div data-role="header" data-position="fixed">
+    <a href="#home" data-role="button" data-icon="home" data-iconpos="left">${home}</a>
+    <h1>Bible Chapters</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#service-manager">${service}</a></li>
+        <li><a href="#slide-controller">${slides}</a></li>
+        <li><a href="#alerts">${alerts}</a></li>
+        <li><a href="#search">${search}</a></li>
+        <li><a href="#bible" data-theme="e">Bible</a></li>
+      </ul>
+    </div>
+  </div>
+  <div data-role="content">
+    <div id="book-chooser" data-role="collapsible">
+      <h4>Book</h4>
+      <form>
+        <fieldset data-role="controlgroup" data-type="horizontal" id="bookgroup">
+          <div id="book-grid" class="ui-grid-d">
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div id="chapter-chooser" data-role="collapsible">
+      <h4>Chapter</h4>
+      <form>
+        <fieldset data-role="controlgroup" data-type="horizontal" id="chaptergroup">
+          <div id="chapter-grid" class="ui-grid-d">
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div id="version-chooser" data-role="collapsible">
+      <h4>Version</h4>
+      <form>
+        <fieldset data-role="controlgroup" data-type="horizontal" id="versiongroup">
+          <div id="version-grid" class="ui-grid-d">
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div id="chapter-summary">
+      <form>
+        <div data-role="fieldcontain" class="">
+          <label for="complete-ref" class="ui-hidden-accessible">Chosen chapter:</label>
+          <input name="complete-ref" id="complete-ref" value="" type="text" readonly="readonly" style="width:100%">
+        </div>
+      </form>
+    </div>
+    <div id="display-options" class="ui-grid-a" style="width:100%">
+      <div class="ui-block-a"><a href="#" id="add-chapter-to-service" data-role="button">${add_to_service}</a></div>
+      <div class="ui-block-b"><a href="#" id="add-chapter-and-go-to-service" data-role="button">${add_and_go_to_service}</a></div>
+    </div>
   </div>
 </div>
 <div data-role="page" id="options">

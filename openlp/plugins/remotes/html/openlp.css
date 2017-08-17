@@ -29,3 +29,17 @@
 .ui-li .ui-btn-text a.ui-link-inherit{
   white-space: normal;
 }
+
+/* Styles for Bible chapter search */
+#chaptergroup label, #chaptergroup span, #bookgroup label, #bookgroup span, #versiongroup label, #versiongroup span {
+  -webkit-border-radius:.0 !important;
+  -moz-border-radius:0 !important;
+  border-radius: 0 !important;
+}
+#chaptergroup .ui-radio, #bookgroup .ui-radio, #versiongroup .ui-radio {
+  width:100%;
+}
+
+#chaptergroup .ui-controlgroup-controls, #bookgroup .ui-controlgroup-controls, #versiongroup .ui-controlgroup-controls {
+  width:100%;
+}

@@ -27,7 +27,7 @@ import re
 import socket
 import urllib.parse
 import urllib.error
-from html.parser import HTMLParseError
+#from html.parser import HTMLParseError # Deprecated in Python 3.5+
 
 from bs4 import BeautifulSoup, NavigableString, Tag
 
@@ -290,7 +290,8 @@ class BGExtract(RegistryProperties):
             page_source = str(page_source, 'cp1251')
         try:
             soup = BeautifulSoup(page_source)
-        except HTMLParseError:
+        #except HTMLParseError:
+        except Exception:
             log.error('BeautifulSoup could not parse the Bible page.')
             send_error_message('parse')
             return None

@@ -190,6 +190,7 @@ class HttpRouter(RegistryProperties):
             (r'^/api/controller/(live|preview)/(.*)$', {'function': self.controller, 'secure': True}),
             (r'^/api/service/list$', {'function': self.service_list, 'secure': False}),
             (r'^/api/service/(.*)$', {'function': self.service, 'secure': True}),
+            (r'^/api/bible_versions$', {'function': self.list_bibles, 'secure': False}),
             (r'^/api/display/(hide|show|blank|theme|desktop)$', {'function': self.display, 'secure': True}),
             (r'^/api/alert$', {'function': self.alert, 'secure': True}),
             (r'^/api/plugin/(search)$', {'function': self.plugin_info, 'secure': False}),
@@ -825,3 +826,12 @@ class HttpRouter(RegistryProperties):
 
         self.do_json_header()
         return json.dumps(json_data).encode()
+
+    def list_bibles(self):
+        """
+        Return list of Bible versions currently installed.
+        """
+        bibles = self.plugin_manager.get_plugin_by_name('bibles').manager.get_bibles()
+        result = list(bibles.keys())
+        self.do_json_header()
+        return json.dumps({'results': result}).encode()

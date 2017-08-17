@@ -17,6 +17,75 @@
  * Temple Place, Suite 330, Boston, MA 02111-1307 USA                          *
  ******************************************************************************/
 
+book_data = [["Gen", "law", 50, "Genesis"],
+  ["Exo", "law", 40, "Exodus"],
+  ["Lev", "law", 27, "Leviticus"],
+  ["Num", "law", 36, "Numbers"],
+  ["Deut", "law", 34, "Deuteronomy"],
+  ["Josh", "history", 24, "Joshua"],
+  ["Judg", "history", 21, "Judges"],
+  ["Ruth", "history", 4, "Ruth"],
+  ["1 Sam", "history", 31, "1 Samuel"],
+  ["2 Sam", "history", 24, "2 Samue;"],
+  ["1 Ki", "history", 22, "1 Kings"],
+  ["2 Ki", "history", 25, "2 Kings"],
+  ["1 Chr", "history", 29, "1 Chronicles"],
+  ["2 Chr", "history", 36, "2 Chronicles"],
+  ["Ezra", "history", 10, "Ezra"],
+  ["Neh", "history", 13, "Nehemiah"],
+  ["Esth", "history", 10, "Esther"],
+  ["Job", "wisdom", 42, "Job"],
+  ["Psalm", "wisdom", 150, "Psalms"],
+  ["Prov", "wisdom", 31, "Proverbs"],
+  ["Eccl", "wisdom", 12, "Ecclesiastes"],
+  ["Song", "wisdom", 8, "Song of Songs"],
+  ["Isa", "major", 66, "Isaiah"],
+  ["Jer", "major", 52, "Jeremiah"],
+  ["Lam", "major", 5, "Lamentations"],
+  ["Ezek", "major", 48, "Ezekiel"],
+  ["Dan", "major", 12, "Daniel"],
+  ["Hosea", "major", 14, "Hosea"],
+  ["Joel", "minor", 3, "Joel"],
+  ["Amos", "minor", 9, "Amos"],
+  ["Obad", "minor", 1, "Obadiah"],
+  ["Jonah", "minor", 4, "Jonah"],
+  ["Micah", "minor", 7, "Micah"],
+  ["Nahum", "minor", 3, "Nahum"],
+  ["Hab", "minor", 3, "Habakkuk"],
+  ["Zeph", "minor", 3, "Zephaniah"],
+  ["Hag", "minor", 2, "Haggai"],
+  ["Zech", "minor", 14, "Zechariah"],
+  ["Mal", "minor", 4, "Malachi"],
+  ["Matt", "gospel", 28, "Matthew"],
+  ["Mark", "gospel", 16, "Mark"],
+  ["Luke", "gospel", 24, "Luke"],
+  ["John", "gospel", 21, "John"],
+  ["Acts", "gospel", 28, "Acts"],
+  ["Rom", "letters", 16, "Romans"],
+  ["1 Cor", "letters", 16, "1 Corinthians"],
+  ["2 Cor", "letters", 13, "2 Corinthian"],
+  ["Gal", "letters", 6, "Galatians"],
+  ["Eph", "letters", 6, "Ephesians"],
+  ["Phil", "letters", 4, "Philippians"],
+  ["Col", "letters", 4, "Colossians"],
+  ["1 The", "letters", 5, "1 Thessalonians"],
+  ["2 The", "letters", 3, "2 Thessalonians"],
+  ["1 Tim", "letters", 6, "1 Timothy"],
+  ["2 Tim", "letters", 4, "2 Timothy"],
+  ["Titus", "letters", 3, "Titus"],
+  ["Phmon", "letters", 1, "Philemon"],
+  ["Heb", "letters", 13, "Hebrews"],
+  ["James", "letters", 5, "James"],
+  ["1 Pet", "letters", 5, "1 Peter"],
+  ["2 Pet", "letters", 3, "2 Peter"],
+  ["1 Jn", "letters", 5, "1 John"],
+  ["2 Jn", "letters", 1, "2 John"],
+  ["3 Jn", "letters", 1, "3 John"],
+  ["Jude", "letters", 1, "Jude"],
+  ["Rev", "letters", 22, "Revelation"]];
+version_data = [];
+chapters_shown = 1;
+
 window.OpenLP = {
   getElement: function(event) {
     var targ;
@@ -329,8 +398,80 @@ window.OpenLP = {
       }
     );
   },
+  addChapterToService: function (event) {
+    event.preventDefault();
+    var id = $("#complete-ref").val();
+    if (typeof id !== "number") {
+        id = "\"" + id + "\"";
+    }
+    var text = "{\"request\": {\"id\": " + id + "}}";
+    $.getJSON(
+      "/api/bibles/add",
+      {"data": text}
+    );
+  },
+  addChapterAndGoToService: function (event) {
+    event.preventDefault();
+    var id = $("#complete-ref").val();
+    if (typeof id !== "number") {
+        id = "\"" + id + "\"";
+    }
+    var text = "{\"request\": {\"id\": " + id + "}}";
+    $.getJSON(
+      "/api/bibles/add",
+      {"data": text},
+      function () {
+        $.mobile.changePage("#service-manager");
+      }
+    );
+  },
   escapeString: function (string) {
     return string.replace(/\\/g, "\\\\").replace(/"/g, "\\\"")
+  },
+  setupBooks: function() {
+    for (var i=0; i<book_data.length; i++){
+      book = book_data[i];
+      $("#book-grid").append('<div class="book ' + book[1] + ' ui-block-e"><input data-chap="' + book[2] + '" type="radio" name="book-radio" id="book-' + i + '" value="' + book[3] + '" /><label for="book-' + i + '">' + book[0] + '</label></div>').trigger('create');
+    }
+    $("#book-0").prop("checked", true).checkboxradio("refresh");
+    book_chosen = $("#book-0").val();
+  },
+  setupVersions: function(){
+    $.getJSON(
+      "/api/bible_versions",
+      function (data, status) {
+        version_data = data.results
+        for (var i=0; i<version_data.length; i++){
+          $("#version-grid").append('<div class="version ui-block-e"><input type="radio" name="version-radio" id="version-' + i + '" value="' + version_data[i] + '" /><label for="version-' + i + '">' + version_data[i] + '</label></div>').trigger('create');
+        }
+        $("#version-0").prop("checked", true).checkboxradio("refresh");
+        version_chosen = $("#version-0").val();
+
+        $("#version-chooser label").on("click", function() {
+          version_chosen = $(this).prev().val();
+          OpenLP.updateRef();
+        });
+      }
+    );
+  },
+  setupChapters: function () {
+    for(var i=0; i<30; i++){
+      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+1) + '" value="' + (5*i + 1) + '" /><label for="chap-' + (5*i + 1)+ '">' + (5*i+1) + '</label></div>').trigger('create');
+      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+2) + '" value="' + (5*i + 2) + '" /><label for="chap-' + (5*i + 2)+ '">' + (5*i+2) + '</label></div>').trigger('create');
+      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+3) + '" value="' + (5*i + 3) + '" /><label for="chap-' + (5*i + 3)+ '">' + (5*i+3) + '</label></div>').trigger('create');
+      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+4) + '" value="' + (5*i + 4) + '" /><label for="chap-' + (5*i + 4)+ '">' + (5*i+4) + '</label></div>').trigger('create');
+      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+5) + '" value="' + (5*i + 5) + '" /><label for="chap-' + (5*i + 5)+ '">' + (5*i+5) + '</label></div>').trigger('create');
+    }
+    $("#chapter-grid div").hide();
+    for(var i=0; i<book_data[0][2]; i++){
+      $("#chapter-grid div:nth-child(" + (i+1) + ")").show();
+    }
+    $("#chap-1").prop("checked", true).checkboxradio("refresh");
+    chapters_shown = parseInt($("#book-0").data("chap"));
+    chapter_chosen = 1;
+  },
+  updateRef: function() {
+    $("#complete-ref").val(book_chosen + " " + chapter_chosen + " (" + version_chosen + ")");
   }
 }
 // Initial jQueryMobile options
@@ -369,10 +510,55 @@ $("#search-text").live("keypress", function(event) {
 $("#go-live").live("click", OpenLP.goLive);
 $("#add-to-service").live("click", OpenLP.addToService);
 $("#add-and-go-to-service").live("click", OpenLP.addAndGoToService);
+// Bible Chapter search
+$("#add-chapter-to-service").live("click", OpenLP.addChapterToService);
+$("#add-chapter-and-go-to-service").live("click", OpenLP.addChapterAndGoToService);
 // Poll the server twice a second to get any updates.
 $.ajaxSetup({cache: false});
 $("#search").live("pageinit", function (event) {
   OpenLP.getSearchablePlugins();
 });
+
+$(document).ready(function(){
+  version_chosen = ""
+  OpenLP.setupBooks();
+  OpenLP.setupChapters();
+  OpenLP.setupVersions();
+
+  $("#book-chooser label").on("click", function() {
+    chapters = parseInt($(this).prev().data("chap"));
+    book_chosen = $(this).prev().val();
+    if (chapters > chapters_shown){
+      for(var i=chapters_shown; i<chapters; i++){
+        $("#chapter-grid div:nth-child(" + (i+1) + ")").show();
+      }
+    }
+    else if (chapters < chapters_shown){
+      for(var i=chapters; i<chapters_shown; i++){
+        $("#chapter-grid div:nth-child(" + (i+1) + ")").hide();
+      }
+    }
+    chapters_shown = chapters;
+    chapter_chosen = 1;
+    $("#chapter-grid input").prop("checked", false).checkboxradio("refresh");
+    $("#chap-1").prop("checked", true).checkboxradio("refresh");
+    $("#book-chooser").trigger('collapse');
+    $("#chapter-chooser").trigger('expand');
+    OpenLP.updateRef();
+  });
+
+  $("#chapter-chooser label").on("click", function() {
+    chapter_chosen = $(this).prev().val();
+    OpenLP.updateRef();
+    $("#book-chooser").trigger('collapse');
+    $("#chapter-chooser").trigger('collapse');
+    $("#version-chooser").trigger('expand');
+  });
+
+  $("#book-chooser").trigger('collapse');
+  $("#chapter-chooser").trigger('collapse');
+  $("#version-chooser").trigger('collapse');
+});
+
 setInterval("OpenLP.pollServer();", 500);
 OpenLP.pollServer();
