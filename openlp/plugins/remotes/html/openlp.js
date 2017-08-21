@@ -431,8 +431,9 @@ window.OpenLP = {
   setupBooks: function() {
     for (var i=0; i<book_data.length; i++){
       book = book_data[i];
-      $("#book-grid").append('<div class="book ' + book[1] + ' ui-block-e"><input data-chap="' + book[2] + '" type="radio" name="book-radio" id="book-' + i + '" value="' + book[3] + '" /><label for="book-' + i + '">' + book[0] + '</label></div>').trigger('create');
+      $("#book-grid").append('<div class="book ' + book[1] + ' ui-block-e"><input data-chap="' + book[2] + '" type="radio" name="book-radio" id="book-' + i + '" value="' + book[3] + '" /><label for="book-' + i + '">' + book[0] + '</label></div>');
     }
+    $("#book-chooser fieldset").trigger("create");
     $("#book-0").prop("checked", true).checkboxradio("refresh");
     book_chosen = $("#book-0").val();
   },
@@ -440,15 +441,15 @@ window.OpenLP = {
     $.getJSON(
       "/api/bible_versions",
       function (data, status) {
-        version_data = data.results
+        version_data = data.results;
         for (var i=0; i<version_data.length; i++){
           $("#version-grid").append('<div class="version ui-block-e"><input type="radio" name="version-radio" id="version-' + i + '" value="' + version_data[i] + '" /><label for="version-' + i + '">' + version_data[i] + '</label></div>').trigger('create');
         }
         $("#version-0").prop("checked", true).checkboxradio("refresh");
         version_chosen = $("#version-0").val();
 
-        $("#version-chooser label").on("click", function() {
-          version_chosen = $(this).prev().val();
+        $("#version-chooser input").on("click", function() {
+          version_chosen = $(this).val();
           OpenLP.updateRef();
         });
       }
@@ -456,12 +457,13 @@ window.OpenLP = {
   },
   setupChapters: function () {
     for(var i=0; i<30; i++){
-      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+1) + '" value="' + (5*i + 1) + '" /><label for="chap-' + (5*i + 1)+ '">' + (5*i+1) + '</label></div>').trigger('create');
-      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+2) + '" value="' + (5*i + 2) + '" /><label for="chap-' + (5*i + 2)+ '">' + (5*i+2) + '</label></div>').trigger('create');
-      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+3) + '" value="' + (5*i + 3) + '" /><label for="chap-' + (5*i + 3)+ '">' + (5*i+3) + '</label></div>').trigger('create');
-      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+4) + '" value="' + (5*i + 4) + '" /><label for="chap-' + (5*i + 4)+ '">' + (5*i+4) + '</label></div>').trigger('create');
-      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+5) + '" value="' + (5*i + 5) + '" /><label for="chap-' + (5*i + 5)+ '">' + (5*i+5) + '</label></div>').trigger('create');
+      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+1) + '" value="' + (5*i + 1) + '" /><label for="chap-' + (5*i + 1)+ '">' + (5*i+1) + '</label></div>');
+      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+2) + '" value="' + (5*i + 2) + '" /><label for="chap-' + (5*i + 2)+ '">' + (5*i+2) + '</label></div>');
+      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+3) + '" value="' + (5*i + 3) + '" /><label for="chap-' + (5*i + 3)+ '">' + (5*i+3) + '</label></div>');
+      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+4) + '" value="' + (5*i + 4) + '" /><label for="chap-' + (5*i + 4)+ '">' + (5*i+4) + '</label></div>');
+      $("#chapter-grid").append('<div class="chapter ui-block-e"><input type="radio" name="chap-radio" id="chap-' + (5*i+5) + '" value="' + (5*i + 5) + '" /><label for="chap-' + (5*i + 5)+ '">' + (5*i+5) + '</label></div>');
     }
+    $("#chapter-chooser fieldset").trigger("create");
     $("#chapter-grid div").hide();
     for(var i=0; i<book_data[0][2]; i++){
       $("#chapter-grid div:nth-child(" + (i+1) + ")").show();
@@ -525,9 +527,9 @@ $(document).ready(function(){
   OpenLP.setupChapters();
   OpenLP.setupVersions();
 
-  $("#book-chooser label").on("click", function() {
-    chapters = parseInt($(this).prev().data("chap"));
-    book_chosen = $(this).prev().val();
+  $("#book-chooser input").on("click", function() {
+    chapters = parseInt($(this).data("chap"));
+    book_chosen = $(this).val();
     if (chapters > chapters_shown){
       for(var i=chapters_shown; i<chapters; i++){
         $("#chapter-grid div:nth-child(" + (i+1) + ")").show();
@@ -547,8 +549,8 @@ $(document).ready(function(){
     OpenLP.updateRef();
   });
 
-  $("#chapter-chooser label").on("click", function() {
-    chapter_chosen = $(this).prev().val();
+  $("#chapter-chooser input").on("click", function() {
+    chapter_chosen = $(this).val();
     OpenLP.updateRef();
     $("#book-chooser").trigger('collapse');
     $("#chapter-chooser").trigger('collapse');
